@@ -171,17 +171,14 @@ class Bot
     {
         $url = "https://api.telegram.org/bot" . TOKEN . "/" . $method;
         $ch = curl_init();
-        curl_setopt($ch,CURLOPT_HTTPHEADER, ["Connection: Keep-Alive", "Keep-Alive: 120"]);
         curl_setopt($ch,CURLOPT_URL,$url);
-        curl_setopt($ch,CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch,CURLOPT_POST, true);
         curl_setopt($ch,CURLOPT_POSTFIELDS, $datas);
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-        curl_setopt($ch,CURLOPT_TIMEOUT, 10);
 
-        $out = json_decode(curl_exec($ch));
+        $result = curl_exec($ch);
         curl_close($ch);
-//        return $out;
+//        return $result;
     }
 
     public static function requestToTelegram($data, $chat_id, $image)
@@ -194,10 +191,9 @@ class Bot
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
             curl_setopt($ch, CURLOPT_POST, count($data));
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-            $result = json_decode(curl_exec($ch));
+            $result = curl_exec($ch);
             curl_close($ch);
         }
 //        return $result;
