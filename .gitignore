@@ -1,0 +1,5 @@
+.idea
+.idea/
+/lib/config.php
+/vendor/
+/other/

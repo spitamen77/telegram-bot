@@ -1,13 +1,8 @@
 <?php
-ob_start();
-header('Content-Type: application/x-www-form-urlencoded');
+header('Content-type: text/html; charset=utf-8');
+require_once "./vendor/autoload.php";
 
-include_once 'bot.php';
-include_once 'data.php';
-include_once 'taxi_words.php';
-
-
-$botan = bot::getBot();
+$botan = Bot::getBot();
 
 $db = DataBase::getDB();
 /** sozlamalar **/
@@ -20,17 +15,17 @@ if ($botan::$call->callback_query->data != NULL) {
             $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
-            $til = word::getLang($chat_id);
+            $til = Word::getLang($chat_id);
             $botan::setMessage($til->til("key12"));
-            $botan::setMarkup(['text' => "🚦 " . $til->til("key13"), 'callback_data' => "znak_".$botan::ogoh."_16"], 1, 1);
-            $botan::setMarkup(['text' => "🛑 " . $til->til("key14"), 'callback_data' => "znak_".$botan::imtiyoz."_61"], 2, 1);
-            $botan::setMarkup(['text' => "⛔️ " . $til->til("key15"), 'callback_data' => "znak_".$botan::taqiq."_70"], 3, 1);
-            $botan::setMarkup(['text' => "ℹ️ " . $til->til("key16"), 'callback_data' => "znak_".$botan::buyur."_107"], 4, 1);
-            $botan::setMarkup(['text' => "🚸 " . $til->til("key17"), 'callback_data' => "znak_".$botan::axborot."_131"], 5, 1);
-            $botan::setMarkup(['text' => "🛠 " . $til->til("key18"), 'callback_data' => "znak_".$botan::service."_1"], 6, 1);
-            $botan::setMarkup(['text' => "🎦 " . $til->til("key20"), 'callback_data' => "znak_".$botan::qoshimcha."_1"], 7, 1);
-            $botan::setMarkup(['text' => "📌 " . $til->til("key21"), 'callback_data' => "znak_".$botan::yotiq."_1"], 8, 1);
-            $botan::setMarkup(['text' => "📍 " . $til->til("key22"), 'callback_data' => "znak_".$botan::tik."_1"], 8, 2);
+            $botan::setMarkup(['text' => "🚦 " . $til->til("key13"), 'callback_data' => "znak_".$botan::OGOH."_16"], 1, 1);
+            $botan::setMarkup(['text' => "🛑 " . $til->til("key14"), 'callback_data' => "znak_".$botan::IMTIYOZ."_61"], 2, 1);
+            $botan::setMarkup(['text' => "⛔️ " . $til->til("key15"), 'callback_data' => "znak_".$botan::TAQIQ."_70"], 3, 1);
+            $botan::setMarkup(['text' => "ℹ️ " . $til->til("key16"), 'callback_data' => "znak_".$botan::BUYUR."_107"], 4, 1);
+            $botan::setMarkup(['text' => "🚸 " . $til->til("key17"), 'callback_data' => "znak_".$botan::AXBOROT."_131"], 5, 1);
+            $botan::setMarkup(['text' => "🛠 " . $til->til("key18"), 'callback_data' => "znak_".$botan::SERVICE."_1"], 6, 1);
+            $botan::setMarkup(['text' => "🎦 " . $til->til("key20"), 'callback_data' => "znak_".$botan::QOSHIMCHA."_1"], 7, 1);
+            $botan::setMarkup(['text' => "📌 " . $til->til("key21"), 'callback_data' => "znak_".$botan::YOTIQ."_1"], 8, 1);
+            $botan::setMarkup(['text' => "📍 " . $til->til("key22"), 'callback_data' => "znak_".$botan::TIK."_1"], 8, 2);
             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 9, 1);
             $botan::eText();
             break;
@@ -50,10 +45,10 @@ if ($botan::$call->callback_query->data != NULL) {
                         return $d->getTimestamp();
                         break;
                     case 7:
-                        return $d->getTimestamp()-(7*24*60*60);
+                        return $d->getTimestamp()-(30*24*60*60);
                         break;
                     case 30:
-                        return $d->getTimestamp()-(30*24*60*60);
+                        return $d->getTimestamp()-(12*30*24*60*60);
                         break;
                 }
             }
@@ -85,7 +80,7 @@ if ($botan::$call->callback_query->data != NULL) {
             $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
-            $til = word::getLang($chat_id);
+            $til = Word::getLang($chat_id);
             $botan::setMessage($til->til("key11"));
             $botan::setMarkup(['text' => "📚 " . $til->til("key08"), 'callback_data' => "test"], 1, 1);
             $botan::setMarkup(['text' => "📄 " . $til->til("key09"), 'callback_data' => "bilet"], 2, 1);
@@ -96,7 +91,7 @@ if ($botan::$call->callback_query->data != NULL) {
         case "belgi":
             $botan::call($botan::$call->callback_query->data);
             $chat_id = $botan::$back->chat->id;
-            $til = word::getLang($chat_id);
+            $til = Word::getLang($chat_id);
             $db->change_step($chat_id, 3);
             $random = $db->random();
             $db->belgiSavol($chat_id, $random->id,$random->number);
@@ -131,7 +126,7 @@ if ($botan::$call->callback_query->data != NULL) {
 
         case "setting":
             $botan::call($botan::$call->callback_query->data);
-            $til = word::getLang($botan::$back->chat->id);
+            $til = Word::getLang($botan::$back->chat->id);
             $botan::setReply();
             $botan::setChatId($botan::$back->chat->id);
             $botan::setMessageId($botan::$back->message_id);
@@ -191,7 +186,7 @@ if ($botan::$call->callback_query->data != NULL) {
                 $botan::delMsg();
                 $id = (int) $pieces[2]; $next = $id+1;  $prive = $id-1;
                 $belgi = $db->selectOne("id=".$id." AND child=".$pieces[1],"belgilar");
-                $til = word::getLang($chat_id);
+                $til = Word::getLang($chat_id);
                 if ($belgi){
                     $ttt = $botan::sPhoto("belgi/".$belgi->image);
                     $nomi = "name_".$user->lang;
@@ -327,11 +322,11 @@ elseif (isset($botan::$text)) {
 //            $db->update("start=".time(), "user_id=" . $botan::$chat->id, "users");
             break;
         case "/info":
-            $til = word::getLang($botan::$chat->id);
+            $til = Word::getLang($botan::$chat->id);
             $botan::send_Out($botan::$chat->id, $til->til("key31"));
             break;
         case "/info Лойиха хакида":
-            $til = word::getLang($botan::$chat->id);
+            $til = Word::getLang($botan::$chat->id);
             $botan::send_Out($botan::$chat->id, $til->til("key31"));
             break;
         default:
@@ -349,7 +344,7 @@ elseif (isset($botan::$text)) {
                     $botan::sText();
                     break;
                 case 3: //code
-                    $til = word::getLang($chat_id);
+                    $til = Word::getLang($chat_id);
                     $botText = trim($botan::$text);
                     $belgi = $db->selectOne("number='".$botText."' AND user_id=".$chat_id, "belgi_savol");
                     $botan::setChatId($chat_id);
@@ -394,7 +389,7 @@ elseif (isset($botan::$text)) {
                     break;
 
                 case 7: //belgini topib beraman
-                    $til = word::getLang($chat_id);
+                    $til = Word::getLang($chat_id);
                     $botText = trim($botan::$text);
 //                    $botText = preg_replace('/\s|\+|-|@|#|&|%|$|=|_|:|;|!|\'|"|\(|\)/', '', $botan::$text);
                     $belgi = $db->selectOne("number='".$botText."'", "belgilar");
@@ -434,12 +429,11 @@ elseif (isset($botan::$text)) {
                     break;
                 default:
                     {
-                        $til = word::getLang($chat_id);
+                        $til = Word::getLang($chat_id);
                         $botan::send_Out($chat_id, $til->til("key23"));
                     }
             }
     }
 }
-ob_end_clean();
 exit('ok');
 ?>

@@ -8,8 +8,10 @@
  * Date: 27.01.2020 16:58
  */
 
+namespace DataBase;
 
-class DataBase {
+class DataBase
+{
 
     private static $db = null; // Единственный экземпляр класса, чтобы не создавать множество подключений
     private $mysqli; // Идентификатор соединения

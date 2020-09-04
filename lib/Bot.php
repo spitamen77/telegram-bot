@@ -7,20 +7,22 @@
  * Project: autotest
  * Date: 27.01.2020 16:58
  */
+namespace Bot;
 
-class bot
+require_once "./vendor/autoload.php";
+
+class Bot
 {
     private static $db = null;
-    const tg_bot_token = "token";
-    const ogoh = 1;
-    const imtiyoz = 2;
-    const taqiq = 3;
-    const buyur = 4;
-    const axborot = 5;
-    const service = 6;
-    const qoshimcha = 7;
-    const yotiq = 8;
-    const tik = 9;
+    const OGOH = 1;
+    const IMTIYOZ = 2;
+    const TAQIQ = 3;
+    const BUYUR = 4;
+    const AXBOROT = 5;
+    const SERVOCE = 6;
+    const QOSHIMCHA = 7;
+    const YOTIQ = 8;
+    const TIK = 9;
     protected static $api;
     protected static $data;
     public static $get;
@@ -62,7 +64,7 @@ class bot
     /* private-конструктор, подключающийся к базе данных, устанавливающий локаль и кодировку соединения */
     private function __construct() {
         $input = json_decode(file_get_contents('php://input'));
-        self::$api = self::tg_bot_token;
+        self::$api = TOKEN;
         self::$get = $input;
         self::$call = $input;
         self::$chat = self::$get->message->chat;
@@ -164,19 +166,17 @@ class bot
 
     protected static function send($method,$datas=[])
     {
-        $url = "https://api.telegram.org/bot" . self::$api . "/" . $method;
-        $ch = curl_init();
-        curl_setopt($ch,CURLOPT_HTTPHEADER, ["Connection: Keep-Alive", "Keep-Alive: 120"]);
-        curl_setopt($ch,CURLOPT_URL,$url);
-        curl_setopt($ch,CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($ch,CURLOPT_POST, true);
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $datas);
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-        curl_setopt($ch,CURLOPT_TIMEOUT, 10);
+        $client = new \GuzzleHttp\Client([
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ]
+        ]);
 
-        $out = json_decode(curl_exec($ch));
-        curl_close($ch);
-        return $out;
+        $response = $client->request('GET', 'https://api.telegram.org/bot'.TOKEN.'/'.$method,
+            [
+                //
+            ]);
+        return json_decode($response->getBody()->getContents());
     }
 
     public static function requestToTelegram($data, $chat_id, $image)
@@ -184,16 +184,19 @@ class bot
         $result = null;
         $data['chat_id'] = $chat_id;
         $data['photo'] = "https://auto.websar.uz/telegram/image/".$image;
-        $url = "https://api.telegram.org/bot" . self::$api . "/sendPhoto";
+        $url = "https://api.telegram.org/bot" . TOKEN . "/sendPhoto";
         if (is_array($data)) {
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-            curl_setopt($ch, CURLOPT_POST, count($data));
-            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-            $result = json_decode(curl_exec($ch));
-            curl_close($ch);
+            $client = new \GuzzleHttp\Client([
+                'headers' => [
+                    'Content-Type' => 'multipart/form-data'
+                ]
+            ]);
+
+            $response = $client->request('GET', $url,
+                [
+                    //
+                ]);
+            $result = json_decode($response->getBody()->getContents());
         }
         return $result;
     }
@@ -328,7 +331,7 @@ class bot
 
     public static function Send_Hide($user_id, $text, $is_end = true)
     {
-        return file_get_contents("https://api.telegram.org/bot".self::tg_bot_token."/sendMessage?chat_id=$user_id&text=$text&parse_mode=Markdown");
+        return file_get_contents("https://api.telegram.org/bot".TOKEN."/sendMessage?chat_id=$user_id&text=$text&parse_mode=Markdown");
     }
 
     public static function Main()
