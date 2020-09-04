@@ -169,14 +169,19 @@ class Bot
 
     protected static function send($method,$datas=[])
     {
-        $client = new \GuzzleHttp\Client([
-            'headers' => [
-                'Content-Type' => 'application/json'
-            ]
-        ]);
+        $url = "https://api.telegram.org/bot" . TOKEN . "/" . $method;
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_HTTPHEADER, ["Connection: Keep-Alive", "Keep-Alive: 120"]);
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch,CURLOPT_POST, true);
+        curl_setopt($ch,CURLOPT_POSTFIELDS, $datas);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($ch,CURLOPT_TIMEOUT, 10);
 
-        $response = $client->request('GET', 'https://api.telegram.org/bot'.TOKEN.'/'.$method, $datas);
-        return json_decode($response->getBody()->getContents());
+        $out = json_decode(curl_exec($ch));
+        curl_close($ch);
+        return $out;
     }
 
     public static function requestToTelegram($data, $chat_id, $image)
@@ -186,14 +191,14 @@ class Bot
         $data['photo'] = "https://auto.websar.uz/telegram/image/".$image;
         $url = "https://api.telegram.org/bot" . TOKEN . "/sendPhoto";
         if (is_array($data)) {
-            $client = new \GuzzleHttp\Client([
-                'headers' => [
-                    'Content-Type' => 'multipart/form-data'
-                ]
-            ]);
-
-            $response = $client->request('POST', $url, $data);
-            $result = json_decode($response->getBody()->getContents());
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+            curl_setopt($ch, CURLOPT_POST, count($data));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+            $result = json_decode(curl_exec($ch));
+            curl_close($ch);
         }
         return $result;
     }
