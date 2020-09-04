@@ -13,7 +13,6 @@ composer install
 ## Usage
 
 ```php
-import foobar
 
 define('TOKEN','');   # returns 'token'
 define('DB','');      # returns 'db'
