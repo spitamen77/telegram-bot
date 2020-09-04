@@ -172,7 +172,7 @@ class Bot
             ]
         ]);
 
-        $response = $client->request('GET', 'https://api.telegram.org/bot'.TOKEN.'/'.$method,
+        $response = $client->request('POST', 'https://api.telegram.org/bot'.TOKEN.'/'.$method,
             [
                 //
             ]);
@@ -192,7 +192,7 @@ class Bot
                 ]
             ]);
 
-            $response = $client->request('GET', $url,
+            $response = $client->request('POST', $url,
                 [
                     //
                 ]);
