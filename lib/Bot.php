@@ -175,10 +175,7 @@ class Bot
             ]
         ]);
 
-        $response = $client->request('POST', 'https://api.telegram.org/bot'.TOKEN.'/'.$method,
-            [
-                //
-            ]);
+        $response = $client->request('GET', 'https://api.telegram.org/bot'.TOKEN.'/'.$method, $datas);
         return json_decode($response->getBody()->getContents());
     }
 
@@ -195,10 +192,7 @@ class Bot
                 ]
             ]);
 
-            $response = $client->request('POST', $url,
-                [
-                    //
-                ]);
+            $response = $client->request('POST', $url, $data);
             $result = json_decode($response->getBody()->getContents());
         }
         return $result;
