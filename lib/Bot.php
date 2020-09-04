@@ -179,7 +179,7 @@ class Bot
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
         curl_setopt($ch,CURLOPT_TIMEOUT, 10);
 
-//        $out = json_decode(curl_exec($ch));
+        $out = json_decode(curl_exec($ch));
         curl_close($ch);
 //        return $out;
     }
@@ -197,7 +197,7 @@ class Bot
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
             curl_setopt($ch, CURLOPT_POST, count($data));
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-//            $result = json_decode(curl_exec($ch));
+            $result = json_decode(curl_exec($ch));
             curl_close($ch);
         }
 //        return $result;
