@@ -1,6 +1,11 @@
 <?php
 header('Content-type: text/html; charset=utf-8');
 require_once "./vendor/autoload.php";
+require_once "./lib/config.php";
+
+use Bot\Bot;
+use DataBase\DataBase;
+use Word\Word;
 
 $botan = Bot::getBot();
 
