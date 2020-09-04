@@ -22,7 +22,7 @@ class Bot
     const TAQIQ = 3;
     const BUYUR = 4;
     const AXBOROT = 5;
-    const SERVOCE = 6;
+    const SERVICE = 6;
     const QOSHIMCHA = 7;
     const YOTIQ = 8;
     const TIK = 9;
