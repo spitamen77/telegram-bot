@@ -10,6 +10,8 @@
 
 namespace DataBase;
 
+require_once "./lib/config.php";
+
 class DataBase
 {
 
@@ -24,7 +26,7 @@ class DataBase
 
     /* private-конструктор, подключающийся к базе данных, устанавливающий локаль и кодировку соединения */
     private function __construct() {
-        $this->mysqli = new mysqli("localhost", "", "", "");
+        $this->mysqli = new mysqli("localhost", DB_USER, DB_PASS, DB);
         $this->mysqli->query("SET NAMES 'utf8'");
     }
 
