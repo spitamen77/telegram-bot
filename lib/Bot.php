@@ -181,7 +181,7 @@ class Bot
 
         $out = json_decode(curl_exec($ch));
         curl_close($ch);
-        return $out;
+//        return $out;
     }
 
     public static function requestToTelegram($data, $chat_id, $image)
@@ -206,7 +206,7 @@ class Bot
     public static function sText()
     {
 //		self::dump(
-        return self::send("sendMessage",
+        self::send("sendMessage",
             [
                 'chat_id' => self::$chat_id,
                 'text' => self::$message,
@@ -223,7 +223,7 @@ class Bot
     public static function rText()
     {
         self::$reply_markup = ['remove_keyboard' => true];
-        self::dump(
+//        self::dump(
             self::send("sendMessage",
                 [
                     'chat_id' => self::$chat_id,
@@ -234,13 +234,13 @@ class Bot
                     'reply_to_message_id' => self::$reply_to_message_id,
                     'reply_markup' => json_encode(self::$reply_markup),
                 ]
-            )
+//            )
         );
     }
 
     public static function sGeo()
     {
-        self::dump(
+//        self::dump(
             self::send("sendLocation",
                 [
                     'chat_id' => self::$chat_id,
@@ -252,14 +252,14 @@ class Bot
                     'reply_to_message_id' => self::$reply_to_message_id,
                     'reply_markup' => json_encode(self::$reply_markup)
                 ]
-            )
+//            )
         );
     }
 
     public static function eText()
     {
 
-        return self::send("editMessageText",
+         self::send("editMessageText",
             [
                 'chat_id' => self::$chat_id,
                 'message_id' => self::$message_id,
@@ -275,14 +275,14 @@ class Bot
     public static function sPhoto($url,$caption=false)
     {
         if ($caption)
-            return self::send("sendPhoto",
+             self::send("sendPhoto",
                 [
                     'chat_id' => self::$chat_id,
                     'photo' => "https://auto.websar.uz/telegram/image/".$url,
                     'caption' => $caption,
                 ]
             );
-        else return self::send("sendPhoto",
+        else  self::send("sendPhoto",
             [
                 'chat_id' => self::$chat_id,
                 'photo' => "https://auto.websar.uz/telegram/image/".$url,
@@ -291,32 +291,32 @@ class Bot
     }
     public static function delMsg()
     {
-        self::dump(
+//        self::dump(
             self::send("deleteMessage",
                 [
                     'chat_id' => self::$chat_id,
                     'message_id' => self::$message_id
                 ]
-            )
+//            )
         );
     }
     public static function push()
     {
-        self::dump(
+//        self::dump(
             self::send("answerCallbackQuery",
                 [
                     'callback_query_id' => self::$chat_id,
                     'show_alert' => true,
                     'text' =>  self::$message
                 ]
-            )
+//            )
         );
     }
 
     public static function Send_Out($user_id, $text, $is_end = true)
     {
         self::$reply_markup = ['remove_keyboard' => true];
-        self::dump(
+//        self::dump(
             self::send("sendMessage",
                 [
                     'chat_id' => $user_id,
@@ -327,7 +327,7 @@ class Bot
                     'reply_to_message_id' => self::$reply_to_message_id,
                     'reply_markup' => json_encode(self::$reply_markup),
                 ]
-            )
+//            )
         );
     }
 
@@ -357,13 +357,6 @@ class Bot
         $fh = fopen('log.txt', 'a') or die('can\'t open file');
         ((is_array($data)) || (is_object($data))) ? fwrite($fh, print_r($data, TRUE)."\n") : fwrite($fh, $data . "\n");
         fclose($fh);
-    }
-
-    public function __destruct() {
-        header("Connection: close");
-        if(session_id()){
-            session_write_close(); //Closes writing to the output buffer.
-        }
     }
 
 }
