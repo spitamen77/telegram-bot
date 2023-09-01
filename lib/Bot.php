@@ -201,7 +201,7 @@ class Bot
 
     public static function sText()
     {
-        return self::send("sendMessage",
+        $response = self::send("sendMessage",
             [
                 'chat_id' => self::$chat_id,
                 'text' => self::$message,
@@ -211,8 +211,10 @@ class Bot
                 'reply_to_message_id' => self::$reply_to_message_id,
                 'reply_markup' => json_encode(self::$reply_markup),
             ]
-//			)
         );
+        var_dump($response);
+
+        return $response;
     }
 
     public static function rText()
