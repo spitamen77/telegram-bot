@@ -81,6 +81,7 @@ class Bot
                 self::$text = $input->message->text;
                 self::$chat = $input->message->chat;
             } else {
+                self::setFileLog($input);
                 self::$text = ""; // Или установить другое значение по умолчанию
                 self::$chat = "";
             }
