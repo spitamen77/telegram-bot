@@ -386,7 +386,7 @@ elseif (isset($botan::$text)) {
 
                     }else{
                         $pieces = explode(",", $botText);
-                        $botan::setFileLog($pieces);
+//                        $botan::setFileLog($pieces);
                         $nomer = $pieces[0].".".$pieces[1];
                         $belgi = $db->selectOne("number='".$nomer."' AND user_id=".$chat_id, "belgi_savol");
                         if ($belgi){
@@ -432,7 +432,7 @@ elseif (isset($botan::$text)) {
 
                     }else{
                         $pieces = explode(",", $botText);
-                        $botan::setFileLog($pieces);
+//                        $botan::setFileLog($pieces);
                         $nomer = $pieces[0].".".$pieces[1];
                         $belgi = $db->selectOne("number='".$nomer."'", "belgilar");
                         if ($belgi){
