@@ -344,7 +344,7 @@ class Bot
         $til = word::getLang($chat_id);
         self::setMessage($til->til('key01'));
         self::setMarkup(['text'=>"📚 ".$til->til('key03'),'callback_data'=>"continue"],1,1);
-        self::setMarkup(['text'=>"🏆 ".$til->til('key04'),'callback_data'=>"myaddress"],2,1);
+        self::setMarkup(['text'=>"🏆 ".$til->til('key04'),'callback_data'=>"results"],2,1);
         self::setMarkup(['text'=>"🚦 ".$til->til('key05'),'callback_data'=>"info"],2,2);
         self::setMarkup(['text'=>"📊 ".$til->til('key19'),'callback_data'=>"stat"],3,1);
         self::setMarkup(['text'=>"⚙️ ".$til->til('key07'),'callback_data'=>"setting"],3,2);

@@ -11,6 +11,7 @@ http_response_code(200);
 $botan = Bot::getBot();
 
 $db = DataBase::getDB();
+
 /** sozlamalar **/
 /** action inline-keyboard  */
 if ($botan::$call->callback_query->data != NULL) {
@@ -94,6 +95,17 @@ if ($botan::$call->callback_query->data != NULL) {
             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 4, 1);
             $botan::eText();
             break;
+        case "settings":
+            $botan::call($botan::$call->callback_query->data);
+            $chat_id = $botan::$back->chat->id;
+            $botan::setReply();
+            $botan::setMessageId($botan::$back->message_id);
+            $botan::setChatId($chat_id);
+            $til = Word::getLang($chat_id);
+            $botan::setMessage("Hozirsa tet tizimida ishlamoqda.");
+            $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);
+            $botan::eText();
+            break;
         case "belgi":
             $botan::call($botan::$call->callback_query->data);
             $chat_id = $botan::$back->chat->id;
@@ -124,7 +136,6 @@ if ($botan::$call->callback_query->data != NULL) {
             $botan::setChatId($chat_id);
             $botan::setMessageId($botan::$back->message_id);
             $botan::Main();
-//            $botan::setFirstButton("🚕 \"Royal\" Taxi",false);
             $botan::eText();
             $db->change_step($chat_id, 7);
             break;
@@ -290,10 +301,11 @@ if ($botan::$call->callback_query->data != NULL) {
     }
 //    endif;
 }
-/** action inline-keyboard  */
-
-/** action text-message */
 elseif (isset($botan::$text)) {
+    /** action inline-keyboard  */
+
+    /** action text-message */
+
     switch ($botan::$text) {
         case "/":
         case "/start":
