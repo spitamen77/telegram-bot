@@ -1,11 +1,12 @@
 <?php
-header('Content-type: text/html; charset=utf-8');
 require_once "./vendor/autoload.php";
 require_once "./lib/config.php";
 
 use Bot\Bot;
 use DataBase\DataBase;
 use Word\Word;
+
+http_response_code(200);
 
 $botan = Bot::getBot();
 
@@ -189,9 +190,13 @@ if ($botan::$call->callback_query->data != NULL) {
                 $botan::setChatId($chat_id);
                 $botan::setMessageId($user->first);
                 $botan::delMsg();
-                $id = (int) $pieces[2]; $next = $id+1;  $prive = $id-1;
+
+                $id = (int) $pieces[2];
+                $next = $id+1;
+                $prive = $id-1;
                 $belgi = $db->selectOne("id=".$id." AND child=".$pieces[1],"belgilar");
                 $til = Word::getLang($chat_id);
+
                 if ($belgi){
                     $ttt = $botan::sPhoto("belgi/".$belgi->image);
                     $nomi = "name_".$user->lang;
@@ -440,5 +445,3 @@ elseif (isset($botan::$text)) {
             }
     }
 }
-exit('ok');
-?>
