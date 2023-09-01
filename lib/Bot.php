@@ -67,12 +67,12 @@ class Bot
     /* private-конструктор, подключающийся к базе данных, устанавливающий локаль и кодировку соединения */
     private function __construct() {
         $input = json_decode(file_get_contents('php://input'));
-        self::setFileLog($input);
+//        self::setFileLog($input);
         self::$api = TOKEN;
         self::$get = $input;
         self::$call = $input;
-        self::$chat = self::$get->message->chat;
-        self::$text = self::$get->message->text;
+        self::$chat = $input->callback_query->message->chat;
+        self::$text = $input->callback_query->message->text;
 //        self::$json = json_encode(self::$call->callback_query);
 //        self::$geo = self::$get->message->location;
 //        self::$contact = self::$get->message->contact;
