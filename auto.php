@@ -95,7 +95,7 @@ if ($botan::$call->callback_query->data != NULL) {
             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 4, 1);
             $botan::eText();
             break;
-        case "settings":
+        case "results":
             $botan::call($botan::$call->callback_query->data);
             $chat_id = $botan::$back->chat->id;
             $botan::setReply();
