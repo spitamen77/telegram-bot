@@ -262,8 +262,9 @@ class Bot
 
     public static function eText()
     {
+        //        self::setFileLog($response);
 
-         $response = self::send("editMessageText",
+        return self::send("editMessageText",
             [
                 'chat_id' => self::$chat_id,
                 'message_id' => self::$message_id,
@@ -274,15 +275,12 @@ class Bot
 //                    'remove_keyboard' => true
             ]
         );
-//        self::setFileLog($response);
-
-        return $response;
     }
 
     public static function sPhoto($url,$caption=false)
     {
         if ($caption)
-             return self::send("sendPhoto",
+            $result = self::send("sendPhoto",
                 [
                     'chat_id' => self::$chat_id,
                     'photo' => BOT_URL.'/image/'.$url,
@@ -290,13 +288,15 @@ class Bot
                 ]
             );
         else  {
-            return self::send("sendPhoto",
+            $result = self::send("sendPhoto",
                 [
                     'chat_id' => self::$chat_id,
                     'photo' => BOT_URL.'/image/'.$url,
                 ]
             );
         }
+
+        return json_decode($result, true);
     }
     public static function delMsg()
     {
