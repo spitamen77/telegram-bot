@@ -212,7 +212,7 @@ class Bot
                 'reply_markup' => json_encode(self::$reply_markup),
             ]
         );
-        var_dump($response);
+        error_log($response, 3, 'telegram_api.log');
 
         return $response;
     }
