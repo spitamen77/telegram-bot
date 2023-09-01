@@ -27,12 +27,12 @@ if ($data !== null) {
             $botan::setChatId($chat_id);
             $til = Word::getLang($chat_id);
             $botan::setMessage($til->til("key12"));
-            $botan::setMarkup(['text' => "🚦 " . $til->til("key13"), 'callback_data' => "znak_".Bot::OGOH."_16"], 1, 1);
-            $botan::setMarkup(['text' => "🛑 " . $til->til("key14"), 'callback_data' => "znak_".Bot::IMTIYOZ."_61"], 2, 1);
-            $botan::setMarkup(['text' => "⛔️ " . $til->til("key15"), 'callback_data' => "znak_".Bot::TAQIQ."_70"], 3, 1);
-            $botan::setMarkup(['text' => "ℹ️ " . $til->til("key16"), 'callback_data' => "znak_".Bot::BUYUR."_107"], 4, 1);
-            $botan::setMarkup(['text' => "🚸 " . $til->til("key17"), 'callback_data' => "znak_".Bot::AXBOROT."_131"], 5, 1);
-            $botan::setMarkup(['text' => "🛠 " . $til->til("key18"), 'callback_data' => "znak_".Bot::SERVICE."_1"], 6, 1);
+            $botan::setMarkup(['text' => "🚦 " . $til->til("key13"), 'callback_data' => "znak_".Bot::OGOH."_1"], 1, 1);
+            $botan::setMarkup(['text' => "🛑 " . $til->til("key14"), 'callback_data' => "znak_".Bot::IMTIYOZ."_89"], 2, 1);
+            $botan::setMarkup(['text' => "⛔️ " . $til->til("key15"), 'callback_data' => "znak_".Bot::TAQIQ."_112"], 3, 1);
+            $botan::setMarkup(['text' => "ℹ️ " . $til->til("key16"), 'callback_data' => "znak_".Bot::BUYUR."_16"], 4, 1);
+            $botan::setMarkup(['text' => "🚸 " . $til->til("key17"), 'callback_data' => "znak_".Bot::AXBOROT."_46"], 5, 1);
+            $botan::setMarkup(['text' => "🛠 " . $til->til("key18"), 'callback_data' => "znak_".Bot::SERVICE."_125"], 6, 1);
             $botan::setMarkup(['text' => "🎦 " . $til->til("key20"), 'callback_data' => "znak_".Bot::QOSHIMCHA."_1"], 7, 1);
             $botan::setMarkup(['text' => "📌 " . $til->til("key21"), 'callback_data' => "znak_".Bot::YOTIQ."_1"], 8, 1);
             $botan::setMarkup(['text' => "📍 " . $til->til("key22"), 'callback_data' => "znak_".Bot::TIK."_1"], 8, 2);
