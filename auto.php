@@ -208,12 +208,12 @@ if ($data !== null) {
                 $botan::delMsg();
 
                 $id = (int) $pieces[2];
-                $next = $id+1;
-                $prive = $id-1;
                 $belgi = $db->selectOne("id=".$id." AND child=".$pieces[1],"belgilar");
                 $til = Word::getLang($chat_id);
 
                 if ($belgi){
+                    $next = $id+1;
+                    $prive = $id-1;
                     $ttt = $botan::sPhoto("belgi/".$belgi->image);
                     $nomi = "name_".$user->lang;
                     $botan::setMessage($belgi->number." - ".$belgi->$nomi);
@@ -223,6 +223,10 @@ if ($data !== null) {
                     $ttt2 = $botan::sText();
                     $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
                 }else{
+                    $belgi = $db->selectOne('child = '.$pieces[1].' ORDER BY RAND()',"belgilar");
+                    $p_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
+                    $n_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$p_belgi->id.' ORDER BY RAND()',"belgilar");
+
                     switch ($pieces[1]){
                         case "1":
                         case "2":
@@ -230,12 +234,12 @@ if ($data !== null) {
                         case "4":
                         case "5":
                         case "6":
-                            $belgi = $db->selectOne("child=".$pieces[1],"belgilar");
+
                             $ttt = $botan::sPhoto("belgi/".$belgi->image);
                             $nomi = "name_".$user->lang;
                             $botan::setMessage($belgi->number." - ".$belgi->$nomi);
-                            $botan::setMarkup(['text' => "⏪", 'callback_data' => "znak_".$pieces[1]."_".$prive], 1, 1);
-                            $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$pieces[1]."_".$next], 1, 2);
+                            $botan::setMarkup(['text' => "⏪", 'callback_data' => "znak_".$pieces[1]."_".$p_belgi->id], 1, 1);
+                            $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$pieces[1]."_".$n_belgi->id], 1, 2);
                             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "info"], 2, 1);
                             $ttt2 = $botan::sText();
                             $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
@@ -256,7 +260,7 @@ if ($data !== null) {
     }
 }
 elseif (isset($botan::$text)) {
-
+    $til = Word::getLang($botan::$chat->id);
     switch ($botan::$text) {
         case "/":
         case "/start":
@@ -266,9 +270,7 @@ elseif (isset($botan::$text)) {
                 switch ($step){
                     case 2: //lang
                         $botan::setChatId($botan::$chat->id);
-                        $botan::setMessage("Tilni tanlang\n" .
-                            "Выберите язык\n" .
-                            "Тилни танланг");
+                        $botan::setMessage($til->til('key34', 'uzl')."\n" . $til->til('key34', 'rus')."\n" . $til->til('key34', 'uzk'));
                         $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzlatin"], 1, 1);
                         $botan::setMarkup(['text' => "🇷🇺 Русский", 'callback_data' => "russian"], 2, 1);
                         $botan::setMarkup(['text' => "🇺🇿 Ўзбекча", 'callback_data' => "uzkril"], 3, 1);
@@ -284,9 +286,7 @@ elseif (isset($botan::$text)) {
                 }
             }else{
                 $botan::setChatId($botan::$chat->id);
-                $botan::setMessage("Tilni tanlang\n" .
-                    "Выберите язык\n" .
-                    "Тилни танланг");
+                $botan::setMessage($til->til('key34', 'uzl')."\n" . $til->til('key34', 'rus')."\n" . $til->til('key34', 'uzk'));
                 $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzlatin"], 1, 1);
                 $botan::setMarkup(['text' => "🇷🇺 Русский", 'callback_data' => "russian"], 2, 1);
                 $botan::setMarkup(['text' => "🇺🇿 Ўзбекча", 'callback_data' => "uzkril"], 3, 1);
@@ -295,22 +295,18 @@ elseif (isset($botan::$text)) {
 //            $db->update("start=".time(), "user_id=" . $botan::$chat->id, "users");
             break;
         case "/info":
-            $til = Word::getLang($botan::$chat->id);
-            $botan::send_Out($botan::$chat->id, $til->til("key31"));
-            break;
         case "/info Лойиха хакида":
-            $til = Word::getLang($botan::$chat->id);
+            $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
             $botan::send_Out($botan::$chat->id, $til->til("key31"));
             break;
+
         default:
             $chat_id = $botan::$chat->id;
             $step = $db->getStep($chat_id);
             switch ($step) {
                 case 2: //phone
                     $botan::setChatId($botan::$chat->id);
-                    $botan::setMessage("Tilni tanlang\n" .
-                        "Выберите язык\n" .
-                        "Тилни танланг");
+                    $botan::setMessage($til->til('key34', 'uzl')."\n" . $til->til('key34', 'rus')."\n" . $til->til('key34', 'uzk'));
                     $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzlatin"], 1, 1);
                     $botan::setMarkup(['text' => "🇷🇺 Русский", 'callback_data' => "russian"], 2, 1);
                     $botan::setMarkup(['text' => "🇺🇿 Ўзбекча", 'callback_data' => "uzkril"], 3, 1);

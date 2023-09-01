@@ -29,9 +29,12 @@ class Word
 //        return $db2->getUser($user_id,1);
 //    }
 
-    public function til($key)
+    public function til($key, $lang = '')
     {
-        switch ($this->lang){
+        if (!$lang) {
+            $lang = $this->lang;
+        }
+        switch ($lang){
             case "uzk":
                 return self::til_uzk($key);
                 break;
@@ -80,6 +83,7 @@ class Word
             "key31"=>"Avto Test (70) loyihasi asta-sekin rivojlantirib borilmoqda. Loyihani rivojlanishiga o'z hissangizni qo'shingizni so'raymiz.\n9860 6004 0191 7320\nAbdujalilov Dilshod",
             "key32"=>"Tilni o'gartirish",
             "key33"=>"Ayni paytda xizmat test rejimida ishlamoqda, barcha funksiyalar mavjud emas.",
+            "key34"=>"Tilni tanlang",
 
         ];
         return $word[$key];
@@ -119,6 +123,7 @@ class Word
             "key31"=>"Проект «Автотест (70)» постепенно развивается. Просим вас внести свой вклад в развитие проекта.\n9860 6004 0191 7320\nAbdujalilov Dilshod",
             "key32"=>"Изменить язык",
             "key33"=>"На данный момент сервис работает в тестовом режиме, не все функции доступны.",
+            "key34"=>"Выберите язык",
 
 
         ];
@@ -159,6 +164,7 @@ class Word
             "key31"=>"Avto Test (70) лойиҳаси аста-секин ривожлантириб борилмоқда. Лойиҳани ривожланишига ўз ҳиссангизни қўшингизни сўраймиз.\n9860 6004 0191 7320\nAbdujalilov Dilshod",
             "key32"=>"Тилни ўзгартириш",
             "key33"=>"Айни пайтда хизмат тест режимида ишламоқда, барча функциялар мавжуд емас.",
+            "key34"=>"Тилни танланг",
 
 
 
