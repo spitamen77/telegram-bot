@@ -254,12 +254,8 @@ if ($data !== null) {
 
             }
     }
-//    endif;
 }
 elseif (isset($botan::$text)) {
-    /** action inline-keyboard  */
-
-    /** action text-message */
 
     switch ($botan::$text) {
         case "/":
@@ -425,6 +421,7 @@ elseif (isset($botan::$text)) {
                 default:
                     {
                         $til = Word::getLang($chat_id);
+                        $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                         $botan::send_Out($chat_id, $til->til("key23"));
                     }
             }

@@ -76,7 +76,12 @@ class Bot
             self::$text = $input->callback_query->message->text;
         } else {
             self::$chat = $input->message->chat;
-            self::$text = $input->message->text;
+
+            if (isset($input->message->text)) {
+                self::$text = $input->message->text;
+            } else {
+                self::$text = ""; // Или установить другое значение по умолчанию
+            }
         }
 
 //        self::$json = json_encode(self::$call->callback_query);
