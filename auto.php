@@ -412,9 +412,11 @@ elseif (isset($botan::$text)) {
                                 $ttt2 = $botan::sText();
                                 $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
                             }else{
+                                $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                                 $botan::send_Out($chat_id, $til->til("key23"));
                             }
                         } else {
+                            $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                             $botan::send_Out($chat_id, $til->til("key23"));
                         }
 
