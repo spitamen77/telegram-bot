@@ -212,9 +212,8 @@ class Bot
                 'reply_markup' => json_encode(self::$reply_markup),
             ]
         );
-        self::setFileLog($response);
-
-        return $response;
+//        self::setFileLog($response);
+        return json_decode($response, true);
     }
 
     public static function rText()
@@ -267,7 +266,7 @@ class Bot
 //                    'remove_keyboard' => true
             ]
         );
-        self::setFileLog($response);
+//        self::setFileLog($response);
 
         return $response;
     }
