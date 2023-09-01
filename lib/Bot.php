@@ -324,18 +324,18 @@ class Bot
 
     public static function Send_Out($user_id, $text, $is_end = true)
     {
-        self::$reply_markup = ['remove_keyboard' => true];
+//        self::$reply_markup = ['remove_keyboard' => false];
 //        self::dump(
-            self::send("sendMessage",
-                [
-                    'chat_id' => $user_id,
-                    'text' => $text,
-                    'parse_mode' => self::$parse_mode,
+        self::send("sendMessage",
+            [
+                'chat_id' => $user_id,
+                'text' => $text,
+                'parse_mode' => self::$parse_mode,
 //                    'disable_web_page_preview' => self::$disable_web_page_preview,
 //                    'disable_notification' => self::$disable_notification,
-                    'reply_to_message_id' => self::$reply_to_message_id,
-                    'reply_markup' => json_encode(self::$reply_markup),
-                ]
+                'reply_to_message_id' => self::$reply_to_message_id,
+                'reply_markup' => json_encode(self::$reply_markup),
+            ]
 //            )
         );
     }
