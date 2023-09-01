@@ -67,6 +67,7 @@ class Bot
     /* private-конструктор, подключающийся к базе данных, устанавливающий локаль и кодировку соединения */
     private function __construct() {
         $input = json_decode(file_get_contents('php://input'));
+        self::setFileLog($input);
         self::$api = TOKEN;
         self::$get = $input;
         self::$call = $input;
