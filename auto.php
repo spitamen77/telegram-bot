@@ -73,10 +73,10 @@ if ($data !== null) {
             $text2 = "\n\n 1 kun uchun \n".
                 "Test yechganlar: ".$one_start."\n".
                 "Qo'shilganlar: ".$one_created."\n\n".
-                "7 kun uchun \n".
+                "30 kun uchun \n".
                 "Test yechganlar: ".$week_start."\n".
                 "Qo'shilganlar: ".$week_created."\n\n".
-                "30 kun uchun \n".
+                "1 yil uchun \n".
                 "Test yechganlar: ".$month_start."\n".
                 "Qo'shilganlar: ".$month_created;
 
