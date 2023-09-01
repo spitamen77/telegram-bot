@@ -256,7 +256,7 @@ class Bot
     public static function eText()
     {
 
-         self::send("editMessageText",
+         $response = self::send("editMessageText",
             [
                 'chat_id' => self::$chat_id,
                 'message_id' => self::$message_id,
@@ -267,6 +267,9 @@ class Bot
 //                    'remove_keyboard' => true
             ]
         );
+        self::setFileLog($response);
+
+        return $response;
     }
 
     public static function sPhoto($url,$caption=false)
