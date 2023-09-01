@@ -241,8 +241,10 @@ if ($botan::$call->callback_query->data != NULL) {
                         case "7":
                         case "8":
                         case "9":
-                            $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 2, 1);
-                            $ttt2 = $botan::sText();
+
+                            $botan::setMessage($til->til("key33"));
+                            $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);
+                            $botan::sText();
                             break;
                     }
                 }
