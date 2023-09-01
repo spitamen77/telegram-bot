@@ -13,8 +13,8 @@
 
 /*
  * Bu fayl shablon sifatida config.php ni yaratib olish uchun Ctrl+c va Ctrl+v uchun. Qayta nomlash yoki o'chirib tashlash dasturchilar qasamiyodiga zid!!!
- * This file is for Ctrl + C and Ctrl + v to get config.php as a template. Rename or delete the developers' oath !!!
- * Этот файл предназначен для Ctrl + C и Ctrl + v, чтобы получить config.php в качестве шаблона. переименуйте или удалите присягу разработчиков !!!
+ * This file is for Ctrl + C and Ctrl + v to get config.php as a template. Renaming or deleting is against the developers' oath !!!
+ * Этот файл предназначен для Ctrl + C и Ctrl + v, чтобы получить config.php в качестве шаблона. Переименование или удаление противоречит клятве разработчиков. !!!
  *
  */
 

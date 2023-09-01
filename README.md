@@ -15,6 +15,8 @@ composer install
 ```php
 
 define('TOKEN','');   # returns 'token'
+define('TELEGRAM_URL','');   # returns 'https://api.telegram.org/bot'
+define('BOT_URL','');   # returns 'bot url'
 define('DB','');      # returns 'db'
 define('DB_USER',''); # returns 'user'
 define('DB_PASS',''); # returns 'password'

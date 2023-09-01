@@ -61,7 +61,7 @@ class Bot
 
 
     public static function getBot() {
-        if (self::$db == null) self::$db = new bot();
+        if (self::$db == null) self::$db = new Bot();
         return self::$db;
     }
     /* private-конструктор, подключающийся к базе данных, устанавливающий локаль и кодировку соединения */
@@ -169,7 +169,7 @@ class Bot
 
     protected static function send($method,$datas=[])
     {
-        $url = "https://api.telegram.org/bot" . TOKEN . "/" . $method;
+        $url = TELEGRAM_URL . TOKEN . "/" . $method;
         $ch = curl_init();
         curl_setopt($ch,CURLOPT_URL,$url);
         curl_setopt($ch,CURLOPT_POST, true);
@@ -185,8 +185,8 @@ class Bot
     {
         $result = null;
         $data['chat_id'] = $chat_id;
-        $data['photo'] = "https://auto.websar.uz/telegram/image/".$image;
-        $url = "https://api.telegram.org/bot" . TOKEN . "/sendPhoto";
+        $data['photo'] = BOT_URL.'/image/'.$image;
+        $url = TELEGRAM_URL . TOKEN . "/sendPhoto";
         if (is_array($data)) {
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -274,14 +274,14 @@ class Bot
              self::send("sendPhoto",
                 [
                     'chat_id' => self::$chat_id,
-                    'photo' => "https://auto.websar.uz/telegram/image/".$url,
+                    'photo' => BOT_URL.'/image/'.$url,
                     'caption' => $caption,
                 ]
             );
         else  self::send("sendPhoto",
             [
                 'chat_id' => self::$chat_id,
-                'photo' => "https://auto.websar.uz/telegram/image/".$url,
+                'photo' => BOT_URL.'/image/'.$url,
             ]
         );
     }
@@ -329,7 +329,7 @@ class Bot
 
     public static function Send_Hide($user_id, $text, $is_end = true)
     {
-        return file_get_contents("https://api.telegram.org/bot".TOKEN."/sendMessage?chat_id=$user_id&text=$text&parse_mode=Markdown");
+        return file_get_contents(TELEGRAM_URL.TOKEN."/sendMessage?chat_id=$user_id&text=$text&parse_mode=Markdown");
     }
 
     public static function Main()
