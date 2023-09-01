@@ -1,5 +1,9 @@
 .idea
+.env
 .idea/
 /lib/config.php
+/lib/DataBase.php
 /vendor/
 /other/
+/docker
+/runtime
