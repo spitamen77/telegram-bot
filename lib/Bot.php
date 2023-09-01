@@ -71,8 +71,14 @@ class Bot
         self::$api = TOKEN;
         self::$get = $input;
         self::$call = $input;
-        self::$chat = $input->callback_query->message->chat;
-        self::$text = $input->callback_query->message->text;
+        if (property_exists($input, 'callback_query')) {
+            self::$chat = $input->callback_query->message->chat;
+            self::$text = $input->callback_query->message->text;
+        } else {
+            self::$chat = $input->message->chat;
+            self::$text = $input->message->text;
+        }
+
 //        self::$json = json_encode(self::$call->callback_query);
 //        self::$geo = self::$get->message->location;
 //        self::$contact = self::$get->message->contact;
