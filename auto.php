@@ -102,7 +102,7 @@ if ($botan::$call->callback_query->data != NULL) {
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
             $til = Word::getLang($chat_id);
-            $botan::setMessage("Hozirsa tet tizimida ishlamoqda.");
+            $botan::setMessage($til->til("key33"));
             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);
             $botan::eText();
             break;
