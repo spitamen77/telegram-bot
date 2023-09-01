@@ -204,7 +204,7 @@ if ($botan::$call->callback_query->data != NULL) {
                 }else{
                     switch ($pieces[1]){
                         case "1":
-                            $belgi = $db->selectOne("id=16 AND child=".$pieces[1],"belgilar");
+                            $belgi = $db->selectOne("child=".$pieces[1],"belgilar");
                             $ttt = $botan::sPhoto("belgi/".$belgi->image);
                             $nomi = "name_".$user->lang;
                             $botan::setMessage($belgi->number." - ".$belgi->$nomi);
@@ -215,7 +215,7 @@ if ($botan::$call->callback_query->data != NULL) {
                             $db->update("second='".$ttt2->result->message_id."', first='".$ttt->result->message_id."'", "user_id=" . $chat_id, "users");
                             break;
                         case "2":
-                            $belgi = $db->selectOne("id=61 AND child=".$pieces[1],"belgilar");
+                            $belgi = $db->selectOne("child=".$pieces[1],"belgilar");
                             $ttt = $botan::sPhoto("belgi/".$belgi->image);
                             $nomi = "name_".$user->lang;
                             $botan::setMessage($belgi->number." - ".$belgi->$nomi);
@@ -226,7 +226,7 @@ if ($botan::$call->callback_query->data != NULL) {
                             $db->update("second='".$ttt2->result->message_id."', first='".$ttt->result->message_id."'", "user_id=" . $chat_id, "users");
                             break;
                         case "3":
-                            $belgi = $db->selectOne("id=70 AND child=".$pieces[1],"belgilar");
+                            $belgi = $db->selectOne("child=".$pieces[1],"belgilar");
                             $ttt = $botan::sPhoto("belgi/".$belgi->image);
                             $nomi = "name_".$user->lang;
                             $botan::setMessage($belgi->number." - ".$belgi->$nomi);
@@ -237,7 +237,7 @@ if ($botan::$call->callback_query->data != NULL) {
                             $db->update("second='".$ttt2->result->message_id."', first='".$ttt->result->message_id."'", "user_id=" . $chat_id, "users");
                             break;
                         case "4":
-                            $belgi = $db->selectOne("id=107 AND child=".$pieces[1],"belgilar");
+                            $belgi = $db->selectOne("child=".$pieces[1],"belgilar");
                             $ttt = $botan::sPhoto("belgi/".$belgi->image);
                             $nomi = "name_".$user->lang;
                             $botan::setMessage($belgi->number." - ".$belgi->$nomi);
@@ -248,7 +248,7 @@ if ($botan::$call->callback_query->data != NULL) {
                             $db->update("second='".$ttt2->result->message_id."', first='".$ttt->result->message_id."'", "user_id=" . $chat_id, "users");
                             break;
                         case "5":
-                            $belgi = $db->selectOne("id=131 AND child=".$pieces[1],"belgilar");
+                            $belgi = $db->selectOne("child=".$pieces[1],"belgilar");
                             $ttt = $botan::sPhoto("belgi/".$belgi->image);
                             $nomi = "name_".$user->lang;
                             $botan::setMessage($belgi->number." - ".$belgi->$nomi);
@@ -259,7 +259,7 @@ if ($botan::$call->callback_query->data != NULL) {
                             $db->update("second='".$ttt2->result->message_id."', first='".$ttt->result->message_id."'", "user_id=" . $chat_id, "users");
                             break;
                         case "6":
-                            $belgi = $db->selectOne("id=1 AND child=".$pieces[1],"belgilar");
+                            $belgi = $db->selectOne("child=".$pieces[1],"belgilar");
                             $ttt = $botan::sPhoto("belgi/".$belgi->image);
                             $nomi = "name_".$user->lang;
                             $botan::setMessage($belgi->number." - ".$belgi->$nomi);

@@ -178,7 +178,7 @@ class Bot
 
         $result = curl_exec($ch);
         curl_close($ch);
-//        return $result;
+        return $result;
     }
 
     public static function requestToTelegram($data, $chat_id, $image)
@@ -201,8 +201,7 @@ class Bot
 
     public static function sText()
     {
-//		self::dump(
-        self::send("sendMessage",
+        return self::send("sendMessage",
             [
                 'chat_id' => self::$chat_id,
                 'text' => self::$message,
@@ -271,19 +270,21 @@ class Bot
     public static function sPhoto($url,$caption=false)
     {
         if ($caption)
-             self::send("sendPhoto",
+             return self::send("sendPhoto",
                 [
                     'chat_id' => self::$chat_id,
                     'photo' => BOT_URL.'/image/'.$url,
                     'caption' => $caption,
                 ]
             );
-        else  self::send("sendPhoto",
-            [
-                'chat_id' => self::$chat_id,
-                'photo' => BOT_URL.'/image/'.$url,
-            ]
-        );
+        else  {
+            return self::send("sendPhoto",
+                [
+                    'chat_id' => self::$chat_id,
+                    'photo' => BOT_URL.'/image/'.$url,
+                ]
+            );
+        }
     }
     public static function delMsg()
     {
