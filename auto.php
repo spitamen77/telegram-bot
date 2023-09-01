@@ -14,7 +14,10 @@ $db = DataBase::getDB();
 
 /** sozlamalar **/
 /** action inline-keyboard  */
-if ($botan::$call->callback_query->data != NULL) {
+
+$data = $botan::$call->callback_query->data ?? null;
+
+if ($data !== null) {
     switch ($botan::$call->callback_query->data) {
         case "info":
             $botan::call($botan::$call->callback_query->data);
