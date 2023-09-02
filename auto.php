@@ -107,9 +107,10 @@ if ($data !== null) {
             $botan::setChatId($chat_id);
             $til = Word::getLang($db, $chat_id);
             if ($chat_id == 298816692) {
-                $botan::setMarkup(['text' => "📄 " . $til->til("key09"), 'callback_data' => "bilet"], 2, 1);
-                $botan::setMarkup(['text' => "🚦 " . $til->til("key10"), 'callback_data' => "belgi"], 3, 1);
-                $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 4, 1);
+                $botan::setMessage($til->til("key11"));
+                $botan::setMarkup(['text' => "📄 " . $til->til("key09"), 'callback_data' => "bilet"], 1, 1);
+                $botan::setMarkup(['text' => "🚦 " . $til->til("key10"), 'callback_data' => "belgi"], 2, 1);
+                $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 3, 1);
             } else {
                 $botan::setMessage($til->til("key33"));
                 $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);
