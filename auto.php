@@ -100,6 +100,22 @@ if ($data !== null) {
             $botan::eText();
             break;
         case "test":
+            $botan::call($botan::$call->callback_query->data);
+            $chat_id = $botan::$back->chat->id;
+            $botan::setReply();
+            $botan::setMessageId($botan::$back->message_id);
+            $botan::setChatId($chat_id);
+            $til = Word::getLang($db, $chat_id);
+            if ($chat_id == 298816692) {
+                $botan::setMarkup(['text' => "📄 " . $til->til("key09"), 'callback_data' => "bilet"], 2, 1);
+                $botan::setMarkup(['text' => "🚦 " . $til->til("key10"), 'callback_data' => "belgi"], 3, 1);
+                $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 4, 1);
+            } else {
+                $botan::setMessage($til->til("key33"));
+                $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);
+            }
+            $botan::eText();
+            break;
         case "bilet":
         case "results":
             $botan::call($botan::$call->callback_query->data);

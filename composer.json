@@ -4,7 +4,8 @@
     "guzzlehttp/guzzle": "6.5.*",
     "ext-mysqli": "*",
     "ext-json": "*",
-    "ext-curl": "*"
+    "ext-curl": "*",
+    "ext-pdo": "*"
   },
   "autoload": {
     "psr-4": {
