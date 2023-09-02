@@ -45,6 +45,7 @@ if ($data !== null) {
             $botan::setReply();
             $botan::setChatId($botan::$back->chat->id);
             $botan::setMessageId($botan::$back->message_id);
+            $til = Word::getLang($db, $botan::$back->chat->id);
             function time_stats($type){
                 $day = date('j');
                 $month = date('m');
@@ -80,8 +81,8 @@ if ($data !== null) {
                 "Test yechganlar: ".$month_start."\n".
                 "Qo'shilganlar: ".$month_created;
 
-            $botan::setMessage("📊 Statistika bo'limi".$text2);
-            $botan::setMarkup(['text' => "⬅️ Bosh menyu", 'callback_data' => "forBack"], 1, 1);
+            $botan::setMessage("📊 ".$til->til('key19').$text2);
+            $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);
             $botan::eText();
             break;
         case "continue":
