@@ -16,7 +16,6 @@ use Word\Word;
 
 class Bot
 {
-    private static $db = null;
     const OGOH = 1;
     const IMTIYOZ = 2;
     const TAQIQ = 3;
@@ -55,11 +54,10 @@ class Bot
             ]
     ];
 
-    /* private-конструктор, подключающийся к базе данных, устанавливающий локаль и кодировку соединения */
     public function __construct() {
         $input = json_decode(file_get_contents('php://input'));
 //        self::setFileLog($input);
-        
+
         self::$call = $input;
         if (property_exists($input, 'callback_query')) {
             self::$chat = $input->callback_query->message->chat;

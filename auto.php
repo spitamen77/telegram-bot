@@ -10,7 +10,7 @@ http_response_code(200);
 
 $botan = new Bot();
 
-$db = DataBase::getDB();
+$db = new DataBase();
 
 /** sozlamalar **/
 /** action inline-keyboard  */
