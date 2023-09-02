@@ -319,7 +319,9 @@ if ($data !== null) {
                 $true_answer = $pieces[4];
 
                 $last_q = $db->getMax("bilet=".$bilet." AND raqam=".$raqam,"tests");
-                $difference = time() - $last_q->created;
+                $current = $db->selectOne("bilet=".$bilet." AND raqam=".$last_q->max, "`savol_data`");
+
+                $difference = time() - $current->created;
                 $timer = '';
 
                 if ($difference >= 900) {
@@ -332,12 +334,12 @@ if ($data !== null) {
 
                 if ($variant == $true_answer) {
                     // true answer
-                    $db->update("result='".Bot::ANSWER_TRUE, "id=" . $last_q->id, "tests");
+                    $db->update("result='".Bot::ANSWER_TRUE, "id=" . $last_q->max, "tests");
                 } else {
-                    $db->update("result='".Bot::ANSWER_FALSE, "id=" . $last_q->id, "tests");
+                    $db->update("result='".Bot::ANSWER_FALSE, "id=" . $last_q->max, "tests");
 
                     //tekshiramiz, 2 tadan ortiq bo'madimi false javoblari
-                    $sum = $db->getCount("`created`=".$last_q->created." AND result = ".Bot::ANSWER_FALSE, 'result', 'tests');
+                    $sum = $db->getCount("`created`=".$current->created." AND result = ".Bot::ANSWER_FALSE, 'result', 'tests');
 
                     if ($sum->total >= 2) {
                         // ikkichi...
