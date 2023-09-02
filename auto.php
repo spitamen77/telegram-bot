@@ -120,21 +120,25 @@ if ($data !== null) {
                     $ttt['result']['message_id'] = $user->first;
                 }
 
+                $db->insert("`savol_data`", "`bilet_id`, `raqam`, `user_id`, `created`,", "'".$random->bilet."', '1', '".$chat_id."', '".time()."'");
+
+                $text = "Bilet: ".$random->bilet." Savol: 1\n";
                 $savol = 'savol_'.$til->lang;
                 $javob_a = 'javob_a_'.$til->lang;
                 $javob_b = 'javob_b_'.$til->lang;
                 $javob_c = 'javob_c_'.$til->lang;
                 $javob_d = 'javob_d_'.$til->lang;
 
-                $botan::setMarkup(['text' => "A", 'callback_data' => "savol_A_".$random->bilet], 1, 1);
-                $botan::setMarkup(['text' => "B", 'callback_data' => "savol_B_".$random->bilet], 1, 2);
-                $botan::setMarkup(['text' => "C", 'callback_data' => "savol_C_".$random->bilet], 2, 1);
+                $botan::setMarkup(['text' => "A", 'callback_data' => "savol_A_".$random->bilet.'_1'], 1, 1);
+                $botan::setMarkup(['text' => "B", 'callback_data' => "savol_B_".$random->bilet.'_1'], 1, 2);
+                $botan::setMarkup(['text' => "C", 'callback_data' => "savol_C_".$random->bilet.'_1'], 2, 1);
                 if ($random->$javob_d) {
-                    $botan::setMarkup(['text' => "D", 'callback_data' => "savol_D_".$random->bilet], 2, 2);
-                    $botan::setMessage($random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".
-                        $random->$javob_c."\nD - ".$random->$javob_d."\nQolgab vaqt: ".time());
+                    $botan::setMarkup(['text' => "D", 'callback_data' => "savol_D_".$random->bilet.'_1'], 2, 2);
+                    $botan::setMessage($text.$random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".
+                        $random->$javob_c."\nD - ".$random->$javob_d."\nQolgan vaqt: 14:59 min");
                 } else {
-                    $botan::setMessage($random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".$random->$javob_c."\nQolgab vaqt: ".time());
+                    $botan::setMessage($text.$random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".
+                        $random->$javob_c."\nQolgan vaqt: 14:59 min");
                 }
                 $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 3, 1);
             } else {
