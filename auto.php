@@ -8,7 +8,7 @@ use Word\Word;
 
 http_response_code(200);
 
-$botan = Bot::getBot();
+$botan = new Bot();
 
 $db = DataBase::getDB();
 

@@ -26,16 +26,12 @@ class Bot
     const QOSHIMCHA = 7;
     const YOTIQ = 8;
     const TIK = 9;
-    protected static $api;
     protected static $data;
     public static $get;
     public static $call;
     public static $chat;
     public static $back;
     public static $from;
-    public static $date;
-    public static $id;
-//	public static $u_id;
     public static $text;
 //	public static $json;
     public static $latitude;
@@ -59,17 +55,11 @@ class Bot
             ]
     ];
 
-
-    public static function getBot() {
-        if (self::$db == null) self::$db = new Bot();
-        return self::$db;
-    }
     /* private-конструктор, подключающийся к базе данных, устанавливающий локаль и кодировку соединения */
-    private function __construct() {
+    public function __construct() {
         $input = json_decode(file_get_contents('php://input'));
-//        self::setFileLog($input);
-        self::$api = TOKEN;
-        self::$get = $input;
+        self::setFileLog($input);
+        
         self::$call = $input;
         if (property_exists($input, 'callback_query')) {
             self::$chat = $input->callback_query->message->chat;
