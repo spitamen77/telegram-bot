@@ -9,7 +9,7 @@ class Word
 {
     private static $clone = null;
     private $db;
-    private $lang;
+    public $lang;
 
     public static function getLang($db, $user_id)
     {
