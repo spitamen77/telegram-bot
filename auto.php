@@ -132,6 +132,7 @@ if ($data !== null) {
             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
             $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
             $ttt2 = $botan::sText();
+            sleep(1);
             $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
             break;
 
@@ -222,6 +223,7 @@ if ($data !== null) {
                     $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$pieces[1]."_".$next], 1, 2);
                     $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "info"], 2, 1);
                     $ttt2 = $botan::sText();
+                    sleep(1);
                     $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
                 }else{
                     $belgi = $db->selectOne('child = '.$pieces[1].' ORDER BY RAND()',"belgilar");
@@ -243,6 +245,7 @@ if ($data !== null) {
                             $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$pieces[1]."_".$n_belgi->id], 1, 2);
                             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "info"], 2, 1);
                             $ttt2 = $botan::sText();
+                            sleep(1);
                             $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
                             break;
 
@@ -328,6 +331,7 @@ elseif (isset($botan::$text)) {
                         $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                         $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
                         $ttt2 = $botan::sText();
+                        sleep(1);
                         $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
 
                     }else{
@@ -343,6 +347,7 @@ elseif (isset($botan::$text)) {
                                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                                 $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
                                 $ttt2 = $botan::sText();
+                                sleep(1);
                                 $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
                             }else{
                                 $belgi = $db->selectJoin($chat_id);
@@ -351,6 +356,7 @@ elseif (isset($botan::$text)) {
                                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                                 $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
                                 $ttt2 = $botan::sText();
+                                sleep(1);
                                 $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
 //                            $botan::send_Out($chat_id, $til->til("key25"));
                             }
@@ -361,6 +367,7 @@ elseif (isset($botan::$text)) {
                             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                             $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
                             $ttt2 = $botan::sText();
+                            sleep(1);
                             $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
 //
                         }
@@ -385,6 +392,7 @@ elseif (isset($botan::$text)) {
                         $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$belgi->child."_".$next], 1, 2);
                         $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 2, 1);
                         $ttt2 = $botan::sText();
+                        sleep(1);
                         $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
 
                     }else{
@@ -403,6 +411,7 @@ elseif (isset($botan::$text)) {
                                 $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$belgi->child."_".$next], 1, 2);
                                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 2, 1);
                                 $ttt2 = $botan::sText();
+                                sleep(1);
                                 $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
                             }else{
                                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
