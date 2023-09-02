@@ -131,10 +131,10 @@ if ($data !== null) {
                 $botan::setMarkup(['text' => "C", 'callback_data' => "savol_C_".$random->bilet], 2, 1);
                 if ($random->$javob_d) {
                     $botan::setMarkup(['text' => "D", 'callback_data' => "savol_D_".$random->bilet], 2, 2);
-                    $botan::setMessage($random->$savol."\nA - ".$javob_a."\nB - ".$javob_b."\nC - ".
-                        $javob_c."\nD - ".$javob_d."\nQolgab vaqt: ".time());
+                    $botan::setMessage($random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".
+                        $random->$javob_c."\nD - ".$random->$javob_d."\nQolgab vaqt: ".time());
                 } else {
-                    $botan::setMessage($random->$savol."\nA - ".$javob_a."\nB - ".$javob_b."\nC - ".$javob_c."\nQolgab vaqt: ".time());
+                    $botan::setMessage($random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".$random->$javob_c."\nQolgab vaqt: ".time());
                 }
                 $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 3, 1);
             } else {
