@@ -120,7 +120,7 @@ if ($data !== null) {
                     $ttt['result']['message_id'] = $user->first;
                 }
 
-                $db->insert("`savol_data`", "`bilet_id`, `raqam`, `user_id`, `created`,", "'".$random->bilet."', '1', '".$chat_id."', '".time()."'");
+                $db->insert("`tests`", "`bilet_id`, `raqam`, `user_id`, `created`,", "'".$random->bilet."', '1', '".$chat_id."', '".time()."'");
 
                 $text = "Bilet: ".$random->bilet." Savol: 1\n";
                 $savol = 'savol_'.$til->lang;
