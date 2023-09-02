@@ -25,6 +25,10 @@ class Bot
     const QOSHIMCHA = 7;
     const YOTIQ = 8;
     const TIK = 9;
+
+    const ANSWER_TRUE = 1;
+    const ANSWER_FALSE = 9;
+
     protected static $data;
     public static $get;
     public static $call;
@@ -32,7 +36,6 @@ class Bot
     public static $back;
     public static $from;
     public static $text;
-//	public static $json;
     public static $latitude;
     public static $longitude;
     protected static $chat_id;
