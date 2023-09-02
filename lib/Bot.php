@@ -56,7 +56,6 @@ class Bot
 
     public function __construct() {
         $input = json_decode(file_get_contents('php://input'));
-//        self::setFileLog($input);
 
         self::$call = $input;
         if (property_exists($input, 'callback_query')) {
@@ -169,21 +168,22 @@ class Bot
         ];
     }
 
-    protected static function send($method,$datas=[])
+    protected static function send(string $method, array $data = [])
     {
         $url = TELEGRAM_URL . TOKEN . "/" . $method;
         $ch = curl_init();
         curl_setopt($ch,CURLOPT_URL,$url);
         curl_setopt($ch,CURLOPT_POST, true);
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $datas);
+        curl_setopt($ch,CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($ch,CURLOPT_TIMEOUT,10);
 
         $result = curl_exec($ch);
         curl_close($ch);
         return $result;
     }
 
-    public static function requestToTelegram($data, $chat_id, $image)
+    public static function requestToTelegram($data, $chat_id, string $image)
     {
         $result = null;
         $data['chat_id'] = $chat_id;
@@ -195,6 +195,7 @@ class Bot
             curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
             curl_setopt($ch, CURLOPT_POST, count($data));
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+            curl_setopt($ch,CURLOPT_TIMEOUT,10);
             $result = curl_exec($ch);
             curl_close($ch);
         }
@@ -272,7 +273,7 @@ class Bot
         );
     }
 
-    public static function sPhoto($url,$caption=false)
+    public static function sPhoto(string $url,$caption=false)
     {
         if ($caption)
             $result = self::send("sendPhoto",
