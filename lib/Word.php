@@ -4,23 +4,22 @@ namespace Word;
 require_once "./vendor/autoload.php";
 require_once "./lib/config.php";
 
-use DataBase\DataBase;
-
 
 class Word
 {
-    private static $db = null;
+    private static $clone = null;
+    private $db;
     private $lang;
 
-    public static function getLang($user_id)
+    public static function getLang($db, $user_id)
     {
-        if (self::$db == null) self::$db = new Word($user_id);
-        return self::$db;
+        if (self::$clone == null) self::$clone = new Word($db, $user_id);
+        return self::$clone;
     }
 
-    private function __construct($user_id) {
-        $db2 = DataBase::getDB();
-        $this->lang = $db2->getUser($user_id,1);
+    private function __construct($db, $user_id) {
+        $this->db = $db;
+        $this->lang = $this->db->getUser($user_id, 1);
     }
 
 //    private static function lang($user_id)

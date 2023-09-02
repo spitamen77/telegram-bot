@@ -340,7 +340,7 @@ class Bot
         return file_get_contents(TELEGRAM_URL.TOKEN."/sendMessage?chat_id=$user_id&text=$text&parse_mode=Markdown");
     }
 
-    public static function Main()
+    public static function Main($db)
     {
         if (self::$back) {
             $chat_id = self::$back->chat->id;
@@ -348,7 +348,7 @@ class Bot
         else {
             $chat_id = self::$chat->id;
         }
-        $til = word::getLang($chat_id);
+        $til = Word::getLang($db, $chat_id);
         self::setMessage($til->til('key01'));
         self::setMarkup(['text'=>"📚 ".$til->til('key03'),'callback_data'=>"continue"],1,1);
         self::setMarkup(['text'=>"🏆 ".$til->til('key04'),'callback_data'=>"results"],2,1);
