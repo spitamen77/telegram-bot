@@ -83,6 +83,15 @@ class Word
             "key32"=>"Tilni o'gartirish",
             "key33"=>"Ayni paytda xizmat test rejimida ishlamoqda, barcha funksiyalar mavjud emas.",
             "key34"=>"Tilni tanlang",
+            "key35"=>"Vaqtingiz tugadi, 15 min ortiq bo'ldi",
+            "key36"=>"Qoldi",
+            "key37"=>"minut",
+            "key38"=>"Bilet",
+            "key39"=>"savol",
+            "key40"=>"Test topshirildi.",
+            "key41"=>"Xatolari",
+            "key42"=>"to'g'ri.",
+            "key43"=>"Tilni",
 
         ];
         return $word[$key];
