@@ -143,7 +143,7 @@ class Bot
     {
         self::$reply_to_message_id = $reply;
     }
-    public static function setMarkup2(array $markup = [], $key = NULL, $col = NULL)
+    public static function setMarkup(array $markup = [], $key = NULL, $col = NULL)
     {
         if($key!=0 && !is_null($key))--$key;
         if($col!=0 && !is_null($col))--$col;
@@ -153,7 +153,7 @@ class Bot
         }
     }
 
-    public static function setMarkup(array $markup = [], $key = null, $col = null)
+    public static function setMarkup2(array $markup = [], $key = null, $col = null)
     {
         $key = $key ?? 0;
         $col = $col ?? 0;
