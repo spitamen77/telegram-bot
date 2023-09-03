@@ -349,7 +349,7 @@ if ($data !== null) {
 
                     if ($sum->total >= 2) {
                         // ikkichi...
-                        $wrong = $db->select("`bilet_id` = ".$bilet." AND `result` = ".Bot::ANSWER_FALSE." AND `created` = ".$current->created, 'test');
+                        $wrong = $db->select("`bilet_id` = ".$bilet." AND `result` = ".Bot::ANSWER_FALSE." AND `created` = ".$current->created, 'tests');
                         $wrong_id = '';
                         foreach ($wrong as $id) {
                             $wrong_id = "❌ Bilet: ".$bilet.", savol: ".$id->raqam."\n";
