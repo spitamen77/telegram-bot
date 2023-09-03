@@ -64,15 +64,18 @@ class Bot
         if (property_exists($input, 'callback_query')) {
             self::$chat = $input->callback_query->message->chat;
             self::$text = $input->callback_query->message->text;
+            self::setFileLog(['input->callback_query']);
         } else {
             self::$chat = $input->message->chat;
 
             if (isset($input->message)) {
+                self::setFileLog(['input->message']);
                 self::$text = $input->message->text;
                 self::$chat = $input->message->chat;
             } else {
                 self::$text = ""; // Или установить другое значение по умолчанию
                 self::$chat = "";
+                self::setFileLog($input);
             }
         }
 
