@@ -351,6 +351,11 @@ if ($data !== null) {
                 $last_q = $db->getMax("bilet_id=".$bilet." AND raqam=".$raqam,"tests");
                 $current = $db->selectOne("id=".$last_q->max, "tests");
 
+                if ($current->cron == 1) {
+                    // cron orqali borgan bo'lsa
+                    $db->update("cron=".Bot::ANSWER_TRUE, "id=" . $last_q->max, "tests");
+                }
+
                 $difference = time() - $current->created;
                 $timer = '';
 
