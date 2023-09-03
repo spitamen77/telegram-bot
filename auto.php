@@ -573,7 +573,7 @@ elseif (isset($botan::$text)) {
                     $botan::delMsg();
 
                     if (!$random) {
-                        $botan::setMessage($til->til("key33"));
+                        $botan::setMessage($til->til("key44"));
                         $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 1, 1);
                         $botan::sText();
                         return true;
