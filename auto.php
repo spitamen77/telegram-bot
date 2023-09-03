@@ -313,9 +313,7 @@ if ($data !== null) {
 
             }
             elseif (preg_match("~^savol~", $route)) {
-                // "savol_A_".$random->bilet.'_1_'.$random->javob
-                Bot::setFileLog($route);
-                Bot::setFileLog($pieces);
+                // route - savol_B_107_1_B
                 $variant = $pieces[1];
                 $bilet = $pieces[2];
                 $raqam = (int) $pieces[3];
@@ -323,6 +321,9 @@ if ($data !== null) {
 
                 $last_q = $db->getMax("bilet=".$bilet." AND raqam=".$raqam,"tests");
                 $current = $db->selectOne("bilet=".$bilet." AND raqam=".$last_q->max, "`savol_data`");
+
+                Bot::setFileLog($last_q);
+                Bot::setFileLog($current);
 
                 $difference = time() - $current->created;
                 $timer = '';
