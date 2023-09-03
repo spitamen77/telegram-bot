@@ -17,6 +17,10 @@ $db = new DataBase();
 
 $data = $botan::$call->callback_query->data ?? null;
 
+$end_time = microtime(true);
+$execution_time = ($end_time - $start_time) * 1000;
+Bot::setFileLog([$start_time, $end_time, $execution_time]);
+
 if ($data !== null) {
     switch ($botan::$call->callback_query->data) {
         case "info":
@@ -672,7 +676,7 @@ elseif (isset($botan::$text)) {
             }
     }
 }
-$end_time = microtime(true);
-$execution_time = ($end_time - $start_time) * 1000;
-Bot::setFileLog([$start_time, $end_time, $execution_time]);
+//$end_time = microtime(true);
+//$execution_time = ($end_time - $start_time) * 1000;
+//Bot::setFileLog([$start_time, $end_time, $execution_time]);
 return;
