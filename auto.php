@@ -352,7 +352,7 @@ if ($data !== null) {
                         $wrong = $db->select("`bilet_id` = ".$bilet." AND `result` = ".Bot::ANSWER_FALSE." AND `created` = ".$current->created, 'tests');
                         $wrong_id = '';
                         foreach ($wrong as $id) {
-                            $wrong_id = "❌ Bilet: ".$bilet.", savol: ".$id->raqam."\n";
+                            $wrong_id .= "❌ Bilet: ".$bilet.", savol: ".$id->raqam."\n";
                         }
                         $botan::setMessage("Test topshirilmadi. 2 ta xato qildiz\n".$wrong_id);
                         $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 1, 1);
@@ -402,10 +402,10 @@ if ($data !== null) {
 
                 } else {
                     // bu ohirgi 10-test edi.
-                    $wrong = $db->select("`bilet_id` = ".$bilet." AND `result` = ".Bot::ANSWER_FALSE." AND `created` = ".$current->created, 'test');
+                    $wrong = $db->select("`bilet_id` = ".$bilet." AND `result` = ".Bot::ANSWER_FALSE." AND `created` = ".$current->created, 'tests');
                     $wrong_id = '';
                     foreach ($wrong as $id) {
-                        $wrong_id = "❌ Bilet: ".$bilet.", savol: ".$id->raqam."\n";
+                        $wrong_id .= "❌ Bilet: ".$bilet.", savol: ".$id->raqam."\n";
                     }
                     $botan::setMessage("Test topshirildi. Natija: ".$wrong_id);
                     $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 1, 1);
