@@ -222,7 +222,7 @@ class Bot
                 'reply_markup' => json_encode(self::$reply_markup),
             ]
         );
-//        self::setFileLog($response);
+        self::setFileLog($response);
         return json_decode($response, true);
     }
 

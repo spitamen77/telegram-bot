@@ -115,6 +115,7 @@ if ($data !== null) {
                 $botan::setChatId($chat_id);
                 $botan::setMessageId($user->first);
                 $botan::delMsg();
+
                 if ($random->rasm) {
                     $ttt = $botan::sPhoto("savol/".$random->rasm);
                 } else {
@@ -194,7 +195,11 @@ if ($data !== null) {
             $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
             $ttt2 = $botan::sText();
             sleep(1);
-            $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
+            if (isset($ttt2['result']['message_id']) && isset($ttt['result']['message_id'])) {
+                $db->update("second=" . $ttt2['result']['message_id'] . ", first=" . $ttt['result']['message_id'], "user_id=" . $chat_id, "users");
+            } else {
+                $db->update("first=".$ttt['result']['message_id'], "user_id=" . $chat_id, "users");
+            }
             break;
 
         case "forBack": // main oyna
@@ -436,9 +441,9 @@ if ($data !== null) {
                 }
                 sleep(1);
                 if (isset($ttt2['result']['message_id']) && isset($ttt['result']['message_id'])) {
-                    $db->update("second='" . $ttt2['result']['message_id'] . "', first='" . $ttt['result']['message_id'] . "'", "user_id=" . $chat_id, "users");
+                    $db->update("second=" . $ttt2['result']['message_id'] . ", first=" . $ttt['result']['message_id'], "user_id=" . $chat_id, "users");
                 } else {
-                    $db->update("first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
+                    $db->update("first=".$ttt['result']['message_id'], "user_id=" . $chat_id, "users");
                 }
             }
     }
