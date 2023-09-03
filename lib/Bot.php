@@ -61,7 +61,7 @@ class Bot
         $input = json_decode(file_get_contents('php://input'));
 
         self::$call = $input;
-        if (property_exists($input, 'callback_query')) {
+        if (!empty($input) && is_object($input) && property_exists($input, 'callback_query')) {
             self::$chat = $input->callback_query->message->chat;
             self::$text = $input->callback_query->message->text;
         } else {
