@@ -28,9 +28,10 @@ $db = new DataBase();
 /** action inline-keyboard  */
 
 //$data = [12,45];
-$arrays = $db->select("cron=0 AND start=1'", 'users', '25');
+$arrays = $db->select("cron=0 AND start=1", 'users', '25');
 
 if ($arrays) {
+    exit('dsfsfd');
     foreach ($arrays as $user) {
         print_r($user); exit();
         $botan::setChatId($user->user_id);
@@ -77,4 +78,5 @@ if ($arrays) {
         $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $user->user_id, "users");
     }
 }
+exit('12123142');
 return;
