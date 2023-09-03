@@ -22,7 +22,7 @@ if ($data !== null) {
         case "info":
             $botan::call($botan::$call->callback_query->data);
             $chat_id = $botan::$back->chat->id;
-            $botan::setReply();
+//            $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
             $til = Word::getLang($db, $chat_id);
@@ -42,7 +42,7 @@ if ($data !== null) {
 
         case "stat":
             $botan::call($botan::$call->callback_query->data);
-            $botan::setReply();
+//            $botan::setReply();
             $botan::setChatId($botan::$back->chat->id);
             $botan::setMessageId($botan::$back->message_id);
             $til = Word::getLang($db, $botan::$back->chat->id);
@@ -88,7 +88,7 @@ if ($data !== null) {
         case "continue":
             $botan::call($botan::$call->callback_query->data);
             $chat_id = $botan::$back->chat->id;
-            $botan::setReply();
+//            $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
             $til = Word::getLang($db, $chat_id);
@@ -103,7 +103,7 @@ if ($data !== null) {
         case "test":
             $botan::call($botan::$call->callback_query->data);
             $chat_id = $botan::$back->chat->id;
-            $botan::setReply();
+//            $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
             $til = Word::getLang($db, $chat_id);
@@ -171,7 +171,7 @@ if ($data !== null) {
         case "results":
             $botan::call($botan::$call->callback_query->data);
             $chat_id = $botan::$back->chat->id;
-            $botan::setReply();
+//            $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
             $til = Word::getLang($db, $chat_id);
@@ -210,7 +210,7 @@ if ($data !== null) {
         case "forBack": // main oyna
             $botan::call($botan::$call->callback_query->data);
             $chat_id = $botan::$back->chat->id;
-            $botan::setReply();
+//            $botan::setReply();
             $botan::setChatId($chat_id);
             $botan::setMessageId($botan::$back->message_id);
             $botan::Main($db);
@@ -222,7 +222,7 @@ if ($data !== null) {
         case "setting":
             $botan::call($botan::$call->callback_query->data);
             $til = Word::getLang($db, $botan::$back->chat->id);
-            $botan::setReply();
+//            $botan::setReply();
             $botan::setChatId($botan::$back->chat->id);
             $botan::setMessageId($botan::$back->message_id);
             $botan::setMessage($til->til('key32'));
@@ -260,7 +260,7 @@ if ($data !== null) {
             $botan::call($botan::$call->callback_query->data);
             $lang = substr($botan::$call->callback_query->data, 0, 3);
             $db->edit_lang($botan::$back->chat->id, $lang);
-            $botan::setReply();
+//            $botan::setReply();
             $botan::setChatId($botan::$back->chat->id);
             $botan::setMessageId($botan::$back->message_id);
             $botan::Main($db);
