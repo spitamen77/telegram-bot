@@ -320,7 +320,7 @@ if ($data !== null) {
                 $true_answer = $pieces[4];
 
                 $last_q = $db->getMax("bilet_id=".$bilet." AND raqam=".$raqam,"tests");
-                $current = $db->selectOne("id=".$last_q->max, "`tests`");
+                $current = $db->selectOne("id=".$last_q->max, "tests");
 
                 Bot::setFileLog($last_q->max);
                 Bot::setFileLog($current);
@@ -352,7 +352,7 @@ if ($data !== null) {
 
                 if ($raqam != 10) {
                     $raqam++;
-                    $random = $db->selectOne("bilet=".$bilet." AND raqam=".$raqam, "`savol_data`");
+                    $random = $db->selectOne("bilet=".$bilet." AND raqam=".$raqam, "savol_data");
 
                     if ($random->rasm) {
                         $ttt = $botan::sPhoto("savol/".$random->rasm);
