@@ -325,9 +325,9 @@ if ($data !== null) {
                 $difference = time() - $current->created;
                 $timer = '';
 
-                if ($difference > 900) {
+                if ($difference >= 900) {
                     // time out
-                    $botan::setMessage('Vaqtingiz tugadi, 15  in ortiq bo\'ldi');
+                    $botan::setMessage('Vaqtingiz tugadi, 15 min ortiq bo\'ldi');
                     $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 1, 1);
                     $ttt2 = $botan::sText();
                     return true;
@@ -349,7 +349,12 @@ if ($data !== null) {
 
                     if ($sum->total >= 2) {
                         // ikkichi...
-                        $botan::setMessage('Test topshirilmadi. 2 ta xato qildiz');
+                        $wrong = $db->select("`bilet_id` = ".$bilet." AND `result` = ".Bot::ANSWER_FALSE." AND `created` = ".$current->created, 'test');
+                        $wrong_id = '';
+                        foreach ($wrong as $id) {
+                            $wrong_id = "❌ Bilet: ".$bilet.", savol: ".$id->raqam."\n";
+                        }
+                        $botan::setMessage("Test topshirilmadi. 2 ta xato qildiz\n".$wrong_id);
                         $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 1, 1);
                         $ttt2 = $botan::sText();
                         return true;
@@ -378,14 +383,18 @@ if ($data !== null) {
 
                     $botan::setMarkup(['text' => "A", 'callback_data' => "savol_A_".$random->bilet.'_'.$raqam.'_'.$random->javob], 1, 1);
                     $botan::setMarkup(['text' => "B", 'callback_data' => "savol_B_".$random->bilet.'_'.$raqam.'_'.$random->javob], 1, 2);
-                    $botan::setMarkup(['text' => "C", 'callback_data' => "savol_C_".$random->bilet.'_'.$raqam.'_'.$random->javob], 2, 1);
-                    if ($random->$javob_d) {
-                        $botan::setMarkup(['text' => "D", 'callback_data' => "savol_D_".$random->bilet.'_'.$raqam.'_'.$random->javob], 2, 2);
-                        $botan::setMessage($text.$random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".
-                            $random->$javob_c."\nD - ".$random->$javob_d.$timer);
+                    if ($javob_c->$javob_c) {
+                        $botan::setMarkup(['text' => "C", 'callback_data' => "savol_C_".$random->bilet.'_'.$raqam.'_'.$random->javob], 2, 1);
+                        if ($random->$javob_d) {
+                            $botan::setMarkup(['text' => "D", 'callback_data' => "savol_D_".$random->bilet.'_'.$raqam.'_'.$random->javob], 2, 2);
+                            $botan::setMessage($text.$random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".
+                                $random->$javob_c."\nD - ".$random->$javob_d.$timer);
+                        } else {
+                            $botan::setMessage($text.$random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".
+                                $random->$javob_c.$timer);
+                        }
                     } else {
-                        $botan::setMessage($text.$random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".
-                            $random->$javob_c.$timer);
+                        $botan::setMessage($text.$random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b.$timer);
                     }
                     $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 3, 1);
                     $ttt2 = $botan::sText();
@@ -393,7 +402,12 @@ if ($data !== null) {
 
                 } else {
                     // bu ohirgi 10-test edi.
-                    $botan::setMessage('Test topshirildi. Natija: ');
+                    $wrong = $db->select("`bilet_id` = ".$bilet." AND `result` = ".Bot::ANSWER_FALSE." AND `created` = ".$current->created, 'test');
+                    $wrong_id = '';
+                    foreach ($wrong as $id) {
+                        $wrong_id = "❌ Bilet: ".$bilet.", savol: ".$id->raqam."\n";
+                    }
+                    $botan::setMessage("Test topshirildi. Natija: ".$wrong_id);
                     $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 1, 1);
                     $ttt2 = $botan::sText();
                     return true;
