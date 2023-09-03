@@ -398,7 +398,6 @@ if ($data !== null) {
                     }
                     $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 3, 1);
                     $ttt2 = $botan::sText();
-                    sleep(1);
 
                 } else {
                     // bu ohirgi 10-test edi.
@@ -414,7 +413,11 @@ if ($data !== null) {
 
                 }
                 sleep(1);
-                $db->update("second='".@$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
+                if (isset($ttt2['result']['message_id']) && isset($ttt['result']['message_id'])) {
+                    $db->update("second='" . $ttt2['result']['message_id'] . "', first='" . $ttt['result']['message_id'] . "'", "user_id=" . $chat_id, "users");
+                } else {
+                    $db->update("first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
+                }
             }
     }
 }
