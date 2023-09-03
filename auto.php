@@ -426,7 +426,7 @@ if ($data !== null) {
                     if ($wrong_id) {
                         $text = $til->til('key41').": ".$wrong_id;
                     }
-                    $botan::setMessage($til->til('key40').". $i - ".$til->til('key42').". \n".$text);
+                    $botan::setMessage($til->til('key40')." $i - ".$til->til('key42')." \n".$text);
                     $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 1, 1);
                     $ttt2 = $botan::sText();
                     return true;
