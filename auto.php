@@ -322,7 +322,7 @@ if ($data !== null) {
                 $last_q = $db->getMax("bilet_id=".$bilet." AND raqam=".$raqam,"tests");
                 $current = $db->selectOne("id=".$last_q->max, "`tests`");
 
-                Bot::setFileLog($last_q);
+                Bot::setFileLog($last_q->max);
                 Bot::setFileLog($current);
 
                 $difference = time() - $current->created;
