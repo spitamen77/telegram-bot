@@ -327,7 +327,10 @@ if ($data !== null) {
 
                 if ($difference > 900) {
                     // time out
-                    $timer = 'diff';
+                    $botan::setMessage('Vaqtingiz tugadi, 15  in ortiq bo\'ldi');
+                    $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 1, 1);
+                    $ttt2 = $botan::sText();
+                    return true;
                 } else {
                     $remainingSeconds = 15 * 60 - $difference;
                     $minutes = floor($remainingSeconds / 60); // Полные минуты
@@ -346,6 +349,10 @@ if ($data !== null) {
 
                     if ($sum->total >= 2) {
                         // ikkichi...
+                        $botan::setMessage('Test topshirilmadi. 2 ta xato qildiz');
+                        $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 1, 1);
+                        $ttt2 = $botan::sText();
+                        return true;
                     }
                 }
 
@@ -386,6 +393,10 @@ if ($data !== null) {
 
                 } else {
                     // bu ohirgi 10-test edi.
+                    $botan::setMessage('Test topshirildi. Natija: ');
+                    $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 1, 1);
+                    $ttt2 = $botan::sText();
+                    return true;
 
                 }
 
