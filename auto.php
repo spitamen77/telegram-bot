@@ -383,9 +383,9 @@ if ($data !== null) {
 
                     $botan::setMarkup(['text' => "A", 'callback_data' => "savol_A_".$random->bilet.'_'.$raqam.'_'.$random->javob], 1, 1);
                     $botan::setMarkup(['text' => "B", 'callback_data' => "savol_B_".$random->bilet.'_'.$raqam.'_'.$random->javob], 1, 2);
-                    if ($random->$javob_c) {
+                    if (!empty($random->$javob_c)) {
                         $botan::setMarkup(['text' => "C", 'callback_data' => "savol_C_".$random->bilet.'_'.$raqam.'_'.$random->javob], 2, 1);
-                        if ($random->$javob_d) {
+                        if (!empty($random->$javob_d)) {
                             $botan::setMarkup(['text' => "D", 'callback_data' => "savol_D_".$random->bilet.'_'.$raqam.'_'.$random->javob], 2, 2);
                             $botan::setMessage($text.$random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".
                                 $random->$javob_c."\nD - ".$random->$javob_d.$timer);
