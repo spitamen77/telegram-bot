@@ -566,8 +566,7 @@ elseif (isset($botan::$text)) {
                     $botText = (int) trim($botan::$text);
                     $user = $db->getUser($chat_id, 0);
                     $random = $db->selectOne("bilet=".$botText." AND raqam=1", "savol_data");
-                    $botan::setMessageId($botan::$back->message_id);
-                    $botan::delMsg();
+
                     $botan::setChatId($chat_id);
                     $botan::setMessageId($user->first);
 //                    $botan::delMsg();
