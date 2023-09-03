@@ -65,8 +65,6 @@ class Bot
             self::$chat = $input->callback_query->message->chat;
             self::$text = $input->callback_query->message->text;
         } else {
-            self::$chat = $input->message->chat;
-
             if (isset($input->message)) {
                 self::$text = $input->message->text;
                 self::$chat = $input->message->chat;
