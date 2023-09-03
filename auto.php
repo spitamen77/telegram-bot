@@ -5,7 +5,7 @@ require_once "./lib/config.php";
 use Bot\Bot;
 use DataBase\DataBase;
 use Word\Word;
-$start_time = microtime(true);
+//$start_time = microtime(true);
 http_response_code(200);
 
 $botan = new Bot();
@@ -38,11 +38,7 @@ if ($data !== null) {
             $botan::setMarkup(['text' => "📌 " . $til->til("key21"), 'callback_data' => "znak_".Bot::YOTIQ."_1"], 8, 1);
             $botan::setMarkup(['text' => "📍 " . $til->til("key22"), 'callback_data' => "znak_".Bot::TIK."_1"], 8, 2);
             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 9, 1);
-            $end_time = microtime(true);
-            $execution_time = ($end_time - $start_time) * 1000;
-            Bot::setFileLog([$start_time, $end_time, $execution_time]);
             $botan::eText();
-
             break;
 
         case "stat":
