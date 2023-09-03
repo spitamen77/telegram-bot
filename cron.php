@@ -32,7 +32,6 @@ $arrays = $db->select("cron=0 AND start=1", 'users', '25');
 
 if ($arrays) {
     foreach ($arrays as $user) {
-        print_r($user); exit('000');
         $botan::setChatId($user->user_id);
         $til = Word::getLang($db, $user->user_id);
 
@@ -77,5 +76,4 @@ if ($arrays) {
         $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $user->user_id, "users");
     }
 }
-exit('12123142');
 return;
