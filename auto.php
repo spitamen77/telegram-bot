@@ -319,7 +319,7 @@ if ($data !== null) {
                 $raqam = (int) $pieces[3];
                 $true_answer = $pieces[4];
 
-                $last_q = $db->getMax("bilet=".$bilet." AND raqam=".$raqam,"tests");
+                $last_q = $db->getMax("bilet_id=".$bilet." AND raqam=".$raqam,"tests");
                 $current = $db->selectOne("bilet=".$bilet." AND raqam=".$last_q->max, "`savol_data`");
 
                 Bot::setFileLog($last_q);
