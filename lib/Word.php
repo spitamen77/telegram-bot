@@ -93,7 +93,7 @@ class Word
             "key42"=>"to'g'ri.",
             "key43"=>"Bilet raqamini kiriting. 1 dan 108 gacha",
             "key44"=>"Bilet nomeri hato kiritildi",
-            "key45"=>"Jami",
+            "key45"=>"Jami qatnashgan testi",
             "key46"=>"Topshirilgani",
 
         ];
@@ -145,6 +145,8 @@ class Word
             "key42"=>"верно.",
             "key43"=>"Введите номер билета. От 1 до 108",
             "key44"=>"Номер билета введен неверно",
+            "key45"=>"Всего участвовало",
+            "key46"=>"Успешное",
 
 
         ];
@@ -196,6 +198,8 @@ class Word
             "key42"=>"тўғри.",
             "key43"=>"Билет рақамини киритинг. 1 дан 108 гача",
             "key44"=>"Билет номери ҳато киритилди",
+            "key45"=>"Жами қатнашган тести",
+            "key46"=>"Топширилгани",
 
 
         ];
