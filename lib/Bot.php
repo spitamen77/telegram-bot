@@ -382,9 +382,4 @@ class Bot
         fclose($fh);
     }
 
-    public function __destruct()
-    {
-        http_response_code(200);
-    }
-
 }

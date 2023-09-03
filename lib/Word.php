@@ -200,8 +200,4 @@ class Word
         return $word[$key];
     }
 
-    public function __destruct() {
-
-    }
-
 }
