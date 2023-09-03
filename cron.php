@@ -31,9 +31,8 @@ $db = new DataBase();
 $arrays = $db->select("cron=0 AND start=1", 'users', '25');
 
 if ($arrays) {
-    exit('dsfsfd');
     foreach ($arrays as $user) {
-        print_r($user); exit();
+        print_r($user); exit('000');
         $botan::setChatId($user->user_id);
         $til = Word::getLang($db, $user->user_id);
 
