@@ -570,7 +570,7 @@ elseif (isset($botan::$text)) {
                     $botan::delMsg();
                     $botan::setChatId($chat_id);
                     $botan::setMessageId($user->first);
-                    $botan::delMsg();
+//                    $botan::delMsg();
 
                     if (!$random) {
                         $botan::setMessage($til->til("key44"));
