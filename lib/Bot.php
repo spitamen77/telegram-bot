@@ -222,8 +222,22 @@ class Bot
                 'reply_markup' => json_encode(self::$reply_markup),
             ]
         );
-        self::setFileLog($response);
-        return json_decode($response, true);
+//        self::setFileLog($response);
+        $res = json_decode($response, true);
+        if ($res['ok']){
+            return $res;
+        } else {
+            $response = self::send("sendMessage",
+                [
+                    'chat_id' => self::$chat_id,
+                    'text' => self::$message,
+                    'parse_mode' => 'HTML',
+                    'reply_to_message_id' => self::$reply_to_message_id,
+                    'reply_markup' => json_encode(self::$reply_markup),
+                ]
+            );
+            return json_decode($response, true);
+        }
     }
 
     public static function rText()

@@ -80,7 +80,7 @@ class Word
             "key28"=>"🔁 Boshqa belgi",
             "key30"=>"*Sozlamalar*",
             "key31"=>"Avto Test (70) loyihasi asta-sekin rivojlantirib borilmoqda. Loyihani rivojlanishiga o'z hissangizni qo'shingizni so'raymiz.\n9860 6004 0191 7320\nAbdujalilov Dilshod",
-            "key32"=>"Tilni o'gartirish",
+            "key32"=>"Tilni o'zgartirish",
             "key33"=>"Ayni paytda xizmat test rejimida ishlamoqda, barcha funksiyalar mavjud emas.",
             "key34"=>"Tilni tanlang",
             "key35"=>"Vaqtingiz tugadi, 15 min ortiq bo'ldi",
