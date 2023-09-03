@@ -172,11 +172,17 @@ if ($data !== null) {
         case "results":
             $botan::call($botan::$call->callback_query->data);
             $chat_id = $botan::$back->chat->id;
-//            $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
             $til = Word::getLang($db, $chat_id);
-            $botan::setMessage($til->til("key33"));
+            $total = $db->selectCustom('COUNT(DISTINCT bilet_id) AS total', "`cron` = 0 AND `user_id` = $chat_id", 'tests', 1);
+            $true_total = $db->selectTrue($chat_id);
+
+            $text2 = "\n\n".$til->til('key45').": ".$total->total."\n".
+                $til->til('key46').": ".$true_total;
+
+            $botan::setMessage("📊 ".$til->til('key04').$text2);
+
             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);
             $botan::eText();
             break;

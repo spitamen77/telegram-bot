@@ -93,6 +93,8 @@ class Word
             "key42"=>"to'g'ri.",
             "key43"=>"Bilet raqamini kiriting. 1 dan 108 gacha",
             "key44"=>"Bilet nomeri hato kiritildi",
+            "key45"=>"Jami",
+            "key46"=>"Topshirilgani",
 
         ];
         return $word[$key];
