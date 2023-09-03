@@ -351,7 +351,7 @@ if ($data !== null) {
                 $last_q = $db->getMax("bilet_id=".$bilet." AND raqam=".$raqam,"tests");
                 $current = $db->selectOne("id=".$last_q->max, "tests");
 
-                if ($current->cron == 1) {
+                if ($user->cron == 1) {
                     // cron orqali borgan bo'lsa
                     $db->update("cron=0", "user_id=" . $chat_id, "users");
                 }
