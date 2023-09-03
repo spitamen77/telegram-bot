@@ -31,6 +31,7 @@ $db = new DataBase();
 $arrays = $db->select("cron=0 AND start=1'", 'users', '25');
 
 foreach ($arrays as $user) {
+    print_r($user); exit();
     $botan::setChatId($user->user_id);
     $til = Word::getLang($db, $user->user_id);
 
@@ -74,3 +75,4 @@ foreach ($arrays as $user) {
     sleep(1);
     $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $user->user_id, "users");
 }
+return;
