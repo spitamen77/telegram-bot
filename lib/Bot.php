@@ -200,6 +200,10 @@ class Bot
         curl_setopt($ch,CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
         curl_setopt($ch,CURLOPT_TIMEOUT,10);
+        curl_setopt($ch, CURLOPT_TCP_KEEPALIVE, 1);
+        curl_setopt($ch, CURLOPT_TCP_KEEPIDLE, 120);
+        curl_setopt($ch, CURLOPT_TCP_KEEPINTVL, 60);
+
 
         $result = curl_exec($ch);
         curl_close($ch);
@@ -219,6 +223,9 @@ class Bot
             curl_setopt($ch, CURLOPT_POST, count($data));
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
             curl_setopt($ch,CURLOPT_TIMEOUT,10);
+            curl_setopt($ch, CURLOPT_TCP_KEEPALIVE, 1);
+            curl_setopt($ch, CURLOPT_TCP_KEEPIDLE, 120);
+            curl_setopt($ch, CURLOPT_TCP_KEEPINTVL, 60);
             $result = curl_exec($ch);
             curl_close($ch);
         }
