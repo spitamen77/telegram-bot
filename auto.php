@@ -328,8 +328,9 @@ if ($data !== null) {
                 $difference = time() - $current->created;
                 $timer = '';
 
-                if ($difference >= 900) {
+                if ($difference > 900) {
                     // time out
+                    $timer = 'diff';
                 } else {
                     $minutes = floor($difference / 60); // Полные минуты
                     $seconds = $difference % 60; // Остаток в секундах
@@ -361,7 +362,7 @@ if ($data !== null) {
                     }
 
                     $db->insert("`tests`", "`bilet_id`, `raqam`, `user_id`, `created`", "'".
-                        $random->bilet."', '".$raqam."', '".$chat_id."', '".$last_q->created."'");
+                        $random->bilet."', '".$raqam."', '".$chat_id."', '".$current->created."'");
 
                     $text = "Bilet: ".$random->bilet.", Savol: $raqam\n";
                     $savol = 'savol_'.$til->lang;
