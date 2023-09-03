@@ -6,6 +6,7 @@ use Bot\Bot;
 use DataBase\DataBase;
 use Word\Word;
 
+$start_time = microtime(true);
 http_response_code(200);
 
 $botan = new Bot();
@@ -569,7 +570,6 @@ elseif (isset($botan::$text)) {
 
                     $botan::setChatId($chat_id);
                     $botan::setMessageId($user->first);
-//                    $botan::delMsg();
 
                     if (!$random) {
                         $botan::setMessage($til->til("key44"));
@@ -673,4 +673,6 @@ elseif (isset($botan::$text)) {
             }
     }
 }
+$end_time = microtime(true);
+Bot::setFileLog([$start_time, $end_time]);
 return;
