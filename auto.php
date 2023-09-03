@@ -17,10 +17,6 @@ $db = new DataBase();
 
 $data = $botan::$call->callback_query->data ?? null;
 
-$end_time = microtime(true);
-$execution_time = ($end_time - $start_time) * 1000;
-Bot::setFileLog([$start_time, $end_time, $execution_time]);
-
 if ($data !== null) {
     switch ($botan::$call->callback_query->data) {
         case "info":
@@ -42,6 +38,9 @@ if ($data !== null) {
             $botan::setMarkup(['text' => "📍 " . $til->til("key22"), 'callback_data' => "znak_".Bot::TIK."_1"], 8, 2);
             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 9, 1);
             $botan::eText();
+            $end_time = microtime(true);
+            $execution_time = ($end_time - $start_time) * 1000;
+            Bot::setFileLog([$start_time, $end_time, $execution_time]);
             break;
 
         case "stat":
