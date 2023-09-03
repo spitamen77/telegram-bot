@@ -322,9 +322,6 @@ if ($data !== null) {
                 $last_q = $db->getMax("bilet_id=".$bilet." AND raqam=".$raqam,"tests");
                 $current = $db->selectOne("id=".$last_q->max, "tests");
 
-                Bot::setFileLog($last_q->max);
-                Bot::setFileLog($current);
-
                 $difference = time() - $current->created;
                 $timer = '';
 
@@ -332,16 +329,17 @@ if ($data !== null) {
                     // time out
                     $timer = 'diff';
                 } else {
-                    $minutes = floor($difference / 60); // Полные минуты
-                    $seconds = $difference % 60; // Остаток в секундах
-                    $timer = "\nQolgan vaqt: $minutes:$seconds min";
+                    $remainingSeconds = 15 * 60 - $difference;
+                    $minutes = floor($remainingSeconds / 60); // Полные минуты
+                    $remainingSeconds = $remainingSeconds % 60; // Остаток в секундах
+                    $timer = "\n"."Осталось " . str_pad($minutes, 2, '0', STR_PAD_LEFT) . ":" . str_pad($remainingSeconds, 2, '0', STR_PAD_LEFT) . " минут";;
                 }
 
                 if ($variant == $true_answer) {
                     // true answer
-                    $db->update("result='".Bot::ANSWER_TRUE, "id=" . $last_q->max, "tests");
+                    $db->update("result=".Bot::ANSWER_TRUE, "id=" . $last_q->max, "tests");
                 } else {
-                    $db->update("result='".Bot::ANSWER_FALSE, "id=" . $last_q->max, "tests");
+                    $db->update("result=".Bot::ANSWER_FALSE, "id=" . $last_q->max, "tests");
 
                     //tekshiramiz, 2 tadan ortiq bo'madimi false javoblari
                     $sum = $db->getCount("`created`=".$current->created." AND result = ".Bot::ANSWER_FALSE, 'result', 'tests');
