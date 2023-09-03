@@ -413,7 +413,7 @@ if ($data !== null) {
                     return true;
 
                 }
-
+                sleep(1);
                 $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
             }
     }
