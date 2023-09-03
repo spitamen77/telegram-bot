@@ -143,12 +143,13 @@ class Bot
     {
         self::$reply_to_message_id = $reply;
     }
-    public static function setMarkup(array $markup = [], $key = NULL, $col = NULL)
+    public static function setMarkup(array $markup = [], int $key = 0, int $col = 0)
     {
-        if($key!=0 && !is_null($key))--$key;
-        if($col!=0 && !is_null($col))--$col;
-        if (is_null($col))self::$reply_markup["inline_keyboard"][$key][] = $markup;
-        else {
+        if ($key!=0) --$key;
+        if ($col!=0) --$col;
+        if ($col) {
+            self::$reply_markup["inline_keyboard"][$key][] = $markup;
+        } else {
             self::$reply_markup["inline_keyboard"][$key][$col] = $markup;
         }
     }
