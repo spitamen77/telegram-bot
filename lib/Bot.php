@@ -238,7 +238,7 @@ class Bot
                 'reply_markup' => json_encode(self::$reply_markup),
             ]
         );
-        self::setFileLog(self::$reply_markup);
+//        self::setFileLog(self::$reply_markup);
         $res = json_decode($response, true);
         if ($res['ok']){
             return $res;
