@@ -313,6 +313,9 @@ if ($data !== null) {
 
             }
             elseif (preg_match("~^savol~", $route)) {
+                // "savol_A_".$random->bilet.'_1_'.$random->javob
+                Bot::setFileLog($route);
+                Bot::setFileLog($pieces);
                 $variant = $pieces[1];
                 $bilet = $pieces[2];
                 $raqam = (int) $pieces[3];
