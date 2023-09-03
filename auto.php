@@ -353,7 +353,7 @@ if ($data !== null) {
 
                 if ($current->cron == 1) {
                     // cron orqali borgan bo'lsa
-                    $db->update("cron=".Bot::ANSWER_TRUE, "id=" . $last_q->max, "tests");
+                    $db->update("cron=0", "id=" . $last_q->max, "tests");
                 }
 
                 $difference = time() - $current->created;
