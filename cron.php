@@ -46,7 +46,7 @@ if ($arrays) {
         $db->insert("`tests`", "`bilet_id`, `raqam`, `user_id`, `created`", "'".$random->bilet."', '1', '".$user->user_id."', '".time()."'");
         $db->update("cron = 1", "user_id=" . $user->user_id, "users");
 
-        $text = $til->til('key38').": ".$random->bilet.", ".$til->til('key39').": 1\n";
+        $text = $til->til('key47')."\n".$til->til('key38').": ".$random->bilet.", ".$til->til('key39').": 1\n";
         $savol = 'savol_'.$til->lang;
         $javob_a = 'javob_a_'.$til->lang;
         $javob_b = 'javob_b_'.$til->lang;
