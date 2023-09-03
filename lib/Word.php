@@ -91,7 +91,8 @@ class Word
             "key40"=>"Test topshirildi.",
             "key41"=>"Xatolari",
             "key42"=>"to'g'ri.",
-            "key43"=>"Tilni",
+            "key43"=>"Bilet raqamini kiriting. 1 dan 108 gacha",
+            "key44"=>"Bilet nomeri hato kiritildi",
 
         ];
         return $word[$key];
@@ -140,7 +141,7 @@ class Word
             "key40"=>"Тест пройден.",
             "key41"=>"Ошибки",
             "key42"=>"верно.",
-            "key43"=>"Tilni",
+            "key43"=>"Введите номер билета. От 1 до 108",
 
 
         ];
@@ -190,7 +191,7 @@ class Word
             "key40"=>"Тест топширилди.",
             "key41"=>"Хатолари",
             "key42"=>"тўғри.",
-            "key43"=>"Tilni",
+            "key43"=>"Билет рақамини киритинг. 1 дан 108 гача",
 
 
         ];
