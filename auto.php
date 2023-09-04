@@ -90,9 +90,10 @@ if ($data !== null) {
         case "continue":
             $botan::call($botan::$call->callback_query->data);
             $chat_id = $botan::$back->chat->id;
-//            $botan::setReply();
+            $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
+            $botan::delMsg();
             $til = Word::getLang($db, $chat_id);
             $botan::setMessage($til->til("key11"));
             $botan::setMarkup(['text' => "📚 " . $til->til("key08"), 'callback_data' => "test"], 1, 1);
@@ -100,7 +101,7 @@ if ($data !== null) {
             $botan::setMarkup(['text' => "🚦 " . $til->til("key10"), 'callback_data' => "belgi"], 3, 1);
             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 4, 1);
             $db->change_step($chat_id, 5); // bilet tanlashi uchun
-            $botan::eText();
+            $botan::sText();
             break;
         case "test":
             $botan::call($botan::$call->callback_query->data);
