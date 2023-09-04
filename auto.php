@@ -533,14 +533,18 @@ elseif (isset($botan::$text)) {
                     if ($belgi){
                         $random = $db->random();
                         $db->belgiSavol($chat_id, $random->id,$random->number);
-                        $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$random->image);
+//                        $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$random->image);
 
                         $botan::setMessage($til->til('key24'));
                         $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                         $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
-                        $ttt2 = $botan::sText();
+                        if ($belgi->image) {
+                            $res = $botan::sendPhotoWithText("belgi/".$belgi->image);
+                        } else {
+                            $res = $botan::sText();
+                        }
                         sleep(1);
-                        $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
+                        $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
 
                     }else{
                         $pieces = explode(",", $botText);
@@ -550,34 +554,45 @@ elseif (isset($botan::$text)) {
                             if ($belgi){
                                 $random = $db->random();
                                 $db->belgiSavol($chat_id, $random->id,$random->number);
-                                $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$random->image);
+//                                $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$random->image);
                                 $botan::setMessage($til->til('key24'));
                                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                                 $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
-                                $ttt2 = $botan::sText();
+                                if ($belgi->image) {
+                                    $res = $botan::sendPhotoWithText("belgi/".$belgi->image);
+                                } else {
+                                    $res = $botan::sText();
+                                }
                                 sleep(1);
-                                $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
+                                $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
                             }else{
                                 $belgi = $db->selectJoin($chat_id);
-                                $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$belgi->image);
+//                                $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$belgi->image);
                                 $botan::setMessage($til->til('key25'));
                                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                                 $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
-                                $ttt2 = $botan::sText();
+                                if ($belgi->image) {
+                                    $res = $botan::sendPhotoWithText("belgi/".$belgi->image);
+                                } else {
+                                    $res = $botan::sText();
+                                }
                                 sleep(1);
-                                $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
-//                            $botan::send_Out($chat_id, $til->til("key25"));
+                                $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
                             }
                         } else {
                             $belgi = $db->selectJoin($chat_id);
-                            $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$belgi->image);
+//                            $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$belgi->image);
                             $botan::setMessage($til->til('key25'));
                             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                             $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
-                            $ttt2 = $botan::sText();
+                            if ($belgi->image) {
+                                $res = $botan::sendPhotoWithText("belgi/".$belgi->image);
+                            } else {
+                                $res = $botan::sText();
+                            }
                             sleep(1);
-                            $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
-//
+                            $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
+
                         }
 
                     }
