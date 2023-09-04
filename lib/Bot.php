@@ -220,6 +220,7 @@ class Bot
             $result = curl_exec($ch);
             curl_close($ch);
         }
+        Bot::setFileLog($result);
 
         return json_decode($result, true);
     }
