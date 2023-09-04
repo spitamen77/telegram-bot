@@ -18,15 +18,15 @@ $db = new DataBase();
 $data = $botan::$call->callback_query->data ?? null;
 
 if ($data !== null) {
-//    Bot::setFileLog($data);
-    switch ($botan::$call->callback_query->data) {
+    switch ($data) {
         case "info":
-            $botan::call($botan::$call->callback_query->data);
+            $botan::call($data);
             $chat_id = $botan::$back->chat->id;
-//            $botan::setReply();
+            $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
             $til = Word::getLang($db, $chat_id);
+            Bot::setFileLog($data);
 
             $botan::setMessage($til->til("key12"));
             $botan::setMarkup(['text' => "🚦 " . $til->til("key13"), 'callback_data' => "znak_".Bot::OGOH."_1"], 1, 1);
@@ -287,7 +287,6 @@ if ($data !== null) {
 //            $botan::setMessageId($user->first);
 //            $botan::delMsg();
             $til = Word::getLang($db, $chat_id);
-            Bot::setFileLog($route);
 
             if (preg_match("~^znak~", $route)) {
 
