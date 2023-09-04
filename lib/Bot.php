@@ -341,11 +341,16 @@ class Bot
         $response = self::send("sendPhoto", $data);
         $res = json_decode($response, true);
 
-        if ($res['ok']) {
-            return $res;
+        if (!$res['ok']) {
+            $data['parse_mode'] = 'HTML';
+            $response = self::send("sendPhoto", $data);
+            $res = json_decode($response, true);
+            if ($res['ok']) {
+                return $res;
+            }
+
+            $res['result']['message_id'] = 0;
         }
-//        Bot::setFileLog($res);
-        $res['result']['message_id'] = 0;
         return $res;
     }
 
