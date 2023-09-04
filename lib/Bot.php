@@ -294,7 +294,6 @@ class Bot
             'reply_markup' => json_encode(self::$reply_markup),
 //                    'remove_keyboard' => true
         ];
-//        Bot::setFileLog($data);
         $response =  self::send("editMessageText", $data);
         $res = json_decode($response, true);
 
@@ -302,9 +301,7 @@ class Bot
             return $res;
         } else {
             $data['parse_mode'] = 'HTML';
-            Bot::setFileLog($data);
             $response = self::send("editMessageText",$data);
-            Bot::setFileLog($response);
             return json_decode($response, true);
         }
     }
