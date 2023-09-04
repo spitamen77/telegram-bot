@@ -28,7 +28,7 @@ $db = new DataBase();
 /** action inline-keyboard  */
 
 //$data = [12,45];
-$arrays = $db->select("cron=0 AND updated_at <= DATE_SUB(NOW(), INTERVAL 11 HOUR)", 'users', '25');
+$arrays = $db->select("cron=1 AND updated_at <= DATE_SUB(NOW(), INTERVAL 11 HOUR)", 'users', '25');
 
 if ($arrays) {
     foreach ($arrays as $user) {
@@ -36,12 +36,6 @@ if ($arrays) {
         $til = Word::getLang($db, $user->user_id);
 
         $random = $db->random('`raqam` = 1','`savol_data`');
-
-        if ($random->rasm) {
-            $ttt = $botan::sPhoto("savol/".$random->rasm);
-        } else {
-            $ttt['result']['message_id'] = $user->first;
-        }
 
         $db->insert("`tests`", "`bilet_id`, `raqam`, `user_id`, `created`", "'".$random->bilet."', '1', '".$user->user_id."', '".time()."'");
         $db->update("cron = 1", "user_id=" . $user->user_id, "users");
@@ -70,9 +64,13 @@ if ($arrays) {
         }
         $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 3, 1);
 
-        $ttt2 = $botan::sText();
+        if ($random->rasm) {
+            $res = $botan::sendPhotoWithText("savol/".$random->rasm);
+        } else {
+            $res = $botan::sText();
+        }
         sleep(1);
-        $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $user->user_id, "users");
+        $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
     }
 }
 return;

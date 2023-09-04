@@ -228,7 +228,6 @@ class Bot
                 'reply_markup' => json_encode(self::$reply_markup),
             ]
         );
-//        self::setFileLog(self::$reply_markup);
         $res = json_decode($response, true);
         if ($res['ok']){
             return $res;
@@ -299,7 +298,7 @@ class Bot
         );
     }
 
-    public static function sPhoto(string $url,$caption=false)
+    public static function sPhoto(string $url, string $caption = '')
     {
         if ($caption)
             $result = self::send("sendPhoto",
@@ -320,6 +319,26 @@ class Bot
 
         return json_decode($result, true);
     }
+
+    public static function sendPhotoWithText(string $url)
+    {
+        $data = [
+            'chat_id' => self::$chat_id,
+            'photo' => BOT_URL . '/image/' . $url,
+            'caption' => self::$message,
+            'parse_mode' => self::$parse_mode,
+            'reply_markup' => json_encode(self::$reply_markup),
+        ];
+
+        $response = self::send("sendPhoto", $data);
+        $res = json_decode($response, true);
+
+        if ($res['ok']) {
+            return $res;
+        }
+        return null;
+    }
+
     public static function delMsg()
     {
 //        self::dump(
