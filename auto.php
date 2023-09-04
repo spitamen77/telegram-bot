@@ -299,7 +299,6 @@ if ($data !== null) {
                 if ($belgi){
                     $next = $id+1;
                     $prive = $id-1;
-//                    $ttt = $botan::sPhoto("belgi/".$belgi->image);
                     $nomi = "name_".$user->lang;
                     $botan::setMessage($belgi->number." - ".$belgi->$nomi);
                     $botan::setMarkup(['text' => "⏪", 'callback_data' => "znak_".$pieces[1]."_".$prive], 1, 1);
@@ -342,8 +341,6 @@ if ($data !== null) {
                             sleep(1);
                             $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
                             break;
-
-
 
                         case Bot::TIK:
 
@@ -533,7 +530,6 @@ elseif (isset($botan::$text)) {
                     if ($belgi){
                         $random = $db->random();
                         $db->belgiSavol($chat_id, $random->id,$random->number);
-//                        $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$random->image);
 
                         $botan::setMessage($til->til('key24'));
                         $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
@@ -554,7 +550,6 @@ elseif (isset($botan::$text)) {
                             if ($belgi){
                                 $random = $db->random();
                                 $db->belgiSavol($chat_id, $random->id,$random->number);
-//                                $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$random->image);
                                 $botan::setMessage($til->til('key24'));
                                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                                 $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
@@ -567,7 +562,6 @@ elseif (isset($botan::$text)) {
                                 $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
                             }else{
                                 $belgi = $db->selectJoin($chat_id);
-//                                $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$belgi->image);
                                 $botan::setMessage($til->til('key25'));
                                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                                 $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
@@ -581,7 +575,6 @@ elseif (isset($botan::$text)) {
                             }
                         } else {
                             $belgi = $db->selectJoin($chat_id);
-//                            $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$belgi->image);
                             $botan::setMessage($til->til('key25'));
                             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                             $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
@@ -659,7 +652,6 @@ elseif (isset($botan::$text)) {
                     $getUser = $db->getUser($chat_id, 1);
                     if ($belgi){
                         $nomi = "name_".$getUser;
-//                        $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$belgi->image);
                         $next = $belgi->id+1;  $prive = $belgi->id-1;
                         $botan::setChatId($chat_id);
                         $botan::setMessage($belgi->number." - ".$belgi->$nomi);
