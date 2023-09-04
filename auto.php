@@ -25,7 +25,7 @@ if ($data !== null) {
             $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
-            $botan::delMsg();
+//            $botan::delMsg();
             $til = Word::getLang($db, $chat_id);
 
             $botan::setMessage($til->til("key12"));
@@ -93,7 +93,7 @@ if ($data !== null) {
             $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
-            $botan::delMsg();
+//            $botan::delMsg();
             $til = Word::getLang($db, $chat_id);
             $botan::setMessage($til->til("key11"));
             $botan::setMarkup(['text' => "📚 " . $til->til("key08"), 'callback_data' => "test"], 1, 1);
