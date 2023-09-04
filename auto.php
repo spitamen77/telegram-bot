@@ -318,12 +318,14 @@ if ($data !== null) {
                     $n_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$p_belgi->id.' ORDER BY RAND()',"belgilar");
 
                     switch ($pieces[1]){
-                        case "1":
-                        case "2":
-                        case "3":
-                        case "4":
-                        case "5":
-                        case "6":
+                        case Bot::OGOH:
+                        case Bot::IMTIYOZ:
+                        case Bot::TAQIQ:
+                        case Bot::BUYUR:
+                        case Bot::AXBOROT:
+                        case Bot::SERVICE:
+                        case Bot::QOSHIMCHA:
+                        case Bot::YOTIQ:
 //                            $ttt = $botan::sPhoto("belgi/".$belgi->image);
                             $nomi = "name_".$user->lang;
                             $botan::setMessage($belgi->number." - ".$belgi->$nomi);
@@ -340,9 +342,9 @@ if ($data !== null) {
                             $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
                             break;
 
-                        case "7":
-                        case "8":
-                        case "9":
+
+
+                        case Bot::TIK:
 
                             $botan::setMessage($til->til("key33"));
                             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);
