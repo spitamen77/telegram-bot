@@ -69,7 +69,7 @@ if ($arrays) {
         } else {
             $res = $botan::sText();
         }
-        sleep(1);
+        sleep(0.2);
         $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
     }
 }

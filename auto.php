@@ -153,7 +153,7 @@ if ($data !== null) {
             } else {
                 $res = $botan::sText();
             }
-            sleep(1);
+            sleep(0.2);
             $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
             break;
         case "bilet":
@@ -213,7 +213,7 @@ if ($data !== null) {
             } else {
                 $res = $botan::sText();
             }
-            sleep(1);
+            sleep(0.2);
             $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
             break;
 
@@ -310,7 +310,7 @@ if ($data !== null) {
                     } else {
                         $res = $botan::sText();
                     }
-                    sleep(1);
+                    sleep(0.2);
                     $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
                 }else{
                     $belgi = $db->selectOne('child = '.$pieces[1].' ORDER BY RAND()',"belgilar");
@@ -338,7 +338,7 @@ if ($data !== null) {
                             } else {
                                 $res = $botan::sText();
                             }
-                            sleep(1);
+                            sleep(0.2);
                             $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
                             break;
 
@@ -461,7 +461,7 @@ if ($data !== null) {
                     return true;
 
                 }
-                sleep(1);
+                sleep(0.2);
                 if (isset($ttt2['result']['message_id'])) {
                     $db->update("second=" . $ttt2['result']['message_id'] . ", first=0", "user_id=" . $chat_id, "users");
                 }
@@ -539,7 +539,7 @@ elseif (isset($botan::$text)) {
                         } else {
                             $res = $botan::sText();
                         }
-                        sleep(1);
+                        sleep(0.2);
                         $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
 
                     }else{
@@ -558,7 +558,7 @@ elseif (isset($botan::$text)) {
                                 } else {
                                     $res = $botan::sText();
                                 }
-                                sleep(1);
+                                sleep(0.2);
                                 $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
                             }else{
                                 $belgi = $db->selectJoin($chat_id);
@@ -570,7 +570,7 @@ elseif (isset($botan::$text)) {
                                 } else {
                                     $res = $botan::sText();
                                 }
-                                sleep(1);
+                                sleep(0.2);
                                 $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
                             }
                         } else {
@@ -583,7 +583,7 @@ elseif (isset($botan::$text)) {
                             } else {
                                 $res = $botan::sText();
                             }
-                            sleep(1);
+                            sleep(0.2);
                             $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
 
                         }
@@ -639,7 +639,7 @@ elseif (isset($botan::$text)) {
                     } else {
                         $res = $botan::sText();
                     }
-                    sleep(1);
+                    sleep(0.2);
                     $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
 
                     break;
@@ -664,7 +664,7 @@ elseif (isset($botan::$text)) {
                         } else {
                             $res = $botan::sText();
                         }
-                        sleep(1);
+                        sleep(0.2);
                         $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
 
                     }else{
@@ -688,7 +688,7 @@ elseif (isset($botan::$text)) {
                                 } else {
                                     $res = $botan::sText();
                                 }
-                                sleep(1);
+                                sleep(0.2);
                                 $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
                             }else{
                                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
