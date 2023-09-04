@@ -145,27 +145,11 @@ class Bot
     {
         if ($key!=0) --$key;
         if ($col!=0) --$col;
-        if ($col) {
+        if (!$col) {
             self::$reply_markup["inline_keyboard"][$key][] = $markup;
         } else {
             self::$reply_markup["inline_keyboard"][$key][$col] = $markup;
         }
-    }
-
-    public static function setMarkup2(array $markup = [], $key = null, $col = null)
-    {
-        $key = $key ?? 0;
-        $col = $col ?? 0;
-
-        if (!isset(self::$reply_markup["inline_keyboard"][$key])) {
-            self::$reply_markup["inline_keyboard"][$key] = [];
-        }
-
-        if (!isset(self::$reply_markup["inline_keyboard"][$key][$col])) {
-            self::$reply_markup["inline_keyboard"][$key][$col] = [];
-        }
-
-        self::$reply_markup["inline_keyboard"][$key][$col][] = $markup;
     }
 
 
