@@ -64,7 +64,7 @@ class Bot
         if (!empty($input) && is_object($input) && property_exists($input, 'callback_query')) {
             if (isset($input->callback_query->message)) {
                 self::$chat = $input->callback_query->message->chat;
-                if (self::$text = $input->callback_query->message->text){
+                if (isset($input->callback_query->message->text)){
                     self::$text = $input->callback_query->message->text;
                 } else {
                     self::setFileLog($input->callback_query);

@@ -216,7 +216,7 @@ if ($data !== null) {
         case "forBack": // main oyna
             $botan::call($botan::$call->callback_query->data);
             $chat_id = $botan::$back->chat->id;
-//            $botan::setReply();
+            $botan::setReply();
             $botan::setChatId($chat_id);
             $botan::setMessageId($botan::$back->message_id);
             $botan::Main($db);
