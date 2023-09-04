@@ -332,7 +332,7 @@ class Bot
     {
         $data = [
             'chat_id' => self::$chat_id,
-            'photo' => BOT_URL . '/image/' . $url,
+            'photo' => trim(BOT_URL . '/image/' . $url),
             'caption' => htmlspecialchars(self::$message),
             'parse_mode' => self::$parse_mode,
             'reply_markup' => json_encode(self::$reply_markup),
@@ -348,6 +348,8 @@ class Bot
             if ($res['ok']) {
                 return $res;
             }
+            Bot::setFileLog($data);
+            Bot::setFileLog($res);
 
             $res['result']['message_id'] = 0;
         }
