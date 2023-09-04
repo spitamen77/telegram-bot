@@ -75,7 +75,7 @@ if ($data !== null) {
             $month_start = $db->getStart(time_stats(30),time());
             $month_created = $db->getCreated(time_stats(30),time());
 
-            $text2 = "\n\n ".$til->til('key48')." \n".
+            $text2 = "\n\n ".$til->til('key48')."\n".
                 $til->til('key49').": ".$one_start."\n".
                 $til->til('key50').": ".$one_created."\n\n".
                 $til->til('key51')." \n".
