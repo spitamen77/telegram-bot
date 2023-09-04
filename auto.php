@@ -25,8 +25,8 @@ if ($data !== null) {
             $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
+            $botan::delMsg();
             $til = Word::getLang($db, $chat_id);
-            Bot::setFileLog($data);
 
             $botan::setMessage($til->til("key12"));
             $botan::setMarkup(['text' => "🚦 " . $til->til("key13"), 'callback_data' => "znak_".Bot::OGOH."_1"], 1, 1);
@@ -39,7 +39,7 @@ if ($data !== null) {
             $botan::setMarkup(['text' => "📌 " . $til->til("key21"), 'callback_data' => "znak_".Bot::YOTIQ."_1"], 8, 1);
             $botan::setMarkup(['text' => "📍 " . $til->til("key22"), 'callback_data' => "znak_".Bot::TIK."_1"], 8, 2);
             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 9, 1);
-            $botan::eText();
+            $botan::sText();
             break;
 
         case "stat":
