@@ -241,7 +241,7 @@ class Bot
         if ($res['ok']){
             return $res;
         } else {
-            $data['text'] = 'HTML';
+            $data['parse_mode'] = 'HTML';
             $response = self::send("sendMessage",$data);
             return json_decode($response, true);
         }
@@ -301,7 +301,7 @@ class Bot
         if ($res['ok']){
             return $res;
         } else {
-            $data['text'] = 'HTML';
+            $data['parse_mode'] = 'HTML';
             Bot::setFileLog($data);
             $response = self::send("editMessageText",$data);
             Bot::setFileLog($response);
