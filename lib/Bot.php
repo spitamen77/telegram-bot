@@ -292,19 +292,17 @@ class Bot
 
     public static function eText()
     {
-        //        self::setFileLog($response);
-
-        $response =  self::send("editMessageText",
-            [
-                'chat_id' => self::$chat_id,
-                'message_id' => self::$message_id,
-                'text' => self::$message,
-                'parse_mode' => self::$parse_mode,
+        $data = [
+            'chat_id' => self::$chat_id,
+            'message_id' => self::$message_id,
+            'text' => self::$message,
+            'parse_mode' => self::$parse_mode,
 //                'disable_web_page_preview' => self::$disable_web_page_preview,
-                'reply_markup' => json_encode(self::$reply_markup),
+            'reply_markup' => json_encode(self::$reply_markup),
 //                    'remove_keyboard' => true
-            ]
-        );
+        ];
+        Bot::setFileLog($data);
+        $response =  self::send("editMessageText", $data);
         Bot::setFileLog($response);
         return $response;
     }
