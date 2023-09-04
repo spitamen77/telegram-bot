@@ -27,6 +27,7 @@ if ($data !== null) {
             $botan::setChatId($chat_id);
 //            $botan::delMsg();
             $til = Word::getLang($db, $chat_id);
+            Bot::setFileLog($data);
 
             $botan::setMessage($til->til("key12"));
             $botan::setMarkup(['text' => "🚦 " . $til->til("key13"), 'callback_data' => "znak_".Bot::OGOH."_1"], 1, 1);
