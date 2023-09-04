@@ -98,7 +98,7 @@ class Word
             "key47"=>"Kun savoli",
 
         ];
-        return $word[$key];
+        return $word[$key] ?? '';
     }
   
     private static function til_ru($key)
@@ -152,7 +152,7 @@ class Word
 
 
         ];
-        return $word[$key];
+        return $word[$key] ?? '';
     }
 
     private static function til_uzk($key)
@@ -206,7 +206,7 @@ class Word
 
 
         ];
-        return $word[$key];
+        return $word[$key] ?? '';
     }
 
 }
