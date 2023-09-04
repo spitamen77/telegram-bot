@@ -18,7 +18,7 @@ $db = new DataBase();
 $data = $botan::$call->callback_query->data ?? null;
 
 if ($data !== null) {
-    Bot::setFileLog($data);
+//    Bot::setFileLog($data);
     switch ($botan::$call->callback_query->data) {
         case "info":
             $botan::call($botan::$call->callback_query->data);
