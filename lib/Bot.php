@@ -294,7 +294,7 @@ class Bot
     {
         //        self::setFileLog($response);
 
-        return self::send("editMessageText",
+        $response =  self::send("editMessageText",
             [
                 'chat_id' => self::$chat_id,
                 'message_id' => self::$message_id,
@@ -305,6 +305,8 @@ class Bot
 //                    'remove_keyboard' => true
             ]
         );
+        Bot::setFileLog($response);
+        return $response;
     }
 
     public static function sPhoto(string $url, string $caption = '')
