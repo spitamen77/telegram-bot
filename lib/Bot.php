@@ -302,6 +302,8 @@ class Bot
         } else {
             $data['parse_mode'] = 'HTML';
             $response = self::send("editMessageText",$data);
+            Bot::setFileLog($data);
+            Bot::setFileLog($response);
             return json_decode($response, true);
         }
     }
