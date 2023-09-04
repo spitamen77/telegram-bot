@@ -336,7 +336,8 @@ class Bot
         if ($res['ok']) {
             return $res;
         }
-        return null;
+        $res['result']['message_id'] = 0;
+        return $res;
     }
 
     public static function delMsg()

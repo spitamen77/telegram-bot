@@ -113,15 +113,9 @@ if ($data !== null) {
             $random = $db->random('`raqam` = 1','`savol_data`');
             $botan::setMessageId($botan::$back->message_id);
             $botan::delMsg();
-            $botan::setChatId($chat_id);
-            $botan::setMessageId($user->first);
-            $botan::delMsg();
-
-            if ($random->rasm) {
-                $ttt = $botan::sPhoto("savol/".$random->rasm);
-            } else {
-                $ttt['result']['message_id'] = $user->first;
-            }
+//            $botan::setChatId($chat_id);
+//            $botan::setMessageId($user->first);
+//            $botan::delMsg();
 
             $db->insert("`tests`", "`bilet_id`, `raqam`, `user_id`, `created`", "'".$random->bilet."', '1', '".$chat_id."', '".time()."'");
 
@@ -150,9 +144,13 @@ if ($data !== null) {
                 $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 3, 1);
             }
 
-            $ttt2 = $botan::sText();
+            if ($random->rasm) {
+                $res = $botan::sendPhotoWithText("savol/".$random->rasm);
+            } else {
+                $res = $botan::sText();
+            }
             sleep(1);
-            $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
+            $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
             break;
         case "bilet":
             $botan::call($botan::$call->callback_query->data);
@@ -162,9 +160,9 @@ if ($data !== null) {
             $botan::setChatId($chat_id);
             $botan::setMessageId($botan::$back->message_id);
             $botan::delMsg();
-            $botan::setChatId($chat_id);
-            $botan::setMessageId($user->first);
-            $botan::delMsg();
+//            $botan::setChatId($chat_id);
+//            $botan::setMessageId($user->first);
+//            $botan::delMsg();
             $botan::setMessage($til->til('key43'));
             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "continue"], 1, 1);
             $ttt2 = $botan::sText();
@@ -198,20 +196,21 @@ if ($data !== null) {
             $botan::setChatId($chat_id);
             $botan::setMessageId($botan::$back->message_id);
             $botan::delMsg();
-            $botan::setChatId($chat_id);
-            $botan::setMessageId($user->first);
-            $botan::delMsg();
-            $ttt = $botan::sPhoto("belgi/".$random->image);
+//            $botan::setChatId($chat_id);
+//            $botan::setMessageId($user->first);
+//            $botan::delMsg();
+//            $ttt = $botan::sPhoto("belgi/".$random->image);
             $botan::setMessage($til->til('key27'));
             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
             $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
-            $ttt2 = $botan::sText();
-            sleep(1);
-            if (isset($ttt2['result']['message_id']) && isset($ttt['result']['message_id'])) {
-                $db->update("second=" . $ttt2['result']['message_id'] . ", first=" . $ttt['result']['message_id'], "user_id=" . $chat_id, "users");
+//            $ttt2 = $botan::sText();
+            if ($random->image) {
+                $res = $botan::sendPhotoWithText("belgi/".$random->image);
             } else {
-                $db->update("first=".$ttt['result']['message_id'], "user_id=" . $chat_id, "users");
+                $res = $botan::sText();
             }
+            sleep(1);
+            $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
             break;
 
         case "forBack": // main oyna
@@ -283,9 +282,9 @@ if ($data !== null) {
             $botan::setChatId($chat_id);
             $botan::setMessageId($botan::$back->message_id);
             $botan::delMsg();
-            $botan::setChatId($chat_id);
-            $botan::setMessageId($user->first);
-            $botan::delMsg();
+//            $botan::setChatId($chat_id);
+//            $botan::setMessageId($user->first);
+//            $botan::delMsg();
             $til = Word::getLang($db, $chat_id);
 
             if (preg_match("~^znak~", $route)) {
@@ -296,15 +295,20 @@ if ($data !== null) {
                 if ($belgi){
                     $next = $id+1;
                     $prive = $id-1;
-                    $ttt = $botan::sPhoto("belgi/".$belgi->image);
+//                    $ttt = $botan::sPhoto("belgi/".$belgi->image);
                     $nomi = "name_".$user->lang;
                     $botan::setMessage($belgi->number." - ".$belgi->$nomi);
                     $botan::setMarkup(['text' => "⏪", 'callback_data' => "znak_".$pieces[1]."_".$prive], 1, 1);
                     $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$pieces[1]."_".$next], 1, 2);
                     $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "info"], 2, 1);
-                    $ttt2 = $botan::sText();
+
+                    if ($belgi->image) {
+                        $res = $botan::sendPhotoWithText("belgi/".$belgi->image);
+                    } else {
+                        $res = $botan::sText();
+                    }
                     sleep(1);
-                    $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
+                    $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
                 }else{
                     $belgi = $db->selectOne('child = '.$pieces[1].' ORDER BY RAND()',"belgilar");
                     $p_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
@@ -317,16 +321,20 @@ if ($data !== null) {
                         case "4":
                         case "5":
                         case "6":
-
-                            $ttt = $botan::sPhoto("belgi/".$belgi->image);
+//                            $ttt = $botan::sPhoto("belgi/".$belgi->image);
                             $nomi = "name_".$user->lang;
                             $botan::setMessage($belgi->number." - ".$belgi->$nomi);
                             $botan::setMarkup(['text' => "⏪", 'callback_data' => "znak_".$pieces[1]."_".$p_belgi->id], 1, 1);
                             $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$pieces[1]."_".$n_belgi->id], 1, 2);
                             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "info"], 2, 1);
-                            $ttt2 = $botan::sText();
+
+                            if ($belgi->image) {
+                                $res = $botan::sendPhotoWithText("belgi/".$belgi->image);
+                            } else {
+                                $res = $botan::sText();
+                            }
                             sleep(1);
-                            $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
+                            $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
                             break;
 
                         case "7":
@@ -400,12 +408,6 @@ if ($data !== null) {
                     $raqam++;
                     $random = $db->selectOne("bilet=".$bilet." AND raqam=".$raqam, "savol_data");
 
-                    if ($random->rasm) {
-                        $ttt = $botan::sPhoto("savol/".$random->rasm);
-                    } else {
-                        $ttt['result']['message_id'] = $user->first;
-                    }
-
                     $db->insert("`tests`", "`bilet_id`, `raqam`, `user_id`, `created`", "'".
                         $random->bilet."', '".$raqam."', '".$chat_id."', '".$current->created."'");
 
@@ -429,8 +431,12 @@ if ($data !== null) {
                             $random->$javob_c.$timer);
                         $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 3, 1);
                     }
+                    if ($random->rasm) {
+                        $ttt2 = $botan::sendPhotoWithText("savol/".$random->rasm);
+                    } else {
+                        $ttt2 = $botan::sText();
+                    }
 
-                    $ttt2 = $botan::sText();
 
                 } else {
                     // bu ohirgi 10-test edi.
@@ -453,10 +459,8 @@ if ($data !== null) {
 
                 }
                 sleep(1);
-                if (isset($ttt2['result']['message_id']) && isset($ttt['result']['message_id'])) {
-                    $db->update("second=" . $ttt2['result']['message_id'] . ", first=" . $ttt['result']['message_id'], "user_id=" . $chat_id, "users");
-                } else {
-                    $db->update("first=".$ttt['result']['message_id'], "user_id=" . $chat_id, "users");
+                if (isset($ttt2['result']['message_id'])) {
+                    $db->update("second=" . $ttt2['result']['message_id'] . ", first=0", "user_id=" . $chat_id, "users");
                 }
             }
     }
@@ -589,12 +593,6 @@ elseif (isset($botan::$text)) {
                         return true;
                     }
 
-                    if ($random->rasm) {
-                        $ttt = $botan::sPhoto("savol/".$random->rasm);
-                    } else {
-                        $ttt['result']['message_id'] = $user->first;
-                    }
-
                     $db->insert("`tests`", "`bilet_id`, `raqam`, `user_id`, `created`", "'".$random->bilet."', '1', '".$chat_id."', '".time()."'");
 
                     $text = $til->til('key38').": ".$random->bilet.", ".$til->til('key39').": 1\n";
@@ -621,9 +619,14 @@ elseif (isset($botan::$text)) {
                             $random->$javob_c.$timer);
                         $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 3, 1);
                     }
-                    $ttt2 = $botan::sText();
+
+                    if ($random->rasm) {
+                        $res = $botan::sendPhotoWithText("savol/".$random->rasm);
+                    } else {
+                        $res = $botan::sText();
+                    }
                     sleep(1);
-                    $db->update("second=".$ttt2['result']['message_id'].", first=".$ttt['result']['message_id'], "user_id=" . $chat_id, "users");
+                    $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
 
                     break;
 
@@ -635,16 +638,21 @@ elseif (isset($botan::$text)) {
                     $getUser = $db->getUser($chat_id, 1);
                     if ($belgi){
                         $nomi = "name_".$getUser;
-                        $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$belgi->image);
+//                        $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$belgi->image);
                         $next = $belgi->id+1;  $prive = $belgi->id-1;
                         $botan::setChatId($chat_id);
                         $botan::setMessage($belgi->number." - ".$belgi->$nomi);
                         $botan::setMarkup(['text' => "⏪", 'callback_data' => "znak_".$belgi->child."_".$prive], 1, 1);
                         $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$belgi->child."_".$next], 1, 2);
                         $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 2, 1);
-                        $ttt2 = $botan::sText();
+
+                        if ($belgi->image) {
+                            $res = $botan::sendPhotoWithText("belgi/".$belgi->image);
+                        } else {
+                            $res = $botan::sText();
+                        }
                         sleep(1);
-                        $db->update("second=".$ttt2['result']['message_id'].", first=".$ttt['result']['message_id'], "user_id=" . $chat_id, "users");
+                        $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
 
                     }else{
                         $pieces = explode(",", $botText);
@@ -654,16 +662,21 @@ elseif (isset($botan::$text)) {
                             $belgi = $db->selectOne("number='".$nomer."'", "belgilar");
                             if ($belgi){
                                 $nomi = "name_".$getUser;
-                                $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$belgi->image);
+//                                $ttt = $botan::requestToTelegram([],$chat_id,"belgi/".$belgi->image);
                                 $next = $belgi->id+1;  $prive = $belgi->id-1;
                                 $botan::setChatId($chat_id);
                                 $botan::setMessage($belgi->number." - ".$belgi->$nomi);
                                 $botan::setMarkup(['text' => "⏪", 'callback_data' => "znak_".$belgi->child."_".$prive], 1, 1);
                                 $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$belgi->child."_".$next], 1, 2);
                                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 2, 1);
-                                $ttt2 = $botan::sText();
+
+                                if ($belgi->image) {
+                                    $res = $botan::sendPhotoWithText("belgi/".$belgi->image);
+                                } else {
+                                    $res = $botan::sText();
+                                }
                                 sleep(1);
-                                $db->update("second='".$ttt2['result']['message_id']."', first='".$ttt['result']['message_id']."'", "user_id=" . $chat_id, "users");
+                                $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
                             }else{
                                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                                 $botan::send_Out($chat_id, $til->til("key23"));
