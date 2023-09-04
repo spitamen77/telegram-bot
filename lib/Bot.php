@@ -62,16 +62,20 @@ class Bot
 
         self::$call = $input;
         if (!empty($input) && is_object($input) && property_exists($input, 'callback_query')) {
-            self::$chat = $input->callback_query->message->chat;
-            self::$text = $input->callback_query->message->text;
-        } else {
-            if (isset($input->message)) {
-                self::$text = $input->message->text;
-                self::$chat = $input->message->chat;
+            if (isset($input->callback_query->message)) {
+                self::$chat = $input->callback_query->message->chat;
+                self::$text = $input->callback_query->message->text;
             } else {
-                self::$text = ""; // Или установить другое значение по умолчанию
+                // Обработка случая, когда сообщение отсутствует
+                self::$text = "";
                 self::$chat = "";
             }
+        } elseif (isset($input->message)) {
+            self::$text = $input->message->text;
+            self::$chat = $input->message->chat;
+        } else {
+            self::$text = ""; // Или установить другое значение по умолчанию
+            self::$chat = "";
         }
 
 //                self::setFileLog($input);
