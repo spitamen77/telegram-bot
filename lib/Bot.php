@@ -353,8 +353,8 @@ class Bot
             if ($res['ok']) {
                 return $res;
             }
-            Bot::setFileLog($data);
-            Bot::setFileLog($res);
+//            Bot::setFileLog($data);
+//            Bot::setFileLog($res);
 
             $res['result']['message_id'] = 0;
         }
