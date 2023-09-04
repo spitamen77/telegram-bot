@@ -28,7 +28,7 @@ class Word
 //        return $db2->getUser($user_id,1);
 //    }
 
-    public function til($key, $lang = '')
+    public function til(string $key, string $lang = ''): string
     {
         if (!$lang) {
             $lang = $this->lang;
@@ -46,9 +46,10 @@ class Word
 //            default:
 //                return self::lang($chat_id);
         }
+        return '';
     }
 
-    private static function til_uzl($key)
+    private static function til_uzl(string $key): string
     {
         $word = [
             "key01"=>"Assalomu alaykum!",
@@ -101,7 +102,7 @@ class Word
         return $word[$key] ?? '';
     }
   
-    private static function til_ru($key)
+    private static function til_ru(string $key): string
     {
         $word = [
             "key01"=>"Здравствуйте!",
@@ -155,7 +156,7 @@ class Word
         return $word[$key] ?? '';
     }
 
-    private static function til_uzk($key)
+    private static function til_uzk(string $key): string
     {
         $word = [
             "key01"=>"Ассалому алайкум!",
