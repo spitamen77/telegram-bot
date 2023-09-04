@@ -67,8 +67,8 @@ class Bot
                 if (isset($input->callback_query->message->text)){
                     self::$text = $input->callback_query->message->text;
                 } else {
-                    self::setFileLog($input->callback_query);
-                    self::$text = "";
+//                    self::setFileLog($input->callback_query);
+                    self::$text = $input->callback_query->data;
                 }
             } else {
                 // Обработка случая, когда сообщение отсутствует
