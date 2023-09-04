@@ -45,7 +45,7 @@ if ($data !== null) {
             break;
 
         case "stat":
-            $botan::call($botan::$call->callback_query->data);
+            $botan::call($data);
 //            $botan::setReply();
             $botan::setChatId($botan::$back->chat->id);
             $botan::setMessageId($botan::$back->message_id);
@@ -90,7 +90,7 @@ if ($data !== null) {
             $botan::eText();
             break;
         case "continue":
-            $botan::call($botan::$call->callback_query->data);
+            $botan::call($data);
             $chat_id = $botan::$back->chat->id;
 //            $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
@@ -106,7 +106,7 @@ if ($data !== null) {
             $botan::sText();
             break;
         case "test":
-            $botan::call($botan::$call->callback_query->data);
+            $botan::call($data);
             $chat_id = $botan::$back->chat->id;
 //            $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
@@ -157,7 +157,7 @@ if ($data !== null) {
             $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
             break;
         case "bilet":
-            $botan::call($botan::$call->callback_query->data);
+            $botan::call($data);
             $chat_id = $botan::$back->chat->id;
             $til = Word::getLang($db, $chat_id);
             $user = $db->getUser($chat_id, 0);
@@ -172,7 +172,7 @@ if ($data !== null) {
             $ttt2 = $botan::sText();
             break;
         case "results":
-            $botan::call($botan::$call->callback_query->data);
+            $botan::call($data);
             $chat_id = $botan::$back->chat->id;
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
@@ -189,7 +189,7 @@ if ($data !== null) {
             $botan::eText();
             break;
         case "belgi":
-            $botan::call($botan::$call->callback_query->data);
+            $botan::call($data);
             $chat_id = $botan::$back->chat->id;
             $til = Word::getLang($db, $chat_id);
             $db->change_step($chat_id, 3);
@@ -218,7 +218,7 @@ if ($data !== null) {
             break;
 
         case "forBack": // main oyna
-            $botan::call($botan::$call->callback_query->data);
+            $botan::call($data);
             $chat_id = $botan::$back->chat->id;
             $botan::setReply();
             $botan::setChatId($chat_id);
@@ -230,7 +230,7 @@ if ($data !== null) {
         // ** main menu **//
 
         case "setting":
-            $botan::call($botan::$call->callback_query->data);
+            $botan::call($data);
             $til = Word::getLang($db, $botan::$back->chat->id);
 //            $botan::setReply();
             $botan::setChatId($botan::$back->chat->id);
@@ -254,7 +254,7 @@ if ($data !== null) {
         case "uzkril": //2-step
         case "russian":
         case "uzlatin":
-            $botan::call($botan::$call->callback_query->data);
+            $botan::call($data);
             $db->add_user($botan::$back->chat->id, substr($botan::$call->callback_query->data, 0, 3));
     //            $botan::setReply();
             $botan::setChatId($botan::$back->chat->id);
@@ -267,7 +267,7 @@ if ($data !== null) {
         case "uzk": //2-step
         case "rus":
         case "uzl":
-            $botan::call($botan::$call->callback_query->data);
+            $botan::call($data);
             $lang = substr($botan::$call->callback_query->data, 0, 3);
             $db->edit_lang($botan::$back->chat->id, $lang);
 //            $botan::setReply();
@@ -277,7 +277,7 @@ if ($data !== null) {
             $botan::eText();
             break;
         default:
-            $route = $botan::$call->callback_query->data;
+            $route = $data;
             $botan::call($route);
 
             $chat_id = $botan::$back->chat->id;
