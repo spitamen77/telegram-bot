@@ -75,15 +75,15 @@ if ($data !== null) {
             $month_start = $db->getStart(time_stats(30),time());
             $month_created = $db->getCreated(time_stats(30),time());
 
-            $text2 = "\n\n 1 kun uchun \n".
-                "Test yechganlar: ".$one_start."\n".
-                "Qo'shilganlar: ".$one_created."\n\n".
-                "30 kun uchun \n".
-                "Test yechganlar: ".$week_start."\n".
-                "Qo'shilganlar: ".$week_created."\n\n".
-                "1 yil uchun \n".
-                "Test yechganlar: ".$month_start."\n".
-                "Qo'shilganlar: ".$month_created;
+            $text2 = "\n\n ".$til->til('key48')." \n".
+                $til->til('key49').": ".$one_start."\n".
+                $til->til('key50').": ".$one_created."\n\n".
+                $til->til('key51')." \n".
+                $til->til('key49').": ".$week_start."\n".
+                $til->til('key50').": ".$week_created."\n\n".
+                $til->til('key52')." \n".
+                $til->til('key49').": ".$month_start."\n".
+                $til->til('key50').": ".$month_created;
 
             $botan::setMessage("📊 ".$til->til('key19').$text2);
             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);

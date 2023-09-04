@@ -97,6 +97,11 @@ class Word
             "key45"=>"Jami qatnashgan testi",
             "key46"=>"Topshirilgani",
             "key47"=>"Kun savoli",
+            "key48"=>"1 kun uchun",
+            "key49"=>"Test yechganlar",
+            "key50"=>"Qo'shilganlar",
+            "key51"=>"30 kun uchun",
+            "key52"=>"1 yil uchun",
 
         ];
         return $word[$key] ?? '';
@@ -150,7 +155,11 @@ class Word
             "key45"=>"Всего участвовало",
             "key46"=>"Успешное",
             "key47"=>"Вопрос дня",
-
+            "key48"=>"На 1 день",
+            "key49"=>"Тест йечганлар",
+            "key50"=>"Присоединился",
+            "key51"=>"На 30 дней",
+            "key52"=>"На 1 год",
 
         ];
         return $word[$key] ?? '';
@@ -204,7 +213,11 @@ class Word
             "key45"=>"Жами қатнашган тести",
             "key46"=>"Топширилгани",
             "key47"=>"Кун саволи",
-
+            "key48"=>"1 кун учун",
+            "key49"=>"Тест йечганлар",
+            "key50"=>"Қўшилганлар",
+            "key51"=>"30 кун учун",
+            "key52"=>"1 йил учун",
 
         ];
         return $word[$key] ?? '';
