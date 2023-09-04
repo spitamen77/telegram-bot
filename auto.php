@@ -36,8 +36,8 @@ if ($data !== null) {
             $botan::setMarkup(['text' => "ℹ️ " . $til->til("key16"), 'callback_data' => "znak_".Bot::BUYUR."_16"], 4, 1);
             $botan::setMarkup(['text' => "🚸 " . $til->til("key17"), 'callback_data' => "znak_".Bot::AXBOROT."_46"], 5, 1);
             $botan::setMarkup(['text' => "🛠 " . $til->til("key18"), 'callback_data' => "znak_".Bot::SERVICE."_125"], 6, 1);
-            $botan::setMarkup(['text' => "🎦 " . $til->til("key20"), 'callback_data' => "znak_".Bot::QOSHIMCHA."_1"], 7, 1);
-            $botan::setMarkup(['text' => "📌 " . $til->til("key21"), 'callback_data' => "znak_".Bot::YOTIQ."_1"], 8, 1);
+            $botan::setMarkup(['text' => "🎦 " . $til->til("key20"), 'callback_data' => "znak_".Bot::QOSHIMCHA."_201"], 7, 1);
+            $botan::setMarkup(['text' => "📌 " . $til->til("key21"), 'callback_data' => "znak_".Bot::YOTIQ."_207"], 8, 1);
             $botan::setMarkup(['text' => "📍 " . $til->til("key22"), 'callback_data' => "znak_".Bot::TIK."_1"], 8, 2);
             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 9, 1);
             $botan::sText();
