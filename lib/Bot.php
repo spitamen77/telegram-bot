@@ -297,15 +297,19 @@ class Bot
         $response =  self::send("editMessageText", $data);
         $res = json_decode($response, true);
 
-        if ($res['ok']){
-            return $res;
-        } else {
+        if (!$res['ok']) {
             $data['parse_mode'] = 'HTML';
-            $response = self::send("editMessageText",$data);
+            $response = self::send("editMessageText", $data);
+            $res = json_decode($response, true);
+            if ($res['ok']) {
+                return $res;
+            }
             Bot::setFileLog($data);
-            Bot::setFileLog($response);
-            return json_decode($response, true);
+            Bot::setFileLog($res);
+
+            $res['result']['message_id'] = 0;
         }
+        return $res;
     }
 
     public static function sPhoto(string $url, string $caption = '')
