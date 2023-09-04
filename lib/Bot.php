@@ -299,10 +299,10 @@ class Bot
         $res = json_decode($response, true);
 
         if ($res['ok']){
-            Bot::setFileLog($res);
             return $res;
         } else {
             $data['text'] = 'HTML';
+            Bot::setFileLog($data);
             $response = self::send("editMessageText",$data);
             Bot::setFileLog($response);
             return json_decode($response, true);
