@@ -235,7 +235,7 @@ class Bot
             'reply_to_message_id' => self::$reply_to_message_id,
             'reply_markup' => json_encode(self::$reply_markup),
         ];
-        
+
         $response = self::send("sendMessage", $data);
         $res = json_decode($response, true);
         if ($res['ok']){
@@ -297,7 +297,9 @@ class Bot
         Bot::setFileLog($data);
         $response =  self::send("editMessageText", $data);
         $res = json_decode($response, true);
+
         if ($res['ok']){
+            Bot::setFileLog($res);
             return $res;
         } else {
             $data['text'] = 'HTML';
