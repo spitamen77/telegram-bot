@@ -18,6 +18,7 @@ $db = new DataBase();
 $data = $botan::$call->callback_query->data ?? null;
 
 if ($data !== null) {
+    Bot::setFileLog($data);
     switch ($botan::$call->callback_query->data) {
         case "info":
             $botan::call($botan::$call->callback_query->data);
@@ -286,6 +287,7 @@ if ($data !== null) {
 //            $botan::setMessageId($user->first);
 //            $botan::delMsg();
             $til = Word::getLang($db, $chat_id);
+            Bot::setFileLog($route);
 
             if (preg_match("~^znak~", $route)) {
 
