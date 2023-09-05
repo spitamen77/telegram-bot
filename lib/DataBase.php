@@ -42,15 +42,16 @@ class DataBase
     public function add_user($chat_id, string $lang)
     {
         $query = "INSERT INTO users (user_id, lang, step, created)
-              VALUES (?, ?, '2', ?)
-              ON DUPLICATE KEY UPDATE lang = VALUES(lang)";
+              SELECT ?, ?, '2', ?
+              FROM dual
+              WHERE NOT EXISTS (SELECT 1 FROM users WHERE user_id = ?)";
         $time = time();
 
         $stmt = $this->mysqli->prepare($query);
-        $stmt->bind_param("iss", $chat_id, $lang, $time);
+        $stmt->bind_param("issi", $chat_id, $lang, $time, $chat_id);
 
         if ($stmt->execute()) {
-//            echo 'User added/updated successfully!';
+            // Здесь можно добавить код обработки успешной вставки, если необходимо
         } else {
             Bot::setFileLog([$chat_id, $lang]);
         }
