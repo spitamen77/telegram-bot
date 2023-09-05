@@ -312,10 +312,15 @@ if ($data !== null) {
                 if ($belgi) {
                     $next = $db->selectOne('child = '.$pieces[1].' AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
                     $prive = $db->selectOne('child = '.$pieces[1].' AND id <> '.$next->id.'AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
+                    if (!$prive){
+                        $prive_id = $next->id;
+                    } else {
+                        $prive_id = $prive->id;
+                    }
 
                     $nomi = "name_".$user->lang;
                     $botan::setMessage($belgi->number." - ".$belgi->$nomi);
-                    $botan::setMarkup(['text' => "⏪", 'callback_data' => "znak_".$pieces[1]."_".$prive->id], 1, 1);
+                    $botan::setMarkup(['text' => "⏪", 'callback_data' => "znak_".$pieces[1]."_".$prive_id], 1, 1);
                     $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$pieces[1]."_".$next->id], 1, 2);
                     $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "info"], 2, 1);
 
@@ -331,6 +336,11 @@ if ($data !== null) {
                     $belgi = $db->selectOne('child = '.$pieces[1].' ORDER BY RAND()',"belgilar");
                     $p_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
                     $n_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$p_belgi->id.'AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
+                    if (!$n_belgi) {
+                        $next_id = $p_belgi->id;
+                    } else {
+                        $next_id = $n_belgi->id;
+                    }
 
                     switch ($pieces[1]){
                         case Bot::OGOH:
@@ -345,7 +355,7 @@ if ($data !== null) {
                             $nomi = "name_".$user->lang;
                             $botan::setMessage($belgi->number." - ".$belgi->$nomi);
                             $botan::setMarkup(['text' => "⏪", 'callback_data' => "znak_".$pieces[1]."_".$p_belgi->id], 1, 1);
-                            $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$pieces[1]."_".$n_belgi->id], 1, 2);
+                            $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$pieces[1]."_".$next_id], 1, 2);
                             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "info"], 2, 1);
 
                             if ($belgi->image) {

@@ -158,7 +158,10 @@ class DataBase
         if ($lang) {
             $query = $this->mysqli->query("SELECT `lang` FROM `users` WHERE `user_id` = " . $id);
             $users = $query->fetch_object();
-            return $users->lang;
+            if ($users){
+                return $users->lang;
+            }
+            return 'uzk';
         } else {
             $query = $this->mysqli->query("SELECT * FROM `users` WHERE `user_id` = " . $id);
             return $query->fetch_object();
