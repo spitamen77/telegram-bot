@@ -192,8 +192,13 @@ class DataBase
     public function getStep($id)
     {
         $query = $this->mysqli->query("SELECT * FROM `users` WHERE `user_id` = " . $id);
-        $users = $query->fetch_object();
-        return $users->step;
+        if ($query) {
+            $users = $query->fetch_object();
+            if ($users) {
+                return $users->step;
+            }
+        }
+        return 7;
     }
 
     public function getStart($start, $end)
