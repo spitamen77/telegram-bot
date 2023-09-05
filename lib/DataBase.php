@@ -12,7 +12,7 @@ namespace DataBase;
 
 use Bot\Bot;
 
-require_once "./lib/config.php";
+require_once "lib/config.php";
 
 class DataBase
 {

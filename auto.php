@@ -1,6 +1,6 @@
 <?php
-require_once "./vendor/autoload.php";
-require_once "./lib/config.php";
+require_once "vendor/autoload.php";
+require_once "lib/config.php";
 
 use Bot\Bot;
 use DataBase\DataBase;

@@ -1,8 +1,8 @@
 <?php
 namespace Word;
 
-require_once "./vendor/autoload.php";
-require_once "./lib/config.php";
+require_once "vendor/autoload.php";
+require_once "lib/config.php";
 
 
 class Word
