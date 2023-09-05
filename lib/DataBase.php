@@ -47,7 +47,7 @@ class DataBase
         $time = time();
 
         $stmt = $this->mysqli->prepare($query);
-        $stmt->bind_param("issi", $chat_id, $lang, $time, $lang);
+        $stmt->bind_param("iss", $chat_id, $lang, $time);
 
         if ($stmt->execute()) {
 //            echo 'User added/updated successfully!';
