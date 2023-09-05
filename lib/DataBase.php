@@ -216,7 +216,7 @@ class DataBase
         $startDateTime = date('Y-m-d H:i:s', $start);
         $endDateTime = date('Y-m-d H:i:s', $end);
 
-        $query = $this->mysqli->query("SELECT COUNT(*) as `c` FROM `users` WHERE `updated_at` BETWEEN '$startDateTime' AND '$endDateTime'");
+        $query = $this->mysqli->query("SELECT COUNT(*) as `c` FROM `users` WHERE `created_at` BETWEEN '$startDateTime' AND '$endDateTime'");
         return $query->fetch_object()->c;
     }
 
