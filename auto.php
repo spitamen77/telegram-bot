@@ -309,9 +309,10 @@ if ($data !== null) {
                 $id = (int) $pieces[2];
                 $belgi = $db->selectOne("id=".$id." AND child=".$pieces[1],"belgilar");
 
-                if ($belgi){
-                    $next = $id+1;
-                    $prive = $id-1;
+                if ($belgi) {
+                    $next = $db->selectOne('child = '.$pieces[1].' AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
+                    $prive = $db->selectOne('child = '.$pieces[1].' AND id <> '.$next->id.'AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
+
                     $nomi = "name_".$user->lang;
                     $botan::setMessage($belgi->number." - ".$belgi->$nomi);
                     $botan::setMarkup(['text' => "⏪", 'callback_data' => "znak_".$pieces[1]."_".$prive], 1, 1);
@@ -325,10 +326,11 @@ if ($data !== null) {
                     }
                     sleep(0.2);
                     $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
-                }else{
+                }
+                else{
                     $belgi = $db->selectOne('child = '.$pieces[1].' ORDER BY RAND()',"belgilar");
                     $p_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
-                    $n_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$p_belgi->id.' ORDER BY RAND()',"belgilar");
+                    $n_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$p_belgi->id.'AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
 
                     switch ($pieces[1]){
                         case Bot::OGOH:
