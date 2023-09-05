@@ -71,6 +71,7 @@ class Bot
                     self::$text = $input->callback_query->data;
                 }
             } else {
+                self::setFileLog($input);
                 // Обработка случая, когда сообщение отсутствует
                 self::$text = "";
                 self::$chat = "";
@@ -79,11 +80,11 @@ class Bot
             self::$text = $input->message->text;
             self::$chat = $input->message->chat;
         } else {
+            self::setFileLog($input);
             self::$text = ""; // Или установить другое значение по умолчанию
             self::$chat = "";
         }
 
-//                self::setFileLog($input);
 //        self::$json = json_encode(self::$call->callback_query);
 //        self::$geo = self::$get->message->location;
 //        self::$contact = self::$get->message->contact;
