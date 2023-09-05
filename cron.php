@@ -11,8 +11,8 @@
  * @date     2023.09.03 20:30
  */
 
-require_once "vendor/autoload.php";
-require_once "lib/config.php";
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__. "/lib/config.php";
 
 use Bot\Bot;
 use DataBase\DataBase;
