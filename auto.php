@@ -415,7 +415,7 @@ if ($data !== null) {
                         foreach ($wrong as $id) {
                             $wrong_id .= "❌ ".$til->til('key38').": ".$bilet.", ".$til->til('key39').": ".$id->raqam."\n";
                         }
-                        $botan::setMessage("Test topshirilmadi. 2 ta xato qildiz\n".$wrong_id);
+                        $botan::setMessage($til->til('key54')."\n".$wrong_id);
                         $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 1, 1);
                         $ttt2 = $botan::sText();
                         return true;

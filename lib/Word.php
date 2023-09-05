@@ -61,7 +61,7 @@ class Word
             "key07"=>"Sozlamalar",
             "key08"=>"Test topshirish",
             "key09"=>"Biletni tanlash",
-            "key10"=>"Belgini topish",
+            "key10"=>"Belgilarni ko'rish",
             "key11"=>"*Bilimingizni sinash uchun kerakli bo'limni tanlang*",
             "key12"=>"Belgi raqamini kiriting. Misol: 1.20 yoki 3.27",
             "key13"=>"Ogohlanturuvchi belgilar",
@@ -103,6 +103,7 @@ class Word
             "key51"=>"30 kun uchun",
             "key52"=>"1 yil uchun",
             "key53"=>"Belgini aniqlash",
+            "key54"=>"Test topshirilmadi. 2 ta xato qildiz",
 
         ];
         return $word[$key] ?? '';
@@ -120,7 +121,7 @@ class Word
             "key07"=>"Настройки",
             "key08"=>"Тест по ПДД",
             "key09"=>"Выбрать билет",
-            "key10"=>"Найти знака",
+            "key10"=>"Смотрет знаки",
             "key11"=>"*Выберите нужный раздел, чтобы проверить свои знания*",
             "key12"=>"Введите номер знака. Пример: 1.20 или 3.27",
             "key13"=>"Предупреждающие знаки",
@@ -162,6 +163,7 @@ class Word
             "key51"=>"На 30 дней",
             "key52"=>"На 1 год",
             "key53"=>"Распознавание знака",
+            "key54"=>"Тест не пройден. Вы сделали 2 ошибки",
 
         ];
         return $word[$key] ?? '';
@@ -179,7 +181,7 @@ class Word
             "key07"=>"Созламалар",
             "key08"=>"Тест топшириш",
             "key09"=>"Билетни танлаш",
-            "key10"=>"Белгини топиш",
+            "key10"=>"Белгиларни кўриш",
             "key11"=>"*Билимингизни синаш учун керакли бўлимни танланг*",
             "key12"=>"Белги рақамини киритинг. Мисол: 1.20 ёки 3.27",
             "key13"=>"Огоҳлантирувчи белгилар",
@@ -221,6 +223,7 @@ class Word
             "key51"=>"30 кун учун",
             "key52"=>"1 йил учун",
             "key53"=>"Белгини аниқлаш",
+            "key54"=>"Тест топширилмади. 2 та хато қилдиз",
 
         ];
         return $word[$key] ?? '';

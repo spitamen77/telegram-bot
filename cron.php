@@ -28,7 +28,7 @@ $db = new DataBase();
 /** action inline-keyboard  */
 
 //$data = [12,45];
-$arrays = $db->select("cron=1 AND updated_at <= DATE_SUB(NOW(), INTERVAL 20 HOUR)", 'users', '25'); //1 - yuborilgani
+$arrays = $db->select("cron=0 AND updated_at <= DATE_SUB(NOW(), INTERVAL 20 HOUR)", 'users', '25'); //1 - yuborilgani
 
 if ($arrays) {
     foreach ($arrays as $user) {
