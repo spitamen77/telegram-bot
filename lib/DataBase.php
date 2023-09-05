@@ -43,7 +43,7 @@ class DataBase
     {
         $query = "INSERT INTO users (user_id, lang, step, created)
               VALUES (?, ?, '2', ?)
-              ON DUPLICATE KEY UPDATE user_id = IFNULL(user_id, ?)";
+              ON DUPLICATE KEY UPDATE lang = VALUES(lang)";
         $time = time();
 
         $stmt = $this->mysqli->prepare($query);
