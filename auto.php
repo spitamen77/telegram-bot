@@ -738,8 +738,12 @@ elseif (isset($botan::$text)) {
                     }
             }
     }
+} else {
+    $botan::setMessage("Bu yerga qandek keldiz?");
+    $botan::setMarkup(['text' => "⬅️ Avto Test (70)", 'callback_data' => "continue"], 1, 1);
+    $ttt2 = $botan::sText();
 }
 //$end_time = microtime(true);
 //$execution_time = ($end_time - $start_time) * 1000;
 //Bot::setFileLog([$start_time, $end_time, $execution_time]);
-return;
+return true;
