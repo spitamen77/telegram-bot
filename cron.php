@@ -71,7 +71,8 @@ if ($arrays) {
             $res = $botan::sText();
         }
         sleep(0.2);
-        $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
+        $rw = $res['result']['message_id'] ?? 0;
+        $db->update("second=".$rw.", first=0", "user_id=" . $user->user_id, "users");
     }
 }
 return;
