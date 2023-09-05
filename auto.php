@@ -509,6 +509,7 @@ elseif (isset($botan::$text)) {
 
                 }
             }else{
+                $db->add_user($botan::$chat->id, 'uzl');
                 $botan::setChatId($botan::$chat->id);
                 $botan::setMessage($til->til('key34', 'uzl')."\n" . $til->til('key34', 'rus')."\n" . $til->til('key34', 'uzk'));
                 $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzlatin"], 1, 1);
