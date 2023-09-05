@@ -101,7 +101,7 @@ if ($data !== null) {
             $botan::setMarkup(['text' => "📚 " . $til->til("key08"), 'callback_data' => "test"], 1, 1);
             $botan::setMarkup(['text' => "📄 " . $til->til("key09"), 'callback_data' => "bilet"], 2, 1);
             $botan::setMarkup(['text' => "🚦 " . $til->til("key10"), 'callback_data' => "belgi"], 3, 1);
-            $botan::setMarkup(['text' => "🚦 " . $til->til("key53"), 'callback_data' => "find"], 4, 1);
+            $botan::setMarkup(['text' => "🔎 " . $til->til("key53"), 'callback_data' => "find"], 4, 1);
             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 5, 1);
             $db->change_step($chat_id, 5); // bilet tanlashi uchun
             $botan::sText();
