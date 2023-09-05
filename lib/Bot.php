@@ -238,6 +238,7 @@ class Bot
 
         $response = self::send("sendMessage", $data);
         $res = json_decode($response, true);
+        sleep(0.2);
         if ($res['ok']){
             return $res;
         } else {
@@ -296,11 +297,12 @@ class Bot
         ];
         $response =  self::send("editMessageText", $data);
         $res = json_decode($response, true);
-
+        sleep(0.2);
         if (!$res['ok']) {
             $data['parse_mode'] = 'HTML';
             $response = self::send("editMessageText", $data);
             $res = json_decode($response, true);
+            sleep(0.2);
             if ($res['ok']) {
                 return $res;
             }
@@ -345,11 +347,12 @@ class Bot
 
         $response = self::send("sendPhoto", $data);
         $res = json_decode($response, true);
-
+        sleep(0.2);
         if (!$res['ok']) {
             $data['parse_mode'] = 'HTML';
             $response = self::send("sendPhoto", $data);
             $res = json_decode($response, true);
+            sleep(0.2);
             if ($res['ok']) {
                 return $res;
             }
