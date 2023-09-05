@@ -1,0 +1,240 @@
+Array
+(
+    [chat_id] => 752413956
+    [photo] => https://telegram.parsing.uz/uzautotest/image/belgi/848ed90abf1b93ca15addaad0b78d5d7.png
+    [caption] => 5.42 - Қизил рангда ўнг томонга бурилиш
+    [parse_mode] => HTML
+    [reply_markup] => {"inline_keyboard":[[{"text":"\u23ea","callback_data":"znak_5_176"},{"text":"\u23e9","callback_data":"znak_5_178"}],[{"text":"\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434","callback_data":"forBack"}]]}
+)
+
+Array
+(
+    [ok] => 
+    [error_code] => 400
+    [description] => Bad Request: wrong file identifier/HTTP URL specified
+)
+
+Array
+(
+    [chat_id] => 752413956
+    [photo] => https://telegram.parsing.uz/uzautotest/image/belgi/184782d00db18598ccebd88e0d8ded14.jpg
+    [caption] => 5.43 - Радар
+    [parse_mode] => HTML
+    [reply_markup] => {"inline_keyboard":[[{"text":"\u23ea","callback_data":"znak_5_177"},{"text":"\u23e9","callback_data":"znak_5_179"}],[{"text":"\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434","callback_data":"forBack"}]]}
+)
+
+Array
+(
+    [ok] => 
+    [error_code] => 400
+    [description] => Bad Request: wrong file identifier/HTTP URL specified
+)
+
+Array
+(
+    [chat_id] => 752413956
+    [photo] => https://telegram.parsing.uz/uzautotest/image/belgi/184782d00db18598ccebd88e0d8ded14.jpg
+    [caption] => 5.43 - Радар
+    [parse_mode] => HTML
+    [reply_markup] => {"inline_keyboard":[[{"text":"\u23ea","callback_data":"znak_5_177"},{"text":"\u23e9","callback_data":"znak_5_179"}],[{"text":"\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434","callback_data":"forBack"}]]}
+)
+
+Array
+(
+    [ok] => 
+    [error_code] => 400
+    [description] => Bad Request: wrong file identifier/HTTP URL specified
+)
+
+Array
+(
+    [chat_id] => 752413956
+    [photo] => https://telegram.parsing.uz/uzautotest/image/belgi/184782d00db18598ccebd88e0d8ded14.jpg
+    [caption] => 5.43 - Радар
+    [parse_mode] => HTML
+    [reply_markup] => {"inline_keyboard":[[{"text":"\u23ea","callback_data":"znak_5_177"},{"text":"\u23e9","callback_data":"znak_5_179"}],[{"text":"\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434","callback_data":"forBack"}]]}
+)
+
+Array
+(
+    [ok] => 
+    [error_code] => 400
+    [description] => Bad Request: wrong file identifier/HTTP URL specified
+)
+
+Array
+(
+    [chat_id] => 752413956
+    [photo] => https://telegram.parsing.uz/uzautotest/image/belgi/184782d00db18598ccebd88e0d8ded14.jpg
+    [caption] => 5.43 - Радар
+    [parse_mode] => HTML
+    [reply_markup] => {"inline_keyboard":[[{"text":"\u23ea","callback_data":"znak_5_177"},{"text":"\u23e9","callback_data":"znak_5_179"}],[{"text":"\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434","callback_data":"forBack"}]]}
+)
+
+Array
+(
+    [ok] => 
+    [error_code] => 400
+    [description] => Bad Request: wrong file identifier/HTTP URL specified
+)
+
+Array
+(
+    [chat_id] => 752413956
+    [photo] => https://telegram.parsing.uz/uzautotest/image/belgi/184782d00db18598ccebd88e0d8ded14.jpg
+    [caption] => 5.43 - Радар
+    [parse_mode] => HTML
+    [reply_markup] => {"inline_keyboard":[[{"text":"\u23ea","callback_data":"znak_5_177"},{"text":"\u23e9","callback_data":"znak_5_179"}],[{"text":"\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434","callback_data":"forBack"}]]}
+)
+
+Array
+(
+    [ok] => 
+    [error_code] => 400
+    [description] => Bad Request: wrong file identifier/HTTP URL specified
+)
+
+Array
+(
+    [chat_id] => 752413956
+    [photo] => https://telegram.parsing.uz/uzautotest/image/belgi/184782d00db18598ccebd88e0d8ded14.jpg
+    [caption] => 5.43 - Радар
+    [parse_mode] => HTML
+    [reply_markup] => {"inline_keyboard":[[{"text":"\u23ea","callback_data":"znak_5_177"},{"text":"\u23e9","callback_data":"znak_5_179"}],[{"text":"\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434","callback_data":"forBack"}]]}
+)
+
+Array
+(
+    [ok] => 
+    [error_code] => 400
+    [description] => Bad Request: wrong file identifier/HTTP URL specified
+)
+
+Array
+(
+    [chat_id] => 752413956
+    [photo] => https://telegram.parsing.uz/uzautotest/image/belgi/184782d00db18598ccebd88e0d8ded14.jpg
+    [caption] => 5.43 - Радар
+    [parse_mode] => HTML
+    [reply_markup] => {"inline_keyboard":[[{"text":"\u23ea","callback_data":"znak_5_177"},{"text":"\u23e9","callback_data":"znak_5_179"}],[{"text":"\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434","callback_data":"forBack"}]]}
+)
+
+Array
+(
+    [ok] => 
+    [error_code] => 400
+    [description] => Bad Request: wrong file identifier/HTTP URL specified
+)
+
+Array
+(
+    [chat_id] => 752413956
+    [photo] => https://telegram.parsing.uz/uzautotest/image/belgi/184782d00db18598ccebd88e0d8ded14.jpg
+    [caption] => 5.43 - Радар
+    [parse_mode] => HTML
+    [reply_markup] => {"inline_keyboard":[[{"text":"\u23ea","callback_data":"znak_5_177"},{"text":"\u23e9","callback_data":"znak_5_179"}],[{"text":"\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434","callback_data":"forBack"}]]}
+)
+
+Array
+(
+    [ok] => 
+    [error_code] => 400
+    [description] => Bad Request: wrong file identifier/HTTP URL specified
+)
+
+Array
+(
+    [chat_id] => 752413956
+    [photo] => https://telegram.parsing.uz/uzautotest/image/belgi/184782d00db18598ccebd88e0d8ded14.jpg
+    [caption] => 5.43 - Радар
+    [parse_mode] => HTML
+    [reply_markup] => {"inline_keyboard":[[{"text":"\u23ea","callback_data":"znak_5_177"},{"text":"\u23e9","callback_data":"znak_5_179"}],[{"text":"\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434","callback_data":"forBack"}]]}
+)
+
+Array
+(
+    [ok] => 
+    [error_code] => 400
+    [description] => Bad Request: wrong file identifier/HTTP URL specified
+)
+
+Array
+(
+    [chat_id] => 752413956
+    [photo] => https://telegram.parsing.uz/uzautotest/image/belgi/c4c89232b8001733598349f7212a1e88.gif
+    [caption] => 5.8.8 - Бўлаклар бўйича ҳаракатланиш йўналиши
+    [parse_mode] => HTML
+    [reply_markup] => {"inline_keyboard":[[{"text":"\u23ea","callback_data":"znak_5_164"},{"text":"\u23e9","callback_data":"znak_5_166"}],[{"text":"\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434","callback_data":"forBack"}]]}
+)
+
+Array
+(
+    [ok] => 
+    [error_code] => 400
+    [description] => Bad Request: wrong file identifier/HTTP URL specified
+)
+
+Array
+(
+    [chat_id] => 752413956
+    [photo] => https://telegram.parsing.uz/uzautotest/image/belgi/6d7bff162f1e5a95482be626f10e2275.gif
+    [caption] => 4.10 - Отда юриш йўли
+    [parse_mode] => HTML
+    [reply_markup] => {"inline_keyboard":[[{"text":"\u23ea","callback_data":"znak_4_163"},{"text":"\u23e9","callback_data":"znak_4_165"}],[{"text":"\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434","callback_data":"forBack"}]]}
+)
+
+Array
+(
+    [ok] => 
+    [error_code] => 400
+    [description] => Bad Request: wrong file identifier/HTTP URL specified
+)
+
+Array
+(
+    [chat_id] => 752413956
+    [photo] => https://telegram.parsing.uz/uzautotest/image/belgi/184782d00db18598ccebd88e0d8ded14.jpg
+    [caption] => 5.43 - Радар
+    [parse_mode] => HTML
+    [reply_markup] => {"inline_keyboard":[[{"text":"\u23ea","callback_data":"znak_5_177"},{"text":"\u23e9","callback_data":"znak_5_179"}],[{"text":"\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434","callback_data":"forBack"}]]}
+)
+
+Array
+(
+    [ok] => 
+    [error_code] => 400
+    [description] => Bad Request: wrong file identifier/HTTP URL specified
+)
+
+Array
+(
+    [chat_id] => 752413956
+    [photo] => https://telegram.parsing.uz/uzautotest/image/belgi/184782d00db18598ccebd88e0d8ded14.jpg
+    [caption] => 5.43 - Радар
+    [parse_mode] => HTML
+    [reply_markup] => {"inline_keyboard":[[{"text":"\u23ea","callback_data":"znak_5_177"},{"text":"\u23e9","callback_data":"znak_5_179"}],[{"text":"\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434","callback_data":"forBack"}]]}
+)
+
+Array
+(
+    [ok] => 
+    [error_code] => 400
+    [description] => Bad Request: wrong file identifier/HTTP URL specified
+)
+
+Array
+(
+    [chat_id] => 752413956
+    [photo] => https://telegram.parsing.uz/uzautotest/image/belgi/184782d00db18598ccebd88e0d8ded14.jpg
+    [caption] => 5.43 - Радар
+    [parse_mode] => HTML
+    [reply_markup] => {"inline_keyboard":[[{"text":"\u23ea","callback_data":"znak_5_177"},{"text":"\u23e9","callback_data":"znak_5_179"}],[{"text":"\u2b05\ufe0f \u041d\u0430\u0437\u0430\u0434","callback_data":"forBack"}]]}
+)
+
+Array
+(
+    [ok] => 
+    [error_code] => 400
+    [description] => Bad Request: wrong file identifier/HTTP URL specified
+)
+
