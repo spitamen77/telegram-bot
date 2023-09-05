@@ -315,8 +315,8 @@ if ($data !== null) {
 
                     $nomi = "name_".$user->lang;
                     $botan::setMessage($belgi->number." - ".$belgi->$nomi);
-                    $botan::setMarkup(['text' => "⏪", 'callback_data' => "znak_".$pieces[1]."_".$prive], 1, 1);
-                    $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$pieces[1]."_".$next], 1, 2);
+                    $botan::setMarkup(['text' => "⏪", 'callback_data' => "znak_".$pieces[1]."_".$prive->id], 1, 1);
+                    $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$pieces[1]."_".$next->id], 1, 2);
                     $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "info"], 2, 1);
 
                     if ($belgi->image) {
