@@ -11,8 +11,8 @@
  * @date     2023.09.03 20:30
  */
 
-//require_once "./vendor/autoload.php";
-require_once "./lib/config.php";
+require_once "/home/parsingu/domains/telegram.parsing.uz/public_html/uzautotest/vendor/autoload.php";
+require_once "/home/parsingu/domains/telegram.parsing.uz/public_html/uzautotest/lib/config.php";
 
 use Bot\Bot;
 use DataBase\DataBase;
