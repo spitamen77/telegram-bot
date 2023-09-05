@@ -303,11 +303,16 @@ if ($data !== null) {
 //            $botan::setMessageId($user->first);
 //            $botan::delMsg();
             $til = Word::getLang($db, $chat_id);
+            if ($user->cron == 1) {
+                // cron orqali borgan bo'lsa
+                $db->update("cron=0", "user_id=" . $chat_id, "users");
+            }
 
             if (preg_match("~^znak~", $route)) {
 
                 $id = (int) $pieces[2];
                 $belgi = $db->selectOne("id=".$id." AND child=".$pieces[1],"belgilar");
+
 
                 if ($belgi) {
                     $next = $db->selectOne('child = '.$pieces[1].' AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
@@ -386,11 +391,6 @@ if ($data !== null) {
 
                 $last_q = $db->getMax("bilet_id=".$bilet." AND raqam=".$raqam.' AND user_id='.$chat_id,"tests");
                 $current = $db->selectOne("id=".$last_q->max, "tests");
-
-                if ($user->cron == 1) {
-                    // cron orqali borgan bo'lsa
-                    $db->update("cron=0", "user_id=" . $chat_id, "users");
-                }
 
                 $difference = time() - $current->created;
                 $timer = '';
