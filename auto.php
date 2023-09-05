@@ -100,8 +100,8 @@ if ($data !== null) {
             $botan::setMessage($til->til("key11"));
             $botan::setMarkup(['text' => "📚 " . $til->til("key08"), 'callback_data' => "test"], 1, 1);
             $botan::setMarkup(['text' => "📄 " . $til->til("key09"), 'callback_data' => "bilet"], 2, 1);
-            $botan::setMarkup(['text' => "🚦 " . $til->til("key10"), 'callback_data' => "belgi"], 3, 1);
-            $botan::setMarkup(['text' => "🔎 " . $til->til("key53"), 'callback_data' => "find"], 4, 1);
+            $botan::setMarkup(['text' => "🔎 " . $til->til("key53"), 'callback_data' => "belgi"], 3, 1);
+            $botan::setMarkup(['text' => "🚦 " . $til->til("key10"), 'callback_data' => "find"], 4, 1);
             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 5, 1);
             $db->change_step($chat_id, 5); // bilet tanlashi uchun
             $botan::sText();
@@ -218,7 +218,7 @@ if ($data !== null) {
 //            $botan::delMsg();
 //            $ttt = $botan::sPhoto("belgi/".$random->image);
             $botan::setMessage($til->til('key27'));
-            $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
+            $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "continue"], 1, 1);
             $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
 //            $ttt2 = $botan::sText();
             if ($random->image) {
@@ -227,7 +227,7 @@ if ($data !== null) {
                 $res = $botan::sText();
             }
             sleep(0.2);
-            $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
+            $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
             break;
 
         case "forBack": // main oyna
