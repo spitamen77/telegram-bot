@@ -153,7 +153,7 @@ class DataBase
         return null;
     }
 
-    public function getUser($id, int $lang = 0)
+    public function getUser22($id, int $lang = 0)
     {
         if ($lang) {
             $query = $this->mysqli->query("SELECT `lang` FROM `users` WHERE `user_id` = " . $id);
@@ -167,6 +167,27 @@ class DataBase
             return $query->fetch_object();
         }
     }
+
+    public function getUser($id, int $lang = 0)
+    {
+        if ($lang) {
+            $query = $this->mysqli->query("SELECT `lang` FROM `users` WHERE `user_id` = " . $id);
+            if ($query) {
+                $users = $query->fetch_object();
+                if ($users) {
+                    return $users->lang;
+                }
+            }
+            return 'uzk';
+        } else {
+            $query = $this->mysqli->query("SELECT * FROM `users` WHERE `user_id` = " . $id);
+            if ($query) {
+                return $query->fetch_object();
+            }
+        }
+        return null; // Handle the case where the query fails
+    }
+
 
     public function getStep($id)
     {
