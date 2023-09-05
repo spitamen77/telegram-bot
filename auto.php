@@ -268,7 +268,6 @@ if ($data !== null) {
         case "russian":
         case "uzlatin":
             $botan::call($data);
-            $db->add_user($botan::$back->chat->id, substr($botan::$call->callback_query->data, 0, 3));
             $botan::setReply();
             $botan::setChatId($botan::$back->chat->id);
             $botan::setMessageId($botan::$back->message_id);
@@ -494,11 +493,16 @@ if ($data !== null) {
     }
 }
 elseif (isset($botan::$text)) {
+
+    $user = $db->getUser($botan::$chat->id);
+    if ($user->cron == 1) {
+        // cron orqali borgan bo'lsa
+        $db->update("cron=0", "user_id=" . $botan::$chat->id, "users");
+    }
     $til = Word::getLang($db, $botan::$chat->id);
     switch ($botan::$text) {
         case "/":
         case "/start":
-            $user = $db->getUser($botan::$chat->id);
             if ($user->user_id == $botan::$chat->id) {
                 $step = $db->getStep($botan::$chat->id);
                 switch ($step){
@@ -620,7 +624,6 @@ elseif (isset($botan::$text)) {
 
                 case 5:
                     $botText = (int) trim($botan::$text);
-                    $user = $db->getUser($chat_id, 0);
                     $random = $db->selectOne("bilet=".$botText." AND raqam=1", "savol_data");
 
                     $botan::setChatId($chat_id);

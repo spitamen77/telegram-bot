@@ -28,8 +28,8 @@ $db = new DataBase();
 /** action inline-keyboard  */
 
 //$data = [12,45];
-$arrays = $db->select("cron=0 AND created_at = '2023-09-05 17:55:51'", 'users', '15'); //1 - yuborilgani
-//$arrays = $db->select("cron=0 AND (updated_at <= DATE_SUB(NOW(), INTERVAL 30 HOUR) OR (`updated_at` IS NULL AND created_at <= DATE_SUB(NOW(), INTERVAL 30 HOUR)))", 'users', '25'); //1 - yuborilgani
+//$arrays = $db->select("cron=0 AND created_at = '2023-09-05 17:55:51'", 'users', '15'); //1 - yuborilgani
+$arrays = $db->select("cron=0 AND (updated_at <= DATE_SUB(NOW(), INTERVAL 30 HOUR) OR (`updated_at` IS NULL AND created_at <= DATE_SUB(NOW(), INTERVAL 30 HOUR)))", 'users', '15'); //1 - yuborilgani
 
 if ($arrays) {
     foreach ($arrays as $user) {
