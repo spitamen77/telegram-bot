@@ -180,7 +180,7 @@ if ($data !== null) {
             $botan::setChatId($chat_id);
             $botan::setMessageId($botan::$back->message_id);
 //            $botan::delMsg();
-            $botan::setMessage($til->til('key12'));
+            $botan::setMessage($til->til('key53'));
             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "continue"], 1, 1);
             $ttt2 = $botan::eText();
             break;
