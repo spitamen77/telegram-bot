@@ -100,8 +100,8 @@ if ($data !== null) {
             $botan::setMessage($til->til("key11"));
             $botan::setMarkup(['text' => "📚 " . $til->til("key08"), 'callback_data' => "test"], 1, 1);
             $botan::setMarkup(['text' => "📄 " . $til->til("key09"), 'callback_data' => "bilet"], 2, 1);
-            $botan::setMarkup(['text' => "🔎 " . $til->til("key53"), 'callback_data' => "belgi"], 3, 1);
-            $botan::setMarkup(['text' => "🚦 " . $til->til("key10"), 'callback_data' => "find"], 4, 1);
+            $botan::setMarkup(['text' => "🚦 " . $til->til("key10"), 'callback_data' => "find"], 3, 1);
+            $botan::setMarkup(['text' => "🔎 " . $til->til("key53"), 'callback_data' => "belgi"], 4, 1);
             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 5, 1);
             $db->change_step($chat_id, 5); // bilet tanlashi uchun
             $botan::sText();
@@ -493,16 +493,11 @@ if ($data !== null) {
     }
 }
 elseif (isset($botan::$text)) {
-
-    $user = $db->getUser($botan::$chat->id);
-    if ($user->cron == 1) {
-        // cron orqali borgan bo'lsa
-        $db->update("cron=0", "user_id=" . $botan::$chat->id, "users");
-    }
     $til = Word::getLang($db, $botan::$chat->id);
     switch ($botan::$text) {
         case "/":
         case "/start":
+            $user = $db->getUser($botan::$chat->id);
             if ($user->user_id == $botan::$chat->id) {
                 $step = $db->getStep($botan::$chat->id);
                 switch ($step){
@@ -624,6 +619,7 @@ elseif (isset($botan::$text)) {
 
                 case 5:
                     $botText = (int) trim($botan::$text);
+                    $user = $db->getUser($chat_id, 0);
                     $random = $db->selectOne("bilet=".$botText." AND raqam=1", "savol_data");
 
                     $botan::setChatId($chat_id);
@@ -741,9 +737,9 @@ elseif (isset($botan::$text)) {
 } else {
     $botan::setMessage("Bu yerga qandek keldiz?");
     $botan::setMarkup(['text' => "⬅️ Avto Test (70)", 'callback_data' => "continue"], 1, 1);
-    $ttt2 = $botan::sText();
+    $botan::sText();
 }
 //$end_time = microtime(true);
 //$execution_time = ($end_time - $start_time) * 1000;
 //Bot::setFileLog([$start_time, $end_time, $execution_time]);
-return true;
+return;
