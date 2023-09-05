@@ -179,6 +179,7 @@ if ($data !== null) {
             $til = Word::getLang($db, $chat_id);
             $botan::setChatId($chat_id);
             $botan::setMessageId($botan::$back->message_id);
+            $db->change_step($chat_id, 7);
 //            $botan::delMsg();
             $botan::setMessage($til->til('key12'));
             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "continue"], 1, 1);
