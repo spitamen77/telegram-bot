@@ -99,7 +99,10 @@ class DataBase
 
         $query = $this->mysqli->query("SELECT * FROM `".$table."` WHERE " . $sql. " LIMIT 1");
         if ($query){
-            return $query->fetch_object();
+            $res = $query->fetch_object();
+            if ($res) {
+                return $res;
+            }
         }
         return null;
     }
@@ -110,7 +113,10 @@ class DataBase
             $limit = "LIMIT $limit";
             $query = $this->mysqli->query("SELECT $select FROM `$table` WHERE $where $limit");
             if ($query){
-                return $query->fetch_object();
+                $res = $query->fetch_object();
+                if ($res) {
+                    return $res;
+                }
             }
         } else {
             $query = $this->mysqli->query("SELECT $select FROM `$table` WHERE $where");
@@ -138,7 +144,10 @@ class DataBase
     {
         $query = $this->mysqli->query("SELECT MAX(id) as max FROM $table WHERE $where");
         if ($query){
-            return $query->fetch_object();
+            $res = $query->fetch_object();
+            if ($res) {
+                return $res;
+            }
         }
         return null;
     }
@@ -147,7 +156,10 @@ class DataBase
     {
         $query = $this->mysqli->query("SELECT COUNT($column) AS total FROM $table WHERE $where");
         if ($query){
-            return $query->fetch_object();
+            $res = $query->fetch_object();
+            if ($res) {
+                return $res;
+            }
         }
         return null;
     }
@@ -157,7 +169,10 @@ class DataBase
         $query = $this->mysqli->query("SELECT id, user_id, belgi_id, (SELECT image FROM belgilar WHERE id = belgi_savol.belgi_id) as image 
         FROM belgi_savol WHERE user_id = $id");
         if ($query){
-            return $query->fetch_object();
+            $res = $query->fetch_object();
+            if ($res) {
+                return $res;
+            }
         }
         return null;
     }
@@ -166,7 +181,10 @@ class DataBase
     {
         $query = $this->mysqli->query("SELECT * FROM $table WHERE $where ORDER BY RAND() LIMIT 1");
         if ($query){
-            return $query->fetch_object();
+            $res = $query->fetch_object();
+            if ($res) {
+                return $res;
+            }
         }
         return null;
     }
@@ -235,7 +253,7 @@ class DataBase
         $endDateTime = date('Y-m-d H:i:s', $end);
 
         $query = $this->mysqli->query("SELECT COUNT(*) as `c` FROM `users` WHERE `created_at` BETWEEN '$startDateTime' AND '$endDateTime'");
-        return $query->fetch_object()->c;
+        return @$query->fetch_object()->c;
     }
 
     public function belgiSavol($chat_id,$id,$number)
