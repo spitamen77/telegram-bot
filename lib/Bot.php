@@ -80,11 +80,11 @@ class Bot
             self::$text = $input->message->text;
             self::$chat = $input->message->chat;
         } else {
-            self::setFileLog($input);
             if (property_exists($input, 'update_id')) {
                 self::$chat = $input->my_chat_member->chat;
                 self::$text = '_'.$input->my_chat_member->new_chat_member->status.'_';
             } else {
+                self::setFileLog($input);
                 self::$text = "";
                 self::$chat = 0;
             }
