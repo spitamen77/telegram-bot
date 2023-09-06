@@ -302,7 +302,6 @@ if ($data !== null) {
                 $id = (int) $pieces[2];
                 $belgi = $db->selectOne("id=".$id." AND child=".$pieces[1],"belgilar");
 
-
                 if ($belgi) {
                     $next = $db->selectOne('child = '.$pieces[1].' AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
                     $prive = $db->selectOne('child = '.$pieces[1].' AND id <> '.$next->id.'AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
@@ -603,7 +602,7 @@ elseif (isset($botan::$text)) {
                                     $botan::setMessage($til->til('key25'));
                                     $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                                     $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
-                                    if ($belgi->image) {
+                                    if ($belgi) {
                                         $res = $botan::sendPhotoWithText("belgi/".$belgi->image);
                                     } else {
                                         $res = $botan::sText();
@@ -749,7 +748,8 @@ elseif (isset($botan::$text)) {
             }
 
     }
-} else {
+}
+else {
     $botan::setMessage("Bu yerga qandek keldiz?");
     $botan::setMarkup(['text' => "⬅️ Avto Test (70)", 'callback_data' => "continue"], 1, 1);
     $botan::sText();

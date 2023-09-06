@@ -77,7 +77,7 @@ class Bot
                 self::$chat = 0;
             }
         } elseif (isset($input->message)) {
-            self::$text = $input->message->text;
+            self::$text = $input->message->text ?? '';
             self::$chat = $input->message->chat;
         } else {
             if (property_exists($input, 'update_id')) {
