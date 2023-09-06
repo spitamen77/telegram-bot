@@ -81,8 +81,12 @@ class Bot
             self::$chat = $input->message->chat;
         } else {
             self::setFileLog($input);
-            self::$text = ""; // Или установить другое значение по умолчанию
-            self::$chat = "";
+            self::$text = "";
+            if (property_exists($input, 'update_id')) {
+                self::$chat = '';
+            } else {
+                self::$chat = $input->my_chat_member->chat;
+            }
         }
 
 //        self::$json = json_encode(self::$call->callback_query);
