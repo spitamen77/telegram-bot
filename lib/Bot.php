@@ -74,7 +74,7 @@ class Bot
                 self::setFileLog($input);
                 // Обработка случая, когда сообщение отсутствует
                 self::$text = "";
-                self::$chat = "";
+                self::$chat = 0;
             }
         } elseif (isset($input->message)) {
             self::$text = $input->message->text;
@@ -83,9 +83,9 @@ class Bot
             self::setFileLog($input);
             self::$text = "";
             if (property_exists($input, 'update_id')) {
-                self::$chat = '';
-            } else {
                 self::$chat = $input->my_chat_member->chat;
+            } else {
+                self::$chat = 0;
             }
         }
 
