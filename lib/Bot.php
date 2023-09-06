@@ -74,7 +74,7 @@ class Bot
                 self::setFileLog($input);
                 // Обработка случая, когда сообщение отсутствует
                 self::$text = "";
-                self::$chat = 0;
+                self::$chat = (object)[];
             }
         } elseif (isset($input->message)) {
             self::$text = $input->message->text ?? '';
@@ -87,7 +87,7 @@ class Bot
             } else {
                 self::setFileLog($input);
                 self::$text = "";
-                self::$chat = 0;
+                self::$chat = (object)[];
             }
         }
 
