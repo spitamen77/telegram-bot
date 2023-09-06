@@ -543,7 +543,12 @@ elseif (isset($botan::$text)) {
                 // bizni blokladi(
                 $db->update("kicked = 1", "user_id = ".$chat_id, 'users');
                 echo "Botni ishlatganiz uchun rahmat.";
-            } else {
+            } elseif (stripos($botan::$text, '_member_') !== false) {
+                $db->change_step($chat_id, 7);
+                $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
+                $botan::send_Out($botan::$chat->id, "WELCOME");
+            }
+            else {
                 switch ($step) {
                     case 2: //phone
                         $botan::setChatId($botan::$chat->id);
