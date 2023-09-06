@@ -155,7 +155,7 @@ if ($data !== null) {
                 $res = $botan::sText();
             }
             sleep(0.2);
-            $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
+            $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
             break;
         case "bilet":
             $botan::call($data);
@@ -302,9 +302,11 @@ if ($data !== null) {
 //            $botan::setMessageId($user->first);
 //            $botan::delMsg();
             $til = Word::getLang($db, $chat_id);
-            if ($user->cron == 1) {
-                // cron orqali borgan bo'lsa
-                $db->update("cron=0", "user_id=" . $chat_id, "users");
+            if ($user) {
+                if ($user->cron == 1) {
+                    // cron orqali borgan bo'lsa
+                    $db->update("cron=0", "user_id=" . $chat_id, "users");
+                }
             }
 
             if (preg_match("~^znak~", $route)) {
@@ -391,7 +393,12 @@ if ($data !== null) {
                 $last_q = $db->getMax("bilet_id=".$bilet." AND raqam=".$raqam.' AND user_id='.$chat_id,"tests");
                 $current = $db->selectOne("id=".$last_q->max, "tests");
 
-                $difference = time() - $current->created;
+                if ($current){
+                    $difference = time() - $current->created;
+                } else {
+                    Bot::setFileLog($route);
+                    $difference = 10;
+                }
                 $timer = '';
 
                 if ($difference >= 900) {
@@ -498,7 +505,7 @@ elseif (isset($botan::$text)) {
         case "/":
         case "/start":
             $user = $db->getUser($botan::$chat->id);
-            if ($user->user_id == $botan::$chat->id) {
+            if (isset($user) && ($user->user_id == $botan::$chat->id)) {
                 $step = $db->getStep($botan::$chat->id);
                 switch ($step){
                     case 2: //lang
