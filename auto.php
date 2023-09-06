@@ -615,7 +615,7 @@ elseif (isset($botan::$text)) {
                                 $botan::setMessage($til->til('key25'));
                                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                                 $botan::setMarkup(['text' => $til->til('key28'), 'callback_data' => "belgi"], 1, 2);
-                                if ($belgi->image) {
+                                if ($belgi) {
                                     $res = $botan::sendPhotoWithText("belgi/".$belgi->image);
                                 } else {
                                     $res = $botan::sText();
