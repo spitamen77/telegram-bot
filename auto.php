@@ -542,8 +542,8 @@ elseif (isset($botan::$text)) {
             break;
         case "/control":
             $active = $db->selectCustom('COUNT(id) as c','second <> 0 AND updated_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)', 'users', 1);
-            $botan::setMarkup(['text' => "Aktivlar: ".$active->c, 'callback_data' => "forBack"], 1, 1);
-            $botan::send_Out($botan::$chat->id, $til->til("key31"));
+            $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
+            $botan::send_Out($botan::$chat->id, "Aktivlar: ".$active->c);
             break;
 
         default:
