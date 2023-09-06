@@ -530,7 +530,7 @@ elseif (isset($botan::$text)) {
             break;
         case "/control":
             $active = $db->selectCustom('COUNT(id) as c','second <> 0 AND updated_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)', 'users', 1);
-            $kicked = $db->selectCustom('COUNT(id) as c','kicked = 0', 'users', 1);
+            $kicked = $db->selectCustom('COUNT(id) as c','kicked = 1', 'users', 1);
             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
             $botan::send_Out($botan::$chat->id, "Aktivlar: ".$active->c."\n"."Kicked: ".$kicked->c);
             break;
