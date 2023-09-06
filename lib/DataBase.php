@@ -69,7 +69,7 @@ class DataBase
 
     public function change_step($chat_id,$step)
     {
-        $this->mysqli->query("UPDATE `users` SET `step` = '$step' WHERE `users`.`user_id` = $chat_id");
+        $this->mysqli->query("UPDATE `users` SET `step` = '$step', `kicked`=0 WHERE `users`.`user_id` = $chat_id");
 
     }
 
