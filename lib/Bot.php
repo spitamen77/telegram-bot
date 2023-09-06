@@ -41,7 +41,7 @@ class Bot
     protected static $chat_id;
     protected static $message_id;
     protected static $message;
-    protected static $parse_mode = "Markdown";
+    protected static $parse_mode = "HTML";  //Markdown
     protected static $disable_web_page_preview = false;
     protected static $disable_notification = false;
     protected static $reply_to_message_id;
@@ -240,13 +240,18 @@ class Bot
         $response = self::send("sendMessage", $data);
         $res = json_decode($response, true);
         sleep(0.2);
-        if ($res['ok']){
-            return $res;
-        } else {
-            $data['parse_mode'] = 'HTML';
-            $response = self::send("sendMessage",$data);
-            return json_decode($response, true);
+        if (!$res['ok']) {
+            $data['parse_mode'] = 'Markdown';
+            $response = self::send("sendMessage", $data);
+            $res = json_decode($response, true);
+            sleep(0.2);
+            if ($res['ok']) {
+                return $res;
+            }
+            // umuman nemagu bo'lsa))
+            $res['result']['message_id'] = 0;
         }
+        return $res;
     }
 
     public static function rText()
@@ -300,7 +305,7 @@ class Bot
         $res = json_decode($response, true);
         sleep(0.2);
         if (!$res['ok']) {
-            $data['parse_mode'] = 'HTML';
+            $data['parse_mode'] = 'Markdown';
             $response = self::send("editMessageText", $data);
             $res = json_decode($response, true);
             sleep(0.2);
@@ -350,7 +355,7 @@ class Bot
         $res = json_decode($response, true);
         sleep(0.2);
         if (!$res['ok']) {
-            $data['parse_mode'] = 'HTML';
+            $data['parse_mode'] = 'Markdown';
             $response = self::send("sendPhoto", $data);
             $res = json_decode($response, true);
             sleep(0.2);

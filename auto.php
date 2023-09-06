@@ -264,18 +264,6 @@ if ($data !== null) {
 
         // ** end sub child main menu **//
 
-        case "uzkril": //2-step
-        case "russian":
-        case "uzlatin":
-            $botan::call($data);
-            $botan::setReply();
-            $botan::setChatId($botan::$back->chat->id);
-            $botan::setMessageId($botan::$back->message_id);
-//            $botan::delMsg();
-            $botan::setChatId($botan::$back->chat->id);
-            $botan::Main($db);
-            $botan::eText();
-            break;
         case "uzk": //2-step
         case "rus":
         case "uzl":
@@ -511,9 +499,9 @@ elseif (isset($botan::$text)) {
                     case 2: //lang
                         $botan::setChatId($botan::$chat->id);
                         $botan::setMessage($til->til('key34', 'uzl')."\n" . $til->til('key34', 'rus')."\n" . $til->til('key34', 'uzk'));
-                        $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzlatin"], 1, 1);
-                        $botan::setMarkup(['text' => "🇷🇺 Русский", 'callback_data' => "russian"], 2, 1);
-                        $botan::setMarkup(['text' => "🇺🇿 Ўзбекча", 'callback_data' => "uzkril"], 3, 1);
+                        $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzl"], 1, 1);
+                        $botan::setMarkup(['text' => "🇷🇺 Русский", 'callback_data' => "rus"], 2, 1);
+                        $botan::setMarkup(['text' => "🇺🇿 Ўзбекча", 'callback_data' => "uzk"], 3, 1);
                         $botan::sText();
                         break;
                     default:
@@ -528,9 +516,9 @@ elseif (isset($botan::$text)) {
                 $db->add_user($botan::$chat->id, 'uzl');
                 $botan::setChatId($botan::$chat->id);
                 $botan::setMessage($til->til('key34', 'uzl')."\n" . $til->til('key34', 'rus')."\n" . $til->til('key34', 'uzk'));
-                $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzlatin"], 1, 1);
-                $botan::setMarkup(['text' => "🇷🇺 Русский", 'callback_data' => "russian"], 2, 1);
-                $botan::setMarkup(['text' => "🇺🇿 Ўзбекча", 'callback_data' => "uzkril"], 3, 1);
+                $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzl"], 1, 1);
+                $botan::setMarkup(['text' => "🇷🇺 Русский", 'callback_data' => "rus"], 2, 1);
+                $botan::setMarkup(['text' => "🇺🇿 Ўзбекча", 'callback_data' => "uzk"], 3, 1);
                 $botan::sText();
             }
 //            $db->update("start=".time(), "user_id=" . $botan::$chat->id, "users");
@@ -553,9 +541,9 @@ elseif (isset($botan::$text)) {
                 case 2: //phone
                     $botan::setChatId($botan::$chat->id);
                     $botan::setMessage($til->til('key34', 'uzl')."\n" . $til->til('key34', 'rus')."\n" . $til->til('key34', 'uzk'));
-                    $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzlatin"], 1, 1);
-                    $botan::setMarkup(['text' => "🇷🇺 Русский", 'callback_data' => "russian"], 2, 1);
-                    $botan::setMarkup(['text' => "🇺🇿 Ўзбекча", 'callback_data' => "uzkril"], 3, 1);
+                    $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzl"], 1, 1);
+                    $botan::setMarkup(['text' => "🇷🇺 Русский", 'callback_data' => "rus"], 2, 1);
+                    $botan::setMarkup(['text' => "🇺🇿 Ўзбекча", 'callback_data' => "uzk"], 3, 1);
                     $botan::sText();
                     break;
                 case 3: //code
