@@ -18,7 +18,7 @@ use Bot\Bot;
 use DataBase\DataBase;
 use Word\Word;
 
-http_response_code(200);
+header('Content-Type: application/json');
 
 $botan = new Bot();
 
@@ -75,4 +75,5 @@ if ($arrays) {
         $db->update("second=".$rw.", first=0", "user_id=" . $user->user_id, "users");
     }
 }
+http_response_code(200);
 return;

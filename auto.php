@@ -6,7 +6,7 @@ use Bot\Bot;
 use DataBase\DataBase;
 use Word\Word;
 //$start_time = microtime(true);
-http_response_code(200);
+header('Content-Type: application/json');
 
 $botan = new Bot();
 
@@ -757,4 +757,5 @@ elseif (isset($botan::$text)) {
 //$end_time = microtime(true);
 //$execution_time = ($end_time - $start_time) * 1000;
 //Bot::setFileLog([$start_time, $end_time, $execution_time]);
+http_response_code(200);
 return;
