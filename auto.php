@@ -22,7 +22,7 @@ if ($data !== null) {
     switch ($data) {
         case "info":
             $botan::call($data);
-            $chat_id = $botan::$back->chat->id;
+            $chat_id = (int) $botan::$back->chat->id;
 //            $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
@@ -91,7 +91,7 @@ if ($data !== null) {
             break;
         case "continue":
             $botan::call($data);
-            $chat_id = $botan::$back->chat->id;
+            $chat_id = (int) $botan::$back->chat->id;
 //            $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
@@ -108,7 +108,7 @@ if ($data !== null) {
             break;
         case "test":
             $botan::call($data);
-            $chat_id = $botan::$back->chat->id;
+            $chat_id = (int) $botan::$back->chat->id;
 //            $botan::setReply();
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
@@ -160,7 +160,7 @@ if ($data !== null) {
             break;
         case "bilet":
             $botan::call($data);
-            $chat_id = $botan::$back->chat->id;
+            $chat_id = (int) $botan::$back->chat->id;
             $til = Word::getLang($db, $chat_id);
             $botan::setChatId($chat_id);
             $botan::setMessageId($botan::$back->message_id);
@@ -175,7 +175,7 @@ if ($data !== null) {
             break;
         case "find":
             $botan::call($data);
-            $chat_id = $botan::$back->chat->id;
+            $chat_id = (int) $botan::$back->chat->id;
             $botan::setReply();
             $til = Word::getLang($db, $chat_id);
             $botan::setChatId($chat_id);
@@ -188,7 +188,7 @@ if ($data !== null) {
             break;
         case "results":
             $botan::call($data);
-            $chat_id = $botan::$back->chat->id;
+            $chat_id = (int) $botan::$back->chat->id;
             $botan::setMessageId($botan::$back->message_id);
             $botan::setChatId($chat_id);
             $til = Word::getLang($db, $chat_id);
@@ -205,7 +205,7 @@ if ($data !== null) {
             break;
         case "belgi":
             $botan::call($data);
-            $chat_id = $botan::$back->chat->id;
+            $chat_id = (int) $botan::$back->chat->id;
             $til = Word::getLang($db, $chat_id);
             $db->change_step($chat_id, 3);
             $random = $db->random();
@@ -233,7 +233,7 @@ if ($data !== null) {
 
         case "forBack": // main oyna
             $botan::call($data);
-            $chat_id = $botan::$back->chat->id;
+            $chat_id = (int) $botan::$back->chat->id;
             $botan::setReply();
             $botan::setChatId($chat_id);
             $botan::setMessageId($botan::$back->message_id);
@@ -281,7 +281,7 @@ if ($data !== null) {
             $route = $data;
             $botan::call($route);
 
-            $chat_id = $botan::$back->chat->id;
+            $chat_id = (int) $botan::$back->chat->id;
             $pieces = explode("_", $route);
             $user = $db->getUser($chat_id, 0);
             $botan::setChatId($chat_id);
