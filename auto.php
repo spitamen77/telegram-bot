@@ -389,7 +389,7 @@ if ($data !== null) {
                 } else {
                     Bot::setFileLog($route);
                     $difference = 10;
-                    $current = $last_q;
+                    $current = $db->selectOne("bilet_id=".$bilet." AND raqam=".$raqam.' AND user_id='.$chat_id,"tests");
                 }
                 $timer = '';
 
