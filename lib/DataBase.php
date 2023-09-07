@@ -98,7 +98,7 @@ class DataBase
     {
 
         $query = $this->mysqli->query("SELECT * FROM `".$table."` WHERE " . $sql. " LIMIT 1");
-        if ($query){
+        if ($query && $query->num_rows > 0){
             $res = $query->fetch_object();
             if ($res) {
                 return $res;
@@ -112,7 +112,7 @@ class DataBase
         if ($limit) {
             $limit = "LIMIT $limit";
             $query = $this->mysqli->query("SELECT $select FROM `$table` WHERE $where $limit");
-            if ($query){
+            if ($query && $query->num_rows > 0){
                 $res = $query->fetch_object();
                 if ($res) {
                     return $res;
@@ -143,7 +143,7 @@ class DataBase
     public function getMax(string $where, string $table)
     {
         $query = $this->mysqli->query("SELECT MAX(id) as max FROM $table WHERE $where");
-        if ($query){
+        if ($query && $query->num_rows > 0){
             $res = $query->fetch_object();
             if ($res) {
                 return $res;
@@ -180,7 +180,7 @@ class DataBase
     public function random(string $where = '`number` IS NOT NULL', string $table = 'belgilar')
     {
         $query = $this->mysqli->query("SELECT * FROM $table WHERE $where ORDER BY RAND() LIMIT 1");
-        if ($query){
+        if ($query && $query->num_rows > 0){
             $res = $query->fetch_object();
             if ($res) {
                 return $res;
