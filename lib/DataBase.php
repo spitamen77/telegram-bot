@@ -103,6 +103,8 @@ class DataBase
             if ($res) {
                 return $res;
             }
+        } else {
+            Bot::setFileLog($this->mysqli->error);
         }
         return null;
     }
@@ -117,6 +119,8 @@ class DataBase
                 if ($res) {
                     return $res;
                 }
+            } else {
+                Bot::setFileLog($this->mysqli->error);
             }
         } else {
             $query = $this->mysqli->query("SELECT $select FROM `$table` WHERE $where");
@@ -148,6 +152,8 @@ class DataBase
             if ($res) {
                 return $res;
             }
+        } else {
+            Bot::setFileLog($this->mysqli->error);
         }
         return null;
     }
@@ -185,6 +191,8 @@ class DataBase
             if ($res) {
                 return $res;
             }
+        } else {
+            Bot::setFileLog($this->mysqli->error);
         }
         return null;
     }
@@ -221,6 +229,8 @@ class DataBase
             if ($users) {
                 return $users->step;
             }
+        } else {
+            Bot::setFileLog($this->mysqli->error);
         }
         return 7;
     }
