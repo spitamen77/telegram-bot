@@ -493,16 +493,17 @@ if ($data !== null) {
     }
 }
 elseif (isset($botan::$text)) {
-    $til = Word::getLang($db, $botan::$chat->id);
+    $chat_id = (int) $botan::$chat->id;
+    $til = Word::getLang($db, $chat_id);
     switch ($botan::$text) {
         case "/":
         case "/start":
-            $user = $db->getUser($botan::$chat->id);
-            if (isset($user) && ($user->user_id == $botan::$chat->id)) {
-                $step = $db->getStep($botan::$chat->id);
+            $user = $db->getUser($chat_id);
+            if (isset($user) && ($user->user_id == $chat_id)) {
+                $step = $db->getStep($chat_id);
                 switch ($step){
                     case 2: //lang
-                        $botan::setChatId($botan::$chat->id);
+                        $botan::setChatId($chat_id);
                         $botan::setMessage($til->til('key34', 'uzl')."\n" . $til->til('key34', 'rus')."\n" . $til->til('key34', 'uzk'));
                         $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzl"], 1, 1);
                         $botan::setMarkup(['text' => "🇷🇺 Русский", 'callback_data' => "rus"], 2, 1);
@@ -511,15 +512,17 @@ elseif (isset($botan::$text)) {
                         break;
                     default:
                         {
-                            $botan::setChatId($botan::$chat->id);
+                            $botan::setChatId($chat_id);
                             $botan::Main($db);
                             $botan::sText();
                         }
 
                 }
             }else{
-                $db->add_user($botan::$chat->id, 'uzl');
-                $botan::setChatId($botan::$chat->id);
+                if ($chat_id != 2147483647){    // shu jonga tegdi
+                    $db->add_user($chat_id, 'uzl');
+                }
+                $botan::setChatId($chat_id);
                 $botan::setMessage($til->til('key34', 'uzl')."\n" . $til->til('key34', 'rus')."\n" . $til->til('key34', 'uzk'));
                 $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzl"], 1, 1);
                 $botan::setMarkup(['text' => "🇷🇺 Русский", 'callback_data' => "rus"], 2, 1);
@@ -531,17 +534,16 @@ elseif (isset($botan::$text)) {
         case "/info":
         case "/info Лойиха хакида":
             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
-            $botan::send_Out($botan::$chat->id, $til->til("key31"));
+            $botan::send_Out($chat_id, $til->til("key31"));
             break;
         case "/control":
             $active = $db->selectCustom('COUNT(id) as c','second <> 0 AND updated_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)', 'users', 1);
             $kicked = $db->selectCustom('COUNT(id) as c','kicked = 1', 'users', 1);
             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
-            $botan::send_Out($botan::$chat->id, "Aktivlar: ".$active->c."\n"."Kicked: ".$kicked->c);
+            $botan::send_Out($chat_id, "Aktivlar: ".$active->c."\n"."Kicked: ".$kicked->c);
             break;
 
         default:
-            $chat_id = $botan::$chat->id;
             $step = $db->getStep($chat_id);
             $position = stripos($botan::$text, '_kicked_');
 
@@ -552,12 +554,12 @@ elseif (isset($botan::$text)) {
             } elseif (stripos($botan::$text, '_member_') !== false) {
                 $db->change_step($chat_id, 7);
                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
-                $botan::send_Out($botan::$chat->id, "WELCOME");
+                $botan::send_Out($chat_id, "WELCOME");
             }
             else {
                 switch ($step) {
                     case 2: //phone
-                        $botan::setChatId($botan::$chat->id);
+                        $botan::setChatId($chat_id);
                         $botan::setMessage($til->til('key34', 'uzl')."\n" . $til->til('key34', 'rus')."\n" . $til->til('key34', 'uzk'));
                         $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzl"], 1, 1);
                         $botan::setMarkup(['text' => "🇷🇺 Русский", 'callback_data' => "rus"], 2, 1);
