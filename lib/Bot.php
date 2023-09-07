@@ -246,12 +246,12 @@ class Bot
         $response = self::send("sendMessage", $data);
         $res = json_decode($response, true);
         sleep(0.2);
-        if (!$res['ok']) {
+        if (!isset($res['ok'])) {
             $data['parse_mode'] = 'Markdown';
             $response = self::send("sendMessage", $data);
             $res = json_decode($response, true);
             sleep(0.2);
-            if ($res['ok']) {
+            if (isset($res['ok'])) {
                 return $res;
             }
             // umuman nemagu bo'lsa))
@@ -310,12 +310,12 @@ class Bot
         $response =  self::send("editMessageText", $data);
         $res = json_decode($response, true);
         sleep(0.2);
-        if (!$res['ok']) {
+        if (!isset($res['ok'])) {
             $data['parse_mode'] = 'Markdown';
             $response = self::send("editMessageText", $data);
             $res = json_decode($response, true);
             sleep(0.2);
-            if ($res['ok']) {
+            if (isset($res['ok'])) {
                 return $res;
             }
             // umuman nemagu bo'lsa))
@@ -360,12 +360,12 @@ class Bot
         $response = self::send("sendPhoto", $data);
         $res = json_decode($response, true);
         sleep(0.2);
-        if (!$res['ok']) {
+        if (!isset($res['ok'])) {
             $data['parse_mode'] = 'Markdown';
             $response = self::send("sendPhoto", $data);
             $res = json_decode($response, true);
             sleep(0.2);
-            if ($res['ok']) {
+            if (isset($res['ok'])) {
                 return $res;
             }
 //            Bot::setFileLog($data);
