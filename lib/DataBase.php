@@ -189,21 +189,6 @@ class DataBase
         return null;
     }
 
-    public function getUser22($id, int $lang = 0)
-    {
-        if ($lang) {
-            $query = $this->mysqli->query("SELECT `lang` FROM `users` WHERE `user_id` = " . $id);
-            $users = $query->fetch_object();
-            if ($users){
-                return $users->lang;
-            }
-            return 'uzk';
-        } else {
-            $query = $this->mysqli->query("SELECT * FROM `users` WHERE `user_id` = " . $id);
-            return $query->fetch_object();
-        }
-    }
-
     public function getUser($id, int $lang = 0)
     {
         if ($lang) {
@@ -218,7 +203,10 @@ class DataBase
         } else {
             $query = $this->mysqli->query("SELECT * FROM `users` WHERE `user_id` = " . $id);
             if ($query) {
-                return $query->fetch_object();
+                $res = $query->fetch_object();
+                if ($res) {
+                    return $res;
+                }
             }
         }
         return null; // Handle the case where the query fails

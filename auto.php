@@ -296,6 +296,9 @@ if ($data !== null) {
                     // cron orqali borgan bo'lsa
                     $db->update("cron=0", "user_id=" . $chat_id, "users");
                 }
+            } else {
+                $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
+                $botan::send_Out($botan::$chat->id, "/start");
             }
 
             if (preg_match("~^znak~", $route)) {
