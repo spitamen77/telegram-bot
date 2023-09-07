@@ -121,6 +121,7 @@ if ($data !== null) {
 //            $botan::setChatId($chat_id);
 //            $botan::setMessageId($user->first);
 //            $botan::delMsg();
+            sleep(0.2);
 
             $db->insert("`tests`", "`bilet_id`, `raqam`, `user_id`, `created`", "'".$random->bilet."', '1', '".$chat_id."', '".time()."'");
 
@@ -385,6 +386,7 @@ if ($data !== null) {
                 } else {
                     Bot::setFileLog($route);
                     $difference = 10;
+                    $current = $last_q;
                 }
                 $timer = '';
 
@@ -429,6 +431,7 @@ if ($data !== null) {
                     $raqam++;
                     $random = $db->selectOne("bilet=".$bilet." AND raqam=".$raqam, "savol_data");
 
+                    sleep(0.2);
                     $db->insert("`tests`", "`bilet_id`, `raqam`, `user_id`, `created`", "'".
                         $random->bilet."', '".$raqam."', '".$chat_id."', '".$current->created."'");
 
@@ -643,6 +646,7 @@ elseif (isset($botan::$text)) {
                             $botan::sText();
                             return true;
                         }
+                        sleep(0.2);
 
                         $db->insert("`tests`", "`bilet_id`, `raqam`, `user_id`, `created`", "'".$random->bilet."', '1', '".$chat_id."', '".time()."'");
 
