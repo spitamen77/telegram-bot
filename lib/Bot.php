@@ -73,20 +73,20 @@ class Bot
             } else {
                 self::setFileLog($input);
                 // Обработка случая, когда сообщение отсутствует
-                self::$text = "";
+                self::$text = "/start";
                 self::$chat = (object)[];
             }
         } elseif (isset($input->message)) {
             self::$text = $input->message->text ?? '';
             self::$chat = $input->message->chat;
         } else {
-            if (!empty($input) && property_exists($input, 'update_id')) {
+            if (!empty($input) && property_exists($input, 'my_chat_member')) {
                 self::setFileLog($input);
                 self::$chat = $input->my_chat_member->chat;
                 self::$text = '_'.$input->my_chat_member->new_chat_member->status.'_';
             } else {
                 self::setFileLog($input);
-                self::$text = "";
+                self::$text = "/start";
                 self::$chat = (object)[];
             }
         }
@@ -319,8 +319,8 @@ class Bot
                 return $res;
             }
             // umuman nemagu bo'lsa))
-            Bot::delMsg();
-            $res = Bot::sText();
+            self::delMsg();
+            $res = self::sText();
         }
         return $res;
     }
