@@ -48,19 +48,19 @@ if ($arrays) {
         $javob_c = 'javob_c_'.$til->lang;
         $javob_d = 'javob_d_'.$til->lang;
 
-        $botan::setMarkup(['text' => "A", 'callback_data' => "savol_A_".$random->bilet.'_1_'.$random->javob], 1, 1);
-        $botan::setMarkup(['text' => "B", 'callback_data' => "savol_B_".$random->bilet.'_1_'.$random->javob], 1, 2);
+        $botan::setMarkup(['text' => "F1", 'callback_data' => "savol_A_".$random->bilet.'_1_'.$random->javob], 1, 1);
+        $botan::setMarkup(['text' => "F2", 'callback_data' => "savol_B_".$random->bilet.'_1_'.$random->javob], 1, 2);
 
         $timer = "\n".$til->til('key36')." 14:59 ".$til->til('key37');
 
-        $botan::setMarkup(['text' => "C", 'callback_data' => "savol_C_".$random->bilet.'_1_'.$random->javob], 1, 3);
+        $botan::setMarkup(['text' => "F3", 'callback_data' => "savol_C_".$random->bilet.'_1_'.$random->javob], 1, 3);
 
         if (@strlen($random->$javob_d)) {
-            $botan::setMarkup(['text' => "D", 'callback_data' => "savol_D_".$random->bilet.'_1_'.$random->javob], 1, 4);
-            $botan::setMessage($text.$random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".
-                $random->$javob_c."\nD - ".$random->$javob_d.$timer);
+            $botan::setMarkup(['text' => "F4", 'callback_data' => "savol_D_".$random->bilet.'_1_'.$random->javob], 1, 4);
+            $botan::setMessage($text.$random->$savol."\nF1 - ".$random->$javob_a."\nF2 - ".$random->$javob_b."\nF3 - ".
+                $random->$javob_c."\nF4 - ".$random->$javob_d.$timer);
         } else {
-            $botan::setMessage($text.$random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".
+            $botan::setMessage($text.$random->$savol."\nF1 - ".$random->$javob_a."\nF2 - ".$random->$javob_b."\nF3 - ".
                 $random->$javob_c.$timer);
         }
         $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 2, 1);
