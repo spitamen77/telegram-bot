@@ -53,17 +53,17 @@ if ($arrays) {
 
         $timer = "\n".$til->til('key36')." 14:59 ".$til->til('key37');
 
-        $botan::setMarkup(['text' => "C", 'callback_data' => "savol_C_".$random->bilet.'_1_'.$random->javob], 2, 1);
+        $botan::setMarkup(['text' => "C", 'callback_data' => "savol_C_".$random->bilet.'_1_'.$random->javob], 1, 3);
 
         if (@strlen($random->$javob_d)) {
-            $botan::setMarkup(['text' => "D", 'callback_data' => "savol_D_".$random->bilet.'_1_'.$random->javob], 2, 2);
+            $botan::setMarkup(['text' => "D", 'callback_data' => "savol_D_".$random->bilet.'_1_'.$random->javob], 1, 4);
             $botan::setMessage($text.$random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".
                 $random->$javob_c."\nD - ".$random->$javob_d.$timer);
         } else {
             $botan::setMessage($text.$random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".
                 $random->$javob_c.$timer);
         }
-        $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 3, 1);
+        $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 2, 1);
 
         if ($random->rasm) {
             $res = $botan::sendPhotoWithText("savol/".$random->rasm);
