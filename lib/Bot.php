@@ -205,6 +205,7 @@ class Bot
 
         $result = curl_exec($ch);
         curl_close($ch);
+        Bot::setFileLog($result);
         return $result;
     }
 
@@ -244,7 +245,6 @@ class Bot
         ];
 
         $response = self::send("sendMessage", $data);
-        Bot::setFileLog($response);
         $res = json_decode($response, true);
         sleep(0.2);
         if (!isset($res['ok'])) {
@@ -348,7 +348,7 @@ class Bot
         return json_decode($result, true);
     }
 
-    public static function sendPhotoWithText(string $url)
+    public static function xsendPhotoWithText(string $url)
     {
         $data = [
             'chat_id' => self::$chat_id,
