@@ -205,7 +205,6 @@ class Bot
 
         $result = curl_exec($ch);
         curl_close($ch);
-        Bot::setFileLog($result);
         return $result;
     }
 
@@ -248,15 +247,11 @@ class Bot
         $res = json_decode($response, true);
         sleep(0.2);
         if (!isset($res['ok'])) {
-            $data['parse_mode'] = 'Markdown';
-            $response = self::send("sendMessage", $data);
-            $res = json_decode($response, true);
-            sleep(0.2);
-            if (isset($res['ok'])) {
-                return $res;
+            if ($res['error_code'] == 403) {
+                $res['result']['message_id'] = 403;
+            } else {
+                $res['result']['message_id'] = 0;
             }
-            // umuman nemagu bo'lsa))
-            $res['result']['message_id'] = 0;
         }
         return $res;
     }
@@ -362,17 +357,14 @@ class Bot
         $res = json_decode($response, true);
         sleep(0.2);
         if (!isset($res['ok'])) {
-            $data['parse_mode'] = 'Markdown';
-            $response = self::send("sendPhoto", $data);
-            $res = json_decode($response, true);
-            sleep(0.2);
-            if (isset($res['ok'])) {
-                return $res;
+            if ($res['error_code'] == 403) {
+                $res['result']['message_id'] = 403;
+            } else {
+                $res['result']['message_id'] = 0;
             }
 //            Bot::setFileLog($data);
 //            Bot::setFileLog($res);
 
-            $res['result']['message_id'] = 0;
         }
         return $res;
     }
