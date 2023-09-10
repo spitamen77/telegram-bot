@@ -244,6 +244,7 @@ class Bot
         ];
 
         $response = self::send("sendMessage", $data);
+        Bot::setFileLog($response);
         $res = json_decode($response, true);
         sleep(0.2);
         if (!isset($res['ok'])) {
