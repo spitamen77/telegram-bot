@@ -348,7 +348,7 @@ class Bot
         return json_decode($result, true);
     }
 
-    public static function xsendPhotoWithText(string $url)
+    public static function sendPhotoWithText(string $url)
     {
         $data = [
             'chat_id' => self::$chat_id,
