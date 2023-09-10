@@ -247,13 +247,14 @@ class Bot
         $res = json_decode($response, true);
         sleep(0.2);
         Bot::setFileLog($res);
-        if (!isset($res['ok'])) {
+        if ($res['ok'] === false) {
             if ($res['error_code'] == 403) {
                 Bot::setFileLog($res);
                 $res['result']['message_id'] = 403;
             } else {
                 $res['result']['message_id'] = 0;
             }
+
         }
         return $res;
     }
@@ -359,14 +360,13 @@ class Bot
         $res = json_decode($response, true);
         sleep(0.2);
         Bot::setFileLog($res);
-        if (!isset($res['ok'])) {
+        if ($res['ok'] === false) {
             if ($res['error_code'] == 403) {
                 Bot::setFileLog($res);
                 $res['result']['message_id'] = 403;
             } else {
                 $res['result']['message_id'] = 0;
             }
-//            Bot::setFileLog($res);
 
         }
         return $res;
