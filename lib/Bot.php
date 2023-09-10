@@ -248,6 +248,7 @@ class Bot
         sleep(0.2);
         if (!isset($res['ok'])) {
             if ($res['error_code'] == 403) {
+                Bot::setFileLog($res);
                 $res['result']['message_id'] = 403;
             } else {
                 $res['result']['message_id'] = 0;
@@ -358,11 +359,11 @@ class Bot
         sleep(0.2);
         if (!isset($res['ok'])) {
             if ($res['error_code'] == 403) {
+                Bot::setFileLog($res);
                 $res['result']['message_id'] = 403;
             } else {
                 $res['result']['message_id'] = 0;
             }
-//            Bot::setFileLog($data);
 //            Bot::setFileLog($res);
 
         }
