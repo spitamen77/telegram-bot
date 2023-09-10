@@ -51,7 +51,7 @@ if ($arrays) {
         $botan::setMarkup(['text' => "F1", 'callback_data' => "savol_A_".$random->bilet.'_1_'.$random->javob], 1, 1);
         $botan::setMarkup(['text' => "F2", 'callback_data' => "savol_B_".$random->bilet.'_1_'.$random->javob], 1, 2);
 
-        $timer = "\n".$til->til('key36')." 14:59 ".$til->til('key37');
+        $timer = "\n\n".$til->til('key36')." 14:59 ".$til->til('key37');
 
         $botan::setMarkup(['text' => "F3", 'callback_data' => "savol_C_".$random->bilet.'_1_'.$random->javob], 1, 3);
 
