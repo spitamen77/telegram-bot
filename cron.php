@@ -70,7 +70,7 @@ if ($arrays) {
             $res = $botan::sText();
         }
         sleep(0.2);
-        $rw = $res['result']['message_id'] ?? 0;
+        $rw = $res['result']['message_id'];
         if ($rw == 403) {
             $db->update("second=".$rw.", cron=1, kicked = 1", "user_id=" . $user->user_id, "users");
         } else {
