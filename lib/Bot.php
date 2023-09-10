@@ -246,10 +246,8 @@ class Bot
         $response = self::send("sendMessage", $data);
         $res = json_decode($response, true);
         sleep(0.2);
-        Bot::setFileLog($res);
         if ($res['ok'] === false) {
             if ($res['error_code'] == 403) {
-                Bot::setFileLog($res);
                 $res['result']['message_id'] = 403;
             } else {
                 $res['result']['message_id'] = 0;
@@ -359,10 +357,8 @@ class Bot
         $response = self::send("sendPhoto", $data);
         $res = json_decode($response, true);
         sleep(0.2);
-        Bot::setFileLog($res);
         if ($res['ok'] === false) {
             if ($res['error_code'] == 403) {
-                Bot::setFileLog($res);
                 $res['result']['message_id'] = 403;
             } else {
                 $res['result']['message_id'] = 0;
