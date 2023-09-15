@@ -11,6 +11,7 @@
 namespace DataBase;
 
 use Bot\Bot;
+use mysqli;
 
 require_once __DIR__. "/config.php";
 
@@ -18,7 +19,7 @@ class DataBase
 {
 
 //    private static $db = null; // Единственный экземпляр класса, чтобы не создавать множество подключений
-    private \MySQLi $mysqli; // Идентификатор соединения
+    private MySQLi $mysqli; // Идентификатор соединения
 
     /* Получение экземпляра класса. Если он уже существует, то возвращается, если его не было, то создаётся и возвращается (паттерн Singleton) */
 //    public static function getDB() {
@@ -27,7 +28,7 @@ class DataBase
 //    }
 
     public function __construct() {
-        $this->mysqli = new \MySQLi("127.0.0.1", DB_USER, DB_PASS, DB, 3306);
+        $this->mysqli = new MySQLi("127.0.0.1", DB_USER, DB_PASS, DB, 3306);
         $this->mysqli->set_charset('utf8mb4');
     }
 
