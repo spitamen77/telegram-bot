@@ -722,7 +722,14 @@ elseif (isset($botan::$text)) {
                                 $res = $botan::sText();
                             }
                             sleep(0.2);
-                            $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
+                            $second = $this->mysqli->real_escape_string($res['result']['message_id']);
+                            $userId = $this->mysqli->real_escape_string($chat_id);
+
+                            $sql = "second={$second}, first=0";
+                            $where = "user_id={$userId}";
+                            $table = "users";
+                            $db->update($sql, $where, $table);
+//                            $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $chat_id, "users");
 
                         }else{
                             $pieces = explode(",", $botText);
