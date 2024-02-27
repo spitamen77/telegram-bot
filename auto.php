@@ -695,9 +695,9 @@ elseif (isset($botan::$text)) {
 
                     case 7: //belgini topib beraman
                         $til = Word::getLang($db, $chat_id);
-                        $botText = trim($botan::$text);
+                        $botText = addslashes(trim($botan::$text));
 //                    $botText = preg_replace('/\s|\+|-|@|#|&|%|$|=|_|:|;|!|\'|"|\(|\)/', '', $botan::$text);
-                        $belgi = $db->selectOne("number='".$botText."'", "belgilar");
+                        $belgi = $db->selectOne("`number`='".$botText."'", "belgilar");
                         $getUser = $db->getUser($chat_id, 1);
                         if ($belgi){
                             $nomi = "name_".$getUser;
