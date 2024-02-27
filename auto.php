@@ -329,7 +329,15 @@ if ($data !== null) {
                         $res = $botan::sText();
                     }
                     sleep(0.2);
-                    $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
+                    $second = $this->mysqli->real_escape_string($res['result']['message_id']);
+                    $userId = $this->mysqli->real_escape_string($user->user_id);
+
+                    $sql = "second={$second}, first=0";
+                    $where = "user_id={$userId}";
+                    $table = "users";
+
+                    $db->update($sql, $where, $table);
+//                    $db->update("second=".$res['result']['message_id'].", first=0", "user_id=" . $user->user_id, "users");
                 }
                 else{
                     $belgi = $db->selectOne('child = '.$pieces[1].' ORDER BY RAND()',"belgilar");
