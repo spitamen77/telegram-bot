@@ -76,6 +76,8 @@ class DataBase
 
     public function update(string $sql='', string $where, string $table = "users")
     {
+        $update = "UPDATE $table SET $sql WHERE $where";
+        file_put_contents('logs.log', $update, FILE_APPEND);
         $result = $this->mysqli->query("UPDATE $table SET $sql WHERE $where");
         if (!$result) {
             error_log("Ошибка выполнения запроса: " . $this->mysqli->error);
