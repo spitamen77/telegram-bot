@@ -334,7 +334,7 @@ if ($data !== null) {
                 else{
                     $belgi = $db->selectOne('child = '.$pieces[1].' ORDER BY RAND()',"belgilar");
                     $p_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
-                    $n_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$p_belgi->id.'AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
+                    $n_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$p_belgi->id.' AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
                     if (!$n_belgi) {
                         $next_id = $p_belgi->id;
                     } else {
