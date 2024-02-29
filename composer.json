@@ -1,11 +1,12 @@
 {
   "require": {
-    "php": ">=8.2",
+    "php": ">=8.1",
     "guzzlehttp/guzzle": "6.5.*",
     "ext-mysqli": "*",
     "ext-json": "*",
     "ext-curl": "*",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "setasign/fpdf": "^1.8"
   },
   "autoload": {
     "psr-4": {

@@ -17,15 +17,7 @@ require_once __DIR__. "/config.php";
 
 class DataBase
 {
-
-//    private static $db = null; // Единственный экземпляр класса, чтобы не создавать множество подключений
     private mysqli $mysqli; // Идентификатор соединения
-
-    /* Получение экземпляра класса. Если он уже существует, то возвращается, если его не было, то создаётся и возвращается (паттерн Singleton) */
-//    public static function getDB() {
-//        if (self::$db == null) self::$db = new DataBase();
-//        return self::$db;
-//    }
 
     public function __construct() {
         $this->mysqli = new mysqli("127.0.0.1", DB_USER, DB_PASS, DB, 3306);
@@ -82,10 +74,16 @@ class DataBase
         }
     }
 
-    public function select(string $where, string $table = "users", $limit=false)
+    public function select(string $where, string $table = "users", $limit=false, bool $order = false)
     {
         if ($limit) $new = $this->mysqli->query("SELECT * FROM $table WHERE $where ORDER BY id DESC LIMIT $limit");
-        else $new = $this->mysqli->query("SELECT * FROM $table WHERE $where ORDER BY id");
+        else {
+            if ($order) {
+                $new = $this->mysqli->query("SELECT * FROM $table WHERE $where");
+            } else {
+                $new = $this->mysqli->query("SELECT * FROM $table WHERE $where ORDER BY id");
+            }
+        }
         $news = [];
         if ($new) {
             for($i=0; $i<$new->num_rows; $i++)
