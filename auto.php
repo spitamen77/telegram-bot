@@ -452,10 +452,10 @@ if ($data !== null) {
 
                     if (@strlen($random->$javob_d)) {
                         $botan::setMessage($text.$random->$savol."\n$a A - ".$random->$javob_a."\n$b B - ".$random->$javob_b."\n$c C - ".
-                            $random->$javob_c."\n$d D - ".$random->$javob_d.$timer);
+                            $random->$javob_c."\n$d D - ".$random->$javob_d);
                     } else {
                         $botan::setMessage($text.$random->$savol."\n$a A - ".$random->$javob_a."\n$b B - ".$random->$javob_b."\n$c C - ".
-                            $random->$javob_c.$timer);
+                            $random->$javob_c);
                     }
                     if ($random->rasm) {
                         $ttt2 = $botan::sendPhotoWithText("savol/".$random->rasm, false);
