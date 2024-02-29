@@ -30,7 +30,8 @@ $data = [
 
 foreach ($arrays as $row) {
     // Собираем текстовые поля с окончанием _uzl
-    $text = $row->savol_uzl . "\n" .
+    $text = 'Bilet: '.$row->bilet.', savol: '.$row->raqam."\n".
+        $row->savol_uzl . "\n" .
         'A -'.$row->javob_a_uzl . "\n" .
         'B -'.$row->javob_b_uzl . "\n" .
         'C -'.$row->javob_c_uzl . "\n" .
