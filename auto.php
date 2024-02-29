@@ -417,20 +417,20 @@ if ($data !== null) {
                     $db->update("result=".Bot::ANSWER_FALSE, "id=" . $last_q->max, "tests");
 
                     //tekshiramiz, 2 tadan ortiq bo'madimi false javoblari
-                    $sum = $db->getCount("`created`=".$current->created." AND result = ".Bot::ANSWER_FALSE, 'result', 'tests');
-
-                    if ($sum->total >= 2) {
-                        // ikkichi...
-                        $wrong = $db->select("`bilet_id` = ".$bilet." AND `result` = ".Bot::ANSWER_FALSE." AND `created` = ".$current->created, 'tests');
-                        $wrong_id = '';
-                        foreach ($wrong as $id) {
-                            $wrong_id .= "❌ ".$til->til('key38').": ".$bilet.", ".$til->til('key39').": ".$id->raqam."\n";
-                        }
-                        $botan::setMessage($til->til('key54')."\n".$wrong_id);
-                        $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 1, 1);
-                        $ttt2 = $botan::sText();
-                        return true;
-                    }
+//                    $sum = $db->getCount("`created`=".$current->created." AND result = ".Bot::ANSWER_FALSE, 'result', 'tests');
+//
+//                    if ($sum->total >= 2) {
+//                        // ikkichi...
+//                        $wrong = $db->select("`bilet_id` = ".$bilet." AND `result` = ".Bot::ANSWER_FALSE." AND `created` = ".$current->created, 'tests');
+//                        $wrong_id = '';
+//                        foreach ($wrong as $id) {
+//                            $wrong_id .= "❌ ".$til->til('key38').": ".$bilet.", ".$til->til('key39').": ".$id->raqam."\n";
+//                        }
+//                        $botan::setMessage($til->til('key54')."\n".$wrong_id);
+//                        $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 1, 1);
+//                        $ttt2 = $botan::sText();
+//                        return true;
+//                    }
                 }
 
                 if ($raqam != 10) {
