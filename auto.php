@@ -413,16 +413,10 @@ if ($data !== null) {
                 if ($variant == $true_answer) {
                     // true answer
                     $db->update("result=".Bot::ANSWER_TRUE, "id=" . $last_q->max, "tests");
-                    $a = ($variant == 'A') ? '✅' : '';
-                    $b = ($variant == 'B') ? '✅' : '';
-                    $c = ($variant == 'C') ? '✅' : '';
-                    $d = ($variant == 'D') ? '✅' : '';
+
                 } else {
                     $db->update("result=".Bot::ANSWER_FALSE, "id=" . $last_q->max, "tests");
-                    $a = ($variant == 'A') ? '❌' : '';
-                    $b = ($variant == 'B') ? '❌' : '';
-                    $c = ($variant == 'C') ? '❌' : '';
-                    $d = ($variant == 'D') ? '❌' : '';
+
                     //tekshiramiz, 2 tadan ortiq bo'madimi false javoblari
 //                    $sum = $db->getCount("`created`=".$current->created." AND result = ".Bot::ANSWER_FALSE, 'result', 'tests');
 //
@@ -439,6 +433,16 @@ if ($data !== null) {
 //                        return true;
 //                    }
                 }
+                $answers = ['A', 'B', 'C', 'D'];
+                $marks = [];
+
+                foreach ($answers as $answer) {
+                    if ($variant == $answer) {
+                        $marks[$answer] = $variant == $true_answer ? '✅' : '❌';
+                    } else {
+                        $marks[$answer] = $true_answer == $answer ? '📌' : '';
+                    }
+                }
 
                 if ($raqam != 10) {
                     // oldingi savoli
@@ -451,10 +455,10 @@ if ($data !== null) {
                     $javob_d = 'javob_d_'.$til->lang;
 
                     if (@strlen($random->$javob_d)) {
-                        $botan::setMessage($text.$random->$savol."\n$a A - ".$random->$javob_a."\n$b B - ".$random->$javob_b."\n$c C - ".
-                            $random->$javob_c."\n$d D - ".$random->$javob_d."\n🏎");
+                        $botan::setMessage($text.$random->$savol."\n".$marks['A']." A - ".$random->$javob_a."\n".$marks['B']." B - ".$random->$javob_b."\n".$marks['C']." C - ".
+                            $random->$javob_c."\n".$marks['D']." D - ".$random->$javob_d."\n🏎");
                     } else {
-                        $botan::setMessage($text.$random->$savol."\n$a A - ".$random->$javob_a."\n$b B - ".$random->$javob_b."\n$c C - ".
+                        $botan::setMessage($text.$random->$savol."\n".$marks['A']." A - ".$random->$javob_a."\n".$marks['B']." B - ".$random->$javob_b."\n".$marks['C']." C - ".
                             $random->$javob_c."\n🏎");
                     }
                     if ($random->rasm) {
@@ -509,10 +513,10 @@ if ($data !== null) {
                     $javob_d = 'javob_d_'.$til->lang;
 
                     if (@strlen($random->$javob_d)) {
-                        $botan::setMessage($text.$random->$savol."\n$a A - ".$random->$javob_a."\n$b B - ".$random->$javob_b."\n$c C - ".
-                            $random->$javob_c."\n$d D - ".$random->$javob_d."\n🏎");
+                        $botan::setMessage($text.$random->$savol."\n".$marks['A']." A - ".$random->$javob_a."\n".$marks['B']." B - ".$random->$javob_b."\n".$marks['C']." C - ".
+                            $random->$javob_c."\n".$marks['D']." D - ".$random->$javob_d."\n🏎");
                     } else {
-                        $botan::setMessage($text.$random->$savol."\n$a A - ".$random->$javob_a."\n$b B - ".$random->$javob_b."\n$c C - ".
+                        $botan::setMessage($text.$random->$savol."\n".$marks['A']." A - ".$random->$javob_a."\n".$marks['B']." B - ".$random->$javob_b."\n".$marks['C']." C - ".
                             $random->$javob_c."\n🏎");
                     }
                     if ($random->rasm) {
