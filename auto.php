@@ -443,10 +443,6 @@ if ($data !== null) {
                 if ($raqam != 10) {
                     // oldingi savoli
                     $random = $db->selectOne("bilet=".$bilet." AND raqam=".$raqam, "savol_data");
-
-                    $db->insert("`tests`", "`bilet_id`, `raqam`, `user_id`, `created`", "'".
-                        $random->bilet."', '".$raqam."', '".$chat_id."', '".$current->created."'");
-
                     $text = $til->til('key38').": ".$random->bilet.", ".$til->til('key39').": $raqam\n";
                     $savol = 'savol_'.$til->lang;
                     $javob_a = 'javob_a_'.$til->lang;
@@ -505,7 +501,6 @@ if ($data !== null) {
                 } else {
                     // bu ohirgi 10-test edi.
                     $answers = $db->select("`bilet_id` = ".$bilet." AND `created` = ".$current->created, 'tests');    // AND `result` = ".Bot::ANSWER_FALSE."
-//                    $text = '';
                     $text = "\n";
                     $i = 0;
                     foreach ($answers as $id) {
@@ -517,9 +512,7 @@ if ($data !== null) {
                         }
                     }
                     $i = 10 - $i;
-//                    if ($wrong_id) {
-//                        $text = $til->til('key41').": ".$wrong_id;
-//                    }
+
                     $botan::setMessage($til->til('key40')." $i - ".$til->til('key42')." \n".$text);
                     $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "continue"], 1, 1);
                     $ttt2 = $botan::sText();
