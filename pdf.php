@@ -23,7 +23,7 @@ $pdf->AddPage();
 $pdf->SetFont('Arial', '', 12);
 
 // Допустим, $data - это массив данных, полученных из вашей таблицы `savol_data`
-$arrays = $db->select("1", 'savol_data', 100, true);
+$arrays = $db->select("1", 'savol_data', 200, true);
 $data = [
     // Здесь должны быть данные, полученные из вашей БД
 ];
@@ -31,11 +31,11 @@ $data = [
 foreach ($arrays as $row) {
     // Собираем текстовые поля с окончанием _uzl
     $text = $row->savol_uzl . "\n" .
-        $row->javob_a_uzl . "\n" .
-        $row->javob_b_uzl . "\n" .
-        $row->javob_c_uzl . "\n" .
-        $row->javob_d_uzl. "\n" .
-        '✅ '.$row->javob;
+        'A -'.$row->javob_a_uzl . "\n" .
+        'B -'.$row->javob_b_uzl . "\n" .
+        'C -'.$row->javob_c_uzl . "\n" .
+        'D -'.$row->javob_d_uzl. "\n" .
+        '+++ '.$row->javob;
 
     // Добавляем текст в PDF
     $pdf->MultiCell(0, 10, $text);
@@ -45,7 +45,7 @@ foreach ($arrays as $row) {
     if ($row->rasm) {
         // Добавляем изображение
         // Предполагается, что путь к изображению относительный и находится в той же директории, где выполняется скрипт
-        $pdf->Image(BOT_URL . '/image/' . "savol/".$row->rasm, $pdf->GetX(), $pdf->GetY(), 40); // 40 - примерная ширина изображения в мм
+        $pdf->Image(BOT_URL . '/image/' . "savol/".$row->rasm, $pdf->GetX(), $pdf->GetY(), 80); // 40 - примерная ширина изображения в мм
         $pdf->Ln(40); // Оставляем место под изображение, добавляя отступ после него
     }
 }
