@@ -452,10 +452,10 @@ if ($data !== null) {
 
                     if (@strlen($random->$javob_d)) {
                         $botan::setMessage($text.$random->$savol."\n$a A - ".$random->$javob_a."\n$b B - ".$random->$javob_b."\n$c C - ".
-                            $random->$javob_c."\n$d D - ".$random->$javob_d."\n");
+                            $random->$javob_c."\n$d D - ".$random->$javob_d."\n🏎");
                     } else {
                         $botan::setMessage($text.$random->$savol."\n$a A - ".$random->$javob_a."\n$b B - ".$random->$javob_b."\n$c C - ".
-                            $random->$javob_c."\n");
+                            $random->$javob_c."\n🏎");
                     }
                     if ($random->rasm) {
                         $ttt2 = $botan::sendPhotoWithText("savol/".$random->rasm, false);
@@ -499,6 +499,28 @@ if ($data !== null) {
 
 
                 } else {
+                    // oldingi savoli
+                    $random = $db->selectOne("bilet=".$bilet." AND raqam=".$raqam, "savol_data");
+                    $text = $til->til('key38').": ".$random->bilet.", ".$til->til('key39').": $raqam\n";
+                    $savol = 'savol_'.$til->lang;
+                    $javob_a = 'javob_a_'.$til->lang;
+                    $javob_b = 'javob_b_'.$til->lang;
+                    $javob_c = 'javob_c_'.$til->lang;
+                    $javob_d = 'javob_d_'.$til->lang;
+
+                    if (@strlen($random->$javob_d)) {
+                        $botan::setMessage($text.$random->$savol."\n$a A - ".$random->$javob_a."\n$b B - ".$random->$javob_b."\n$c C - ".
+                            $random->$javob_c."\n$d D - ".$random->$javob_d."\n🏎");
+                    } else {
+                        $botan::setMessage($text.$random->$savol."\n$a A - ".$random->$javob_a."\n$b B - ".$random->$javob_b."\n$c C - ".
+                            $random->$javob_c."\n🏎");
+                    }
+                    if ($random->rasm) {
+                        $ttt2 = $botan::sendPhotoWithText("savol/".$random->rasm, false);
+                    } else {
+                        $ttt2 = $botan::sText(false);
+                    }
+
                     // bu ohirgi 10-test edi.
                     $answers = $db->select("`bilet_id` = ".$bilet." AND `created` = ".$current->created, 'tests');    // AND `result` = ".Bot::ANSWER_FALSE."
                     $text = "\n";
@@ -800,5 +822,28 @@ else {
 //$end_time = microtime(true);
 //$execution_time = ($end_time - $start_time) * 1000;
 //Bot::setFileLog([$start_time, $end_time, $execution_time]);
+
+function generateQuestionText($random, $til, $timer = ''): string
+{
+    $text = $til->til('key38').": ".$random->bilet.", ".$til->til('key39').": ".$random->raqam."\n";
+    $langFields = ['savol', 'javob_a', 'javob_b', 'javob_c', 'javob_d'];
+    foreach ($langFields as $field) {
+        $fieldName = $field . '_' . $til->lang;
+        if (isset($random->$fieldName) && !empty($random->$fieldName)) {
+            $text .= "\n" . ($field == 'savol' ? '' : strtoupper($field[-1]) . ' - ') . $random->$fieldName;
+        }
+    }
+    return $text . $timer;
+}
+function setAnswerButtons($random, $raqam, $bilet) {
+    global $botan; // Используем глобальный объект, если не передаем его через параметры
+    $answers = ['A', 'B', 'C', 'D'];
+    foreach ($answers as $answer) {
+        if (isset($random->{'javob_' . strtolower($answer)}) && !empty($random->{'javob_' . strtolower($answer)})) {
+            $callbackData = "savol_" . $answer . "_" . $bilet . "_" . $raqam . "_" . $random->javob;
+            $botan::setMarkup(['text' => $answer, 'callback_data' => $callbackData], 1, ord($answer) - 65);
+        }
+    }
+}
 http_response_code(200);
 return;
