@@ -354,7 +354,7 @@ class Bot
             'photo' => trim(BOT_URL . '/image/' . $url),
             'caption' => htmlspecialchars(self::$message),
             'parse_mode' => self::$parse_mode,
-            'reply_markup' => json_encode(self::$reply_markup),
+//            'reply_markup' => json_encode(self::$reply_markup),
         ];
         if ($reply_markup) {
             $data['reply_markup'] = json_encode(self::$reply_markup);
