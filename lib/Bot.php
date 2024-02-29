@@ -231,7 +231,7 @@ class Bot
         return json_decode($result, true);
     }
 
-    public static function sText()
+    public static function sText(bool $reply_markup = true)
     {
         $data = [
             'chat_id' => self::$chat_id,
@@ -240,8 +240,11 @@ class Bot
 //                'disable_web_page_preview' => self::$disable_web_page_preview,
 //                'disable_notification' => self::$disable_notification,
             'reply_to_message_id' => self::$reply_to_message_id,
-            'reply_markup' => json_encode(self::$reply_markup),
+//            'reply_markup' => json_encode(self::$reply_markup),
         ];
+        if ($reply_markup) {
+            $data['reply_markup'] = json_encode(self::$reply_markup);
+        }
 
         $response = self::send("sendMessage", $data);
         $res = json_decode($response, true);
@@ -344,7 +347,7 @@ class Bot
         return json_decode($result, true);
     }
 
-    public static function sendPhotoWithText(string $url)
+    public static function sendPhotoWithText(string $url, bool $reply_markup = true)
     {
         $data = [
             'chat_id' => self::$chat_id,
@@ -353,6 +356,9 @@ class Bot
             'parse_mode' => self::$parse_mode,
             'reply_markup' => json_encode(self::$reply_markup),
         ];
+        if ($reply_markup) {
+            $data['reply_markup'] = json_encode(self::$reply_markup);
+        }
 
         $response = self::send("sendPhoto", $data);
         $res = json_decode($response, true);

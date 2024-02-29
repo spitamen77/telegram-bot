@@ -458,9 +458,9 @@ if ($data !== null) {
                             $random->$javob_c.$timer);
                     }
                     if ($random->rasm) {
-                        $ttt2 = $botan::sendPhotoWithText("savol/".$random->rasm);
+                        $ttt2 = $botan::sendPhotoWithText("savol/".$random->rasm, false);
                     } else {
-                        $ttt2 = $botan::sText();
+                        $ttt2 = $botan::sText(false);
                     }
 
                     //keyingi savoli
