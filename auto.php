@@ -413,6 +413,7 @@ if ($data !== null) {
                 if ($variant == $true_answer) {
                     // true answer
                     $db->update("result=".Bot::ANSWER_TRUE, "id=" . $last_q->max, "tests");
+//                    $a = ($variant == 'A')
                 } else {
                     $db->update("result=".Bot::ANSWER_FALSE, "id=" . $last_q->max, "tests");
 
@@ -434,6 +435,33 @@ if ($data !== null) {
                 }
 
                 if ($raqam != 10) {
+                    // oldingi savoli
+//                    $random = $db->selectOne("bilet=".$bilet." AND raqam=".$raqam, "savol_data");
+//
+//                    $db->insert("`tests`", "`bilet_id`, `raqam`, `user_id`, `created`", "'".
+//                        $random->bilet."', '".$raqam."', '".$chat_id."', '".$current->created."'");
+//
+//                    $text = $til->til('key38').": ".$random->bilet.", ".$til->til('key39').": $raqam\n";
+//                    $savol = 'savol_'.$til->lang;
+//                    $javob_a = 'javob_a_'.$til->lang;
+//                    $javob_b = 'javob_b_'.$til->lang;
+//                    $javob_c = 'javob_c_'.$til->lang;
+//                    $javob_d = 'javob_d_'.$til->lang;
+//
+//                    if (@strlen($random->$javob_d)) {
+//                        $botan::setMessage($text.$random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".
+//                            $random->$javob_c."\nD - ".$random->$javob_d.$timer);
+//                    } else {
+//                        $botan::setMessage($text.$random->$savol."\nA - ".$random->$javob_a."\nB - ".$random->$javob_b."\nC - ".
+//                            $random->$javob_c.$timer);
+//                    }
+//                    if ($random->rasm) {
+//                        $ttt2 = $botan::sendPhotoWithText("savol/".$random->rasm);
+//                    } else {
+//                        $ttt2 = $botan::sText();
+//                    }
+
+                    //keyingi savoli
                     $raqam++;
                     $random = $db->selectOne("bilet=".$bilet." AND raqam=".$raqam, "savol_data");
 
@@ -470,12 +498,16 @@ if ($data !== null) {
 
                 } else {
                     // bu ohirgi 10-test edi.
-                    $wrong = $db->select("`bilet_id` = ".$bilet." AND `result` = ".Bot::ANSWER_FALSE." AND `created` = ".$current->created, 'tests');
+                    $answers = $db->select("`bilet_id` = ".$bilet." AND `created` = ".$current->created, 'tests');    // AND `result` = ".Bot::ANSWER_FALSE."
                     $wrong_id = '';
-                    $text = '';
+                    $text = "\n";
                     $i = 0;
-                    foreach ($wrong as $id) {
-                        $wrong_id .= "❌ ".$til->til('key38').": ".$bilet.", ".$til->til('key39').": ".$id->raqam."\n";
+                    foreach ($answers as $id) {
+                        if ($id->result == Bot::ANSWER_TRUE) {
+                            $wrong_id .= "✅ ".$til->til('key38').": ".$bilet.", ".$til->til('key39').": ".$id->raqam."\n";
+                        } else {
+                            $wrong_id .= "❌ ".$til->til('key38').": ".$bilet.", ".$til->til('key39').": ".$id->raqam."\n";
+                        }
                         $i++;
                     }
                     $i = 10 - $i;
