@@ -795,10 +795,16 @@ elseif (isset($botan::$text)) {
                                     sleep(0.2);
                                     $db->update("second='".$res['result']['message_id']."', first=0", "user_id='" . $chat_id."'", "users");
                                 }else{
+                                    if ($botan::$username == 'avtomaktabchorsu') {
+                                        break;
+                                    }
                                     $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                                     $botan::send_Out($chat_id, $til->til("key23"));
                                 }
                             } else {
+                                if ($botan::$username == 'avtomaktabchorsu') {
+                                    break;
+                                }
                                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                                 $botan::send_Out($chat_id, $til->til("key23"));
                             }
@@ -807,6 +813,9 @@ elseif (isset($botan::$text)) {
                         break;
                     default:
                     {
+                        if ($botan::$username == 'avtomaktabchorsu') {
+                            break;
+                        }
                         $til = Word::getLang($db, $chat_id);
                         $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                         $botan::send_Out($chat_id, $til->til("key23"));
