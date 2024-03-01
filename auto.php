@@ -805,7 +805,7 @@ elseif (isset($botan::$text)) {
                                 }
                             } else {
                                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
-                                $botan::send_Out($chat_id, $til->til("key23"));
+                                $botan::send_Out($chat_id, $til->til("key23")." `𝗨zа𝗨𝗍о𝗍𝖾ѕʈ_ხоt`");
                             }
 
                         }
