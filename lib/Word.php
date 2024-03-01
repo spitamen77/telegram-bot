@@ -106,6 +106,7 @@ class Word
             "key52"=>"1 yil uchun",
             "key53"=>"Belgini aniqlash",
             "key54"=>"Test topshirilmadi. 2 ta xato qildiz",
+            "key55"=>"Oʻzbekiston Respublikasining Ma'muriy javobgarlik toʻgʻrisidagi Kodeksi moddalari",
 
         ];
         return $word[$key] ?? '';
@@ -166,6 +167,7 @@ class Word
             "key52"=>"На 1 год",
             "key53"=>"Распознавание знака",
             "key54"=>"Тест не пройден. Вы сделали 2 ошибки",
+            "key55"=>"Статьи Кодекса об административной ответственности Республики Узбекистан",
 
         ];
         return $word[$key] ?? '';
@@ -226,6 +228,7 @@ class Word
             "key52"=>"1 йил учун",
             "key53"=>"Белгини аниқлаш",
             "key54"=>"Тест топширилмади. 2 та хато қилдиз",
+            "key55"=>"Ўзбекистон Республикасининг Маъмурий жавобгарлик тўғрисидаги Кодекси моддалари",
 
         ];
         return $word[$key] ?? '';
