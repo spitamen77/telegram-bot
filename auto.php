@@ -575,7 +575,7 @@ if ($data !== null) {
                 // route - jarima_128-2
                 $modda = $pieces[1];
 
-                $current = $db->select("`modda`=".$modda, "jarima");
+                $current = $db->select("`modda`='".$modda."'", "jarima");
 
                 if ($current){
                     $text = "\n";
