@@ -41,6 +41,7 @@ class Bot
     protected static $chat_id;
     protected static $message_id;
     protected static $message;
+    public static $username;
     protected static $parse_mode = "HTML";  //Markdown
     protected static $disable_web_page_preview = false;
     protected static $disable_notification = false;
@@ -70,6 +71,9 @@ class Bot
 //                    self::setFileLog($input->callback_query);
                     self::$text = $input->callback_query->data;
                 }
+                if (isset($input->callback_query->message->chat->username)) {
+                    self::$username = $input->callback_query->message->chat->username;
+                }
             } else {
                 self::setFileLog($input);
                 // Обработка случая, когда сообщение отсутствует
@@ -79,18 +83,26 @@ class Bot
         } elseif (isset($input->message)) {
             self::$text = $input->message->text ?? '';
             self::$chat = $input->message->chat;
+            if (isset($input->message->chat->username)) {
+                self::$username = $input->message->chat->username;
+            }
         } else {
             if (!empty($input) && property_exists($input, 'my_chat_member')) {
                 self::setFileLog($input);
                 self::$chat = $input->my_chat_member->chat;
                 self::$text = '_'.$input->my_chat_member->new_chat_member->status.'_';
+                if (isset($input->my_chat_member->chat->username)) {
+                    self::$username = $input->my_chat_member->chat->username;
+                }
             } else {
                 self::setFileLog($input);
                 self::$text = "/start";
                 self::$chat = (object)[];
             }
         }
-
+        if (!isset(self::$username)) {
+            self::$username = null; // или задайте какое-то дефолтное значение
+        }
 //        self::$json = json_encode(self::$call->callback_query);
 //        self::$geo = self::$get->message->location;
 //        self::$contact = self::$get->message->contact;

@@ -693,6 +693,9 @@ elseif (isset($botan::$text)) {
                         break;
 
                     case 5:
+                        if ($botan::$username == 'avtomaktabchorsu') {
+                            break;
+                        }
                         $botText = (int) trim($botan::$text);
                         $user = $db->getUser($chat_id, 0);
                         $random = $db->selectOne("bilet=".$botText." AND raqam=1", "savol_data");
