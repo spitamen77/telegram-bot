@@ -376,7 +376,7 @@ if ($data !== null) {
                         }
                     } else {
                         $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
-                        $botan::send_Out($chat_id, $til->til("key31")." `𝗨zа𝗨𝗍о𝗍𝖾ѕʈ_ხоt`");
+                        $botan::send_Out($chat_id, $til->til("key31")); //." `𝗨zа𝗨𝗍о𝗍𝖾ѕʈ_ხоt`"
                         break;
                     }
                 }
