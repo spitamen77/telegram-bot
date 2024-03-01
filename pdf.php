@@ -35,13 +35,22 @@ foreach ($arrays as $row) {
         $pdf->Ln(60); // Оставляем место под изображение, добавляя отступ после него
     }
     // Собираем текстовые поля с окончанием _uzl
-    $text = 'Bilet: '.$row->bilet.', savol: '.$row->raqam."\n".
-        $row->savol_uzl . "\n" .
-        'A -'.$row->javob_a_uzl . "\n" .
-        'B -'.$row->javob_b_uzl . "\n" .
-        'C -'.$row->javob_c_uzl . "\n" .
-        'D -'.$row->javob_d_uzl. "\n" .
-        '+ '.$row->javob.'  @uzautotest_bot';
+    if ($row->javob_d_uzl) {
+        $text = 'Bilet: '.$row->bilet.', savol: '.$row->raqam."\n".
+            $row->savol_uzl . "\n" .
+            'A -'.$row->javob_a_uzl . "\n" .
+            'B -'.$row->javob_b_uzl . "\n" .
+            'C -'.$row->javob_c_uzl . "\n" .
+            'D -'.$row->javob_d_uzl. "\n" .
+            '+ '.$row->javob.'  @uzautotest_bot';
+    } else {
+        $text = 'Bilet: '.$row->bilet.', savol: '.$row->raqam."\n".
+            $row->savol_uzl . "\n" .
+            'A -'.$row->javob_a_uzl . "\n" .
+            'B -'.$row->javob_b_uzl . "\n" .
+            'C -'.$row->javob_c_uzl . "\n" .
+            '+ '.$row->javob.'  @uzautotest_bot';
+    }
 
     $encodedText = mb_convert_encoding($text, 'ISO-8859-1', 'UTF-8');
     // Добавляем текст в PDF
