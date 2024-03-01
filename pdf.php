@@ -36,6 +36,7 @@ foreach ($arrays as $row) {
         'D -'.$row->javob_d_uzl. "\n" .
         '+++ '.$row->javob;
 
+    $encodedText = mb_convert_encoding($text, 'ISO-8859-1', 'UTF-8');
     // Добавляем текст в PDF
     $pdf->MultiCell(0, 10, $text);
     $pdf->Ln(); // Добавляем небольшой отступ перед изображением
