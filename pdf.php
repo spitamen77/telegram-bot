@@ -23,7 +23,7 @@ $pdf->AddPage();
 $pdf->SetFont('Arial', '', 12);
 
 // Допустим, $data - это массив данных, полученных из вашей таблицы `savol_data`
-$arrays = $db->selectOfset("1", 'savol_data', 400, 200);
+$arrays = $db->selectOfset("1", 'savol_data', 200, 600);
 
 
 foreach ($arrays as $row) {
