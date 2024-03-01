@@ -559,14 +559,14 @@ if ($data !== null) {
                     $qoida = 'qoida_'.$til->lang;
                     foreach ($current as $jarima) {
                         $text .= "\n".$jarima->$qoida;
-                        $text .= 'Jarima: '.$jarima->jarima;
+                        $text .= "\n".'💸 Eng kam ish haqining miqdorida jarima qiymati: '.$jarima->jarima;
                         if ($jarima->muddat) {
-                            $text .= "\n Muddat: ".$jarima->muddat;
+                            $text .= "\n 🛑Transport vositasini boshqarish huquqidan mahrum qilish muddati: ".$jarima->muddat;
                         }
 
                     }
 
-                    $botan::setMessage($modda."\n".$text);
+                    $botan::setMessage($modda ." - Modda"."\n".$text);
                     $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                     $ttt2 = $botan::sText();
                     return true;
