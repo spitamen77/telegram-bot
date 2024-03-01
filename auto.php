@@ -51,43 +51,35 @@ if ($data !== null) {
             $botan::setMessageId($botan::$back->message_id);
             $til = Word::getLang($db, $botan::$back->chat->id);
             function time_stats($type){
+                $timeShifts = [
+                    1 => 0,
+                    7 => -(31*24*60*60),
+                    30 => -(365*24*60*60),
+                ];
                 $day = date('j');
                 $month = date('m');
                 $year = date('Y');
                 $d = DateTime::createFromFormat('j-n-Y-H-i-s', "$day-$month-$year-0-00-10", new DateTimeZone('+0500'));
-                switch ($type){
-                    case 1:
-                        return $d->getTimestamp();
-                        break;
-                    case 7:
-                        return $d->getTimestamp()-(31*24*60*60);
-                        break;
-                    case 30:
-                        return $d->getTimestamp()-(365*24*60*60);
-                        break;
-                }
+                return $d->getTimestamp() + $timeShifts[$type];
             }
-//
-            $one_start = $db->getStart(time_stats(1),time());
-            $one_created = $db->getCreated(time_stats(1),time());
-            $week_start = $db->getStart(time_stats(7),time());
-            $week_created = $db->getCreated(time_stats(7),time());
-            $month_start = $db->getStart(time_stats(30),time());
-            $month_created = $db->getCreated(time_stats(30),time());
 
-            $text2 = "\n\n ".$til->til('key48')."\n".
-                $til->til('key49').": ".$one_start."\n".
-                $til->til('key50').": ".$one_created."\n\n".
-                $til->til('key51')." \n".
-                $til->til('key49').": ".$week_start."\n".
-                $til->til('key50').": ".$week_created."\n\n".
-                $til->til('key52')." \n".
-                $til->til('key49').": ".$month_start."\n".
-                $til->til('key50').": ".$month_created;
+            $statsPeriods = [1, 7, 30];
+            $text2 = "\n\n";
+
+            foreach ($statsPeriods as $period) {
+                $start = $db->getStart(time_stats($period), time());
+                $created = $db->getCreated(time_stats($period), time());
+                $periodKey = $period === 1 ? 'key48' : ($period === 7 ? 'key51' : 'key52');
+
+                $text2 .= $til->til($periodKey)."\n".
+                    $til->til('key49').": ".$start."\n".
+                    $til->til('key50').": ".$created."\n\n";
+            }
 
             $botan::setMessage("📊 ".$til->til('key19').$text2);
             $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);
             $botan::eText();
+
             break;
         case "continue":
             $botan::call($data);
