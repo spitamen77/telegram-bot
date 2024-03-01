@@ -607,10 +607,9 @@ elseif (isset($botan::$text)) {
                     $i = 0;
                     $row++;
 
-                } else {
-                    $i++;
                 }
-                $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzl"], $row, $i);
+                $i++;
+                $botan::setMarkup(['text' => "🇺🇿 O'zbekcha - $i", 'callback_data' => "uzl"], $row, $i);
             }
 
             $botan::sText();
