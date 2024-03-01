@@ -612,7 +612,7 @@ elseif (isset($botan::$text)) {
                 $botan::setMarkup(['text' => $jarima->modda, 'callback_data' => "jarima_".$jarima->modda], $row, $i);
             }
 
-            $botan::sText();
+            $botan::send_Out($chat_id, '');
 
             break;
 
