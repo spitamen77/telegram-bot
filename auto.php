@@ -609,7 +609,7 @@ elseif (isset($botan::$text)) {
 
                 }
                 $i++;
-                $botan::setMarkup(['text' => "🇺🇿 O'zbekcha - $i", 'callback_data' => "uzl"], $row, $i);
+                $botan::setMarkup(['text' => $jarima->modda, 'callback_data' => "jarima_".$jarima->modda], $row, $i);
             }
 
             $botan::sText();
