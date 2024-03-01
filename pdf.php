@@ -41,18 +41,13 @@ foreach ($arrays as $row) {
         'B -'.$row->javob_b_uzl . "\n" .
         'C -'.$row->javob_c_uzl . "\n" .
         'D -'.$row->javob_d_uzl. "\n" .
-        '+++ '.$row->javob;
+        '+++ '.$row->javob.' - @uzautotest_bot';
 
     $encodedText = mb_convert_encoding($text, 'ISO-8859-1', 'UTF-8');
     // Добавляем текст в PDF
     $pdf->MultiCell(0, 10, $encodedText);
     $pdf->Ln(); // Добавляем небольшой отступ перед изображением
-    $link = $pdf->AddLink();
-    $pdf->SetLink($link, 0, -1); // Привязываем ссылку к тексту
 
-// Указываем URL для гиперссылки
-    $pdf->SetTextColor(0, 0, 255); // Устанавливаем синий цвет текста
-    $pdf->Write(5, "Перейти в Telegram бот", $link);
 
 }
 
