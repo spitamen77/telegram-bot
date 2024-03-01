@@ -801,11 +801,11 @@ elseif (isset($botan::$text)) {
                                     $db->update("second='".$res['result']['message_id']."', first=0", "user_id='" . $chat_id."'", "users");
                                 }else{
                                     $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
-                                    $botan::send_Out($chat_id, $til->til("key23"));
+                                    $botan::send_Out($chat_id, $til->til("key23")." `𝗨zа𝗨𝗍о𝗍𝖾ѕʈ_ხоt`");
                                 }
                             } else {
                                 $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
-                                $botan::send_Out($chat_id, $til->til("key23")." `𝗨zа𝗨𝗍о𝗍𝖾ѕʈ_ხоt`");
+                                $botan::send_Out($chat_id, $til->til("key23"));
                             }
 
                         }
