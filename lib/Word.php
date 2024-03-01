@@ -107,6 +107,10 @@ class Word
             "key53"=>"Belgini aniqlash",
             "key54"=>"Test topshirilmadi. 2 ta xato qildiz",
             "key55"=>"Oʻzbekiston Respublikasining Ma'muriy javobgarlik toʻgʻrisidagi Kodeksi moddalari",
+            "key56"=>"Jarimalar",
+            "key57"=>"Eng kam ish haqining miqdorida jarima qiymati",
+            "key58"=>"Transport vositasini boshqarish huquqidan mahrum qilish muddati",
+            "key59"=>"Modda",
 
         ];
         return $word[$key] ?? '';
@@ -168,6 +172,10 @@ class Word
             "key53"=>"Распознавание знака",
             "key54"=>"Тест не пройден. Вы сделали 2 ошибки",
             "key55"=>"Статьи Кодекса об административной ответственности Республики Узбекистан",
+            "key56"=>"Штрафы",
+            "key57"=>"Количество штрафа в размере МРЗП",
+            "key58"=>"Срок лишения права управления транспортным средством",
+            "key59"=>"Статьи",
 
         ];
         return $word[$key] ?? '';
@@ -229,6 +237,10 @@ class Word
             "key53"=>"Белгини аниқлаш",
             "key54"=>"Тест топширилмади. 2 та хато қилдиз",
             "key55"=>"Ўзбекистон Республикасининг Маъмурий жавобгарлик тўғрисидаги Кодекси моддалари",
+            "key56"=>"Жарималар",
+            "key57"=>"Енг кам иш ҳақининг миқдорида жарима қиймати",
+            "key58"=>"Транспорт воситасини бошқариш ҳуқуқидан маҳрум қилиш муддати",
+            "key59"=>"Модда",
 
         ];
         return $word[$key] ?? '';
