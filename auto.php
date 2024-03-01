@@ -590,7 +590,7 @@ if ($data !== null) {
                     }
 
                     $botan::setMessage($modda ." - ".$til->til("key59")." "."\n".$text);
-                    $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);
+                    $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "jarima"], 1, 1);
                     $ttt2 = $botan::sText();
                     return true;
                 } else {
