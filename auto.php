@@ -333,45 +333,51 @@ if ($data !== null) {
                 }
                 else{
                     $belgi = $db->selectOne('child = '.$pieces[1].' ORDER BY RAND()',"belgilar");
-                    $p_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
-                    $n_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$p_belgi->id.' AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
-                    if (!$n_belgi) {
-                        $next_id = $p_belgi->id;
+                    if ($belgi) {
+                        $p_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
+                        $n_belgi = $db->selectOne('child = '.$pieces[1].' AND id <> '.$p_belgi->id.' AND id <> '.$belgi->id.' ORDER BY RAND()',"belgilar");
+                        if (!$n_belgi) {
+                            $next_id = $p_belgi->id;
+                        } else {
+                            $next_id = $n_belgi->id;
+                        }
+
+                        switch ($pieces[1]){
+                            case Bot::OGOH:
+                            case Bot::IMTIYOZ:
+                            case Bot::TAQIQ:
+                            case Bot::BUYUR:
+                            case Bot::AXBOROT:
+                            case Bot::SERVICE:
+                            case Bot::QOSHIMCHA:
+                            case Bot::YOTIQ:
+    //                            $ttt = $botan::sPhoto("belgi/".$belgi->image);
+                                $nomi = "name_".$user->lang;
+                                $botan::setMessage($belgi->number." - ".$belgi->$nomi);
+                                $botan::setMarkup(['text' => "⏪", 'callback_data' => "znak_".$pieces[1]."_".$p_belgi->id], 1, 1);
+                                $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$pieces[1]."_".$next_id], 1, 2);
+                                $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "info"], 2, 1);
+
+                                if ($belgi->image) {
+                                    $res = $botan::sendPhotoWithText("belgi/".$belgi->image);
+                                } else {
+                                    $res = $botan::sText();
+                                }
+                                sleep(0.2);
+                                $db->update("second='".$res['result']['message_id']."', first=0", "user_id=" . $user->user_id, "users");
+                                break;
+
+                            case Bot::TIK:
+
+                                $botan::setMessage($til->til("key33"));
+                                $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);
+                                $botan::sText();
+                                break;
+                        }
                     } else {
-                        $next_id = $n_belgi->id;
-                    }
-
-                    switch ($pieces[1]){
-                        case Bot::OGOH:
-                        case Bot::IMTIYOZ:
-                        case Bot::TAQIQ:
-                        case Bot::BUYUR:
-                        case Bot::AXBOROT:
-                        case Bot::SERVICE:
-                        case Bot::QOSHIMCHA:
-                        case Bot::YOTIQ:
-//                            $ttt = $botan::sPhoto("belgi/".$belgi->image);
-                            $nomi = "name_".$user->lang;
-                            $botan::setMessage($belgi->number." - ".$belgi->$nomi);
-                            $botan::setMarkup(['text' => "⏪", 'callback_data' => "znak_".$pieces[1]."_".$p_belgi->id], 1, 1);
-                            $botan::setMarkup(['text' => "⏩", 'callback_data' => "znak_".$pieces[1]."_".$next_id], 1, 2);
-                            $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "info"], 2, 1);
-
-                            if ($belgi->image) {
-                                $res = $botan::sendPhotoWithText("belgi/".$belgi->image);
-                            } else {
-                                $res = $botan::sText();
-                            }
-                            sleep(0.2);
-                            $db->update("second='".$res['result']['message_id']."', first=0", "user_id=" . $user->user_id, "users");
-                            break;
-
-                        case Bot::TIK:
-
-                            $botan::setMessage($til->til("key33"));
-                            $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);
-                            $botan::sText();
-                            break;
+                        $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
+                        $botan::send_Out($chat_id, $til->til("key31"));
+                        break;
                     }
                 }
 
