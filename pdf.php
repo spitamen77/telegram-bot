@@ -23,10 +23,8 @@ $pdf->AddPage();
 $pdf->SetFont('Arial', '', 12);
 
 // Допустим, $data - это массив данных, полученных из вашей таблицы `savol_data`
-$arrays = $db->select("1", 'savol_data', 200, true);
-$data = [
-    // Здесь должны быть данные, полученные из вашей БД
-];
+$arrays = $db->selectOfset("1", 'savol_data', 10, 0);
+
 
 foreach ($arrays as $row) {
     // Собираем текстовые поля с окончанием _uzl
@@ -49,6 +47,7 @@ foreach ($arrays as $row) {
         $pdf->Image(BOT_URL . '/image/' . "savol/".$row->rasm, $pdf->GetX(), $pdf->GetY(), 80); // 40 - примерная ширина изображения в мм
         $pdf->Ln(40); // Оставляем место под изображение, добавляя отступ после него
     }
+    $pdf->Link($pdf->GetX()-50, $pdf->GetY()-5, 50, 10, "https://t.me/uzautotest_bot");
 }
 
 // Выводим PDF

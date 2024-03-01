@@ -96,6 +96,29 @@ class DataBase
         }
     }
 
+    /**
+     * @param string $where
+     * @param string $table
+     * @param $limit
+     * @param $ofset
+     * @return array|null
+     */
+    public function selectOfset(string $where, string $table = "users", $limit=1, $ofset = 0)
+    {
+        $new = $this->mysqli->query("SELECT * FROM $table WHERE $where LIMIT $ofset, $limit");
+
+        $news = [];
+        if ($new) {
+            for($i=0; $i<$new->num_rows; $i++)
+            {
+                $news[]=$new->fetch_object();
+            }
+            return $news;
+        } else {
+            return null;
+        }
+    }
+
     public function selectOne(string $sql, string $table)
     {
         $select = "SELECT * FROM `".$table."` WHERE " . $sql. " LIMIT 1";
