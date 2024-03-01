@@ -233,6 +233,29 @@ if ($data !== null) {
             $botan::eText();
             $db->change_step($chat_id, 7);
             break;
+        case "jarima": // main oyna
+            $botan::call($data);
+            $chat_id = (int) $botan::$back->chat->id;
+            $botan::setChatId($chat_id);
+            $botan::setMessageId($botan::$back->message_id);
+            $botan::eText();
+
+            $til = Word::getLang($db, $chat_id);
+            $jarimalar = $db->selectCustom('*','id IN ( SELECT MIN(id) FROM `jarima` GROUP BY modda) ORDER BY modda ASC', 'jarima');
+            $i = 0; $row = 1;
+            foreach ($jarimalar as $jarima) {
+                $i++;
+                if ($i % 5 == 0) {
+                    $i = 0;
+                    $row++;
+
+                }
+                $botan::setMarkup(['text' => $jarima->modda, 'callback_data' => "jarima_".$jarima->modda], $row, $i);
+            }
+            $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], $row + 1, 1);
+            $botan::setMessage($til->til("key55"));
+            $botan::eText();
+            break;
         // ** main menu **//
 
         case "setting":
