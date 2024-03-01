@@ -558,7 +558,7 @@ if ($data !== null) {
                     $text = "\n";
                     $qoida = 'qoida_'.$til->lang;
                     foreach ($current as $jarima) {
-                        $text .= $jarima->modda.' - '.$jarima->$qoida."\n";
+                        $text .= "\n".$jarima->$qoida;
                         $text .= 'Jarima: '.$jarima->jarima;
                         if ($jarima->muddat) {
                             $text .= "\n Muddat: ".$jarima->muddat;
@@ -566,7 +566,7 @@ if ($data !== null) {
 
                     }
 
-                    $botan::setMessage($text);
+                    $botan::setMessage($modda."\n".$text);
                     $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                     $ttt2 = $botan::sText();
                     return true;
