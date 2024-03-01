@@ -600,7 +600,7 @@ elseif (isset($botan::$text)) {
         case '/jarima':
             $botan::setChatId($chat_id);
 //            $botan::setMessage($til->til('key34', 'uzl')."\n" . $til->til('key34', 'rus')."\n" . $til->til('key34', 'uzk'));
-            $jarimalar = $db->selectCustom('*','id IN ( SELECT MIN(id) FROM `jarima` GROUP BY modda)', 'jarima');
+            $jarimalar = $db->selectCustom('*','id IN ( SELECT MIN(id) FROM `jarima` GROUP BY modda) ORDER BY modda ASC', 'jarima');
             $i = 0; $row = 1;
             foreach ($jarimalar as $jarima) {
                 if ($i % 5 == 0) {
