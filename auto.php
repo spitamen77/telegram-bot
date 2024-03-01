@@ -548,6 +548,33 @@ if ($data !== null) {
                     $db->update("second=" . $ttt2['result']['message_id'] . ", first=0", "user_id='" . $chat_id."'", "users");
                 }
             }
+            elseif (preg_match("~^jarima~", $route)) {
+                // route - jarima_128-2
+                $modda = $pieces[1];
+
+                $current = $db->select("`modda`=".$modda, "jarima");
+
+                if ($current){
+                    $text = "\n";
+                    $qoida = 'qoida_'.$til->lang;
+                    foreach ($current as $jarima) {
+                        $text .= $jarima->modda.' - '.$jarima->$qoida."\n";
+                        $text .= 'Jarima: '.$jarima->jarima;
+                        if ($jarima->muddat) {
+                            $text .= "\n Muddat: ".$jarima->muddat;
+                        }
+
+                    }
+
+                    $botan::setMessage($text);
+                    $botan::setMarkup(['text' => "⬅️ ".$til->til("key02"), 'callback_data' => "forBack"], 1, 1);
+                    $ttt2 = $botan::sText();
+                    return true;
+                } else {
+                    $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
+                    $botan::send_Out($chat_id, $til->til("key31"));
+                }
+            }
     }
 }
 elseif (isset($botan::$text)) {
@@ -611,8 +638,7 @@ elseif (isset($botan::$text)) {
                 }
                 $botan::setMarkup(['text' => $jarima->modda, 'callback_data' => "jarima_".$jarima->modda], $row, $i);
             }
-//            $botan::setMessage($til->til('key40')." $i - ".$til->til('key42')." \n");
-            $botan::setMarkup(['text' => "⬅️ $i " . $til->til("key02")." $row", 'callback_data' => "forBack"], $row + 1, 1);
+            $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], $row + 1, 1);
             $botan::send_Out($chat_id, $til->til("key55"));
 
             break;
