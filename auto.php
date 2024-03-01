@@ -612,7 +612,7 @@ elseif (isset($botan::$text)) {
 //                $botan::setMarkup(['text' => $jarima->modda, 'callback_data' => "jarima_".$jarima->modda], $row, $i);
             }
 //            $botan::setMessage($til->til('key40')." $i - ".$til->til('key42')." \n");
-            $botan::setMarkup(['text' => "⬅️ $i " . $til->til("key02")." $row", 'callback_data' => "forBack"], $row + 1, 1);
+            $botan::setMarkup(['text' => "⬅️ $i " . $til->til("key02")." $row", 'callback_data' => "forBack"], 1, 1);
             $botan::send_Out($chat_id, $til->til("key23"));
 
             break;
