@@ -585,9 +585,6 @@ elseif (isset($botan::$text)) {
 
                 }
             }else{
-                if ($chat_id != 2147483647){    // shu jonga tegdi
-                    $db->add_user($chat_id, 'uzl');
-                }
                 $botan::setChatId($chat_id);
                 $botan::setMessage($til->til('key34', 'uzl')."\n" . $til->til('key34', 'rus')."\n" . $til->til('key34', 'uzk'));
                 $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzl"], 1, 1);
@@ -803,7 +800,7 @@ elseif (isset($botan::$text)) {
                                     sleep(0.2);
                                     $db->update("second='".$res['result']['message_id']."', first=0", "user_id='" . $chat_id."'", "users");
                                 }else{
-                                    $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
+                                    $botan::setMarkup(['text' => "⬅️ 🔤 " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
                                     $botan::send_Out($chat_id, $til->til("key23"));
                                 }
                             } else {
