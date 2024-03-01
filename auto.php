@@ -597,6 +597,25 @@ elseif (isset($botan::$text)) {
             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
             $botan::send_Out($chat_id, "Aktivlar: ".$active->c."\n"."Kicked: ".$kicked->c);
             break;
+        case '/jarima':
+            $botan::setChatId($chat_id);
+            $botan::setMessage($til->til('key34', 'uzl')."\n" . $til->til('key34', 'rus')."\n" . $til->til('key34', 'uzk'));
+            $jarimalar = $db->selectCustom('*','id IN ( SELECT MIN(id) FROM `jarima` GROUP BY modda)', 'jarima');
+            $i = 0; $row = 1;
+            foreach ($jarimalar as $jarima) {
+                if ($i % 5 == 0) {
+                    $i = 0;
+                    $row++;
+
+                } else {
+                    $i++;
+                }
+                $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzl"], $row, $i);
+            }
+
+            $botan::sText();
+
+            break;
 
         default:
             $step = $db->getStep($chat_id);
