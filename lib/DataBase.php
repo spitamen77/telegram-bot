@@ -122,7 +122,7 @@ class DataBase
     public function selectOne(string $sql, string $table)
     {
         $select = "SELECT * FROM `".$table."` WHERE " . $sql. " LIMIT 1";
-        file_put_contents('logs.log', $select.PHP_EOL, FILE_APPEND | LOCK_EX);
+//        file_put_contents('logs.log', $select.PHP_EOL, FILE_APPEND | LOCK_EX);
         $query = $this->mysqli->query($select);
         if ($query && $query->num_rows > 0){
             $res = $query->fetch_object();
