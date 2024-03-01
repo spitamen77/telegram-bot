@@ -376,7 +376,7 @@ if ($data !== null) {
                         }
                     } else {
                         $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
-                        $botan::send_Out($chat_id, $til->til("key31").'🚏');
+                        $botan::send_Out($chat_id, $til->til("key31"));
                         break;
                     }
                 }
@@ -465,7 +465,7 @@ if ($data !== null) {
                             $random->$javob_c."\n".$marks['D']." D - ".$random->$javob_d."\n🏎");
                     } else {
                         $botan::setMessage($text.$random->$savol."\n".$marks['A']." A - ".$random->$javob_a."\n".$marks['B']." B - ".$random->$javob_b."\n".$marks['C']." C - ".
-                            $random->$javob_c."\n🏎");
+                            $random->$javob_c."\n🚏");
                     }
                     if ($random->rasm) {
                         $ttt2 = $botan::sendPhotoWithText("savol/".$random->rasm, false);
@@ -523,7 +523,7 @@ if ($data !== null) {
                             $random->$javob_c."\n".$marks['D']." D - ".$random->$javob_d."\n🏎");
                     } else {
                         $botan::setMessage($text.$random->$savol."\n".$marks['A']." A - ".$random->$javob_a."\n".$marks['B']." B - ".$random->$javob_b."\n".$marks['C']." C - ".
-                            $random->$javob_c."\n🏎");
+                            $random->$javob_c."\n🚏");
                     }
                     if ($random->rasm) {
                         $ttt2 = $botan::sendPhotoWithText("savol/".$random->rasm, false);
@@ -585,9 +585,6 @@ elseif (isset($botan::$text)) {
 
                 }
             }else{
-                if ($chat_id != 2147483647){    // shu jonga tegdi
-                    $db->add_user($chat_id, 'uzl');
-                }
                 $botan::setChatId($chat_id);
                 $botan::setMessage($til->til('key34', 'uzl')."\n" . $til->til('key34', 'rus')."\n" . $til->til('key34', 'uzk'));
                 $botan::setMarkup(['text' => "🇺🇿 O'zbekcha", 'callback_data' => "uzl"], 1, 1);
