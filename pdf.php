@@ -23,7 +23,7 @@ $pdf->AddPage();
 $pdf->SetFont('Arial', '', 12);
 
 // Допустим, $data - это массив данных, полученных из вашей таблицы `savol_data`
-$arrays = $db->selectOfset("1", 'savol_data', 10, 0);
+$arrays = $db->selectOfset("1", 'savol_data', 200, 0);
 
 
 foreach ($arrays as $row) {
@@ -38,17 +38,17 @@ foreach ($arrays as $row) {
     if ($row->javob_d_uzl) {
         $text = 'Bilet: '.$row->bilet.', savol: '.$row->raqam."\n".
             $row->savol_uzl . "\n" .
-            'A -'.$row->javob_a_uzl . "\n" .
-            'B -'.$row->javob_b_uzl . "\n" .
-            'C -'.$row->javob_c_uzl . "\n" .
-            'D -'.$row->javob_d_uzl. "\n" .
+            'A - '.$row->javob_a_uzl . "\n" .
+            'B - '.$row->javob_b_uzl . "\n" .
+            'C - '.$row->javob_c_uzl . "\n" .
+            'D - '.$row->javob_d_uzl. "\n" .
             '+ '.$row->javob.'  @uzautotest_bot';
     } else {
         $text = 'Bilet: '.$row->bilet.', savol: '.$row->raqam."\n".
             $row->savol_uzl . "\n" .
-            'A -'.$row->javob_a_uzl . "\n" .
-            'B -'.$row->javob_b_uzl . "\n" .
-            'C -'.$row->javob_c_uzl . "\n" .
+            'A - '.$row->javob_a_uzl . "\n" .
+            'B - '.$row->javob_b_uzl . "\n" .
+            'C - '.$row->javob_c_uzl . "\n" .
             '+ '.$row->javob.'  @uzautotest_bot';
     }
 
