@@ -559,9 +559,9 @@ if ($data !== null) {
                     $qoida = 'qoida_'.$til->lang;
                     foreach ($current as $jarima) {
                         $text .= "\n❗️ ".$jarima->$qoida;
-                        $text .= "\n".'💸 Eng kam ish haqining miqdorida jarima qiymati: '.$jarima->jarima;
+                        $text .= "\n".'💸 Eng kam ish haqining miqdorida jarima qiymati: '.$jarima->jarima."\n";
                         if ($jarima->muddat) {
-                            $text .= "\n 🛑Transport vositasini boshqarish huquqidan mahrum qilish muddati: ".$jarima->muddat;
+                            $text .= "\n 🛑Transport vositasini boshqarish huquqidan mahrum qilish muddati: ".$jarima->muddat."\n";
                         }
 
                     }
