@@ -462,7 +462,7 @@ if ($data !== null) {
 
                     if (@strlen($random->$javob_d)) {
                         $botan::setMessage($text.$random->$savol."\n".$marks['A']." A - ".$random->$javob_a."\n".$marks['B']." B - ".$random->$javob_b."\n".$marks['C']." C - ".
-                            $random->$javob_c."\n".$marks['D']." D - ".$random->$javob_d."\n🏎");
+                            $random->$javob_c."\n".$marks['D']." D - ".$random->$javob_d."\n🚏");
                     } else {
                         $botan::setMessage($text.$random->$savol."\n".$marks['A']." A - ".$random->$javob_a."\n".$marks['B']." B - ".$random->$javob_b."\n".$marks['C']." C - ".
                             $random->$javob_c."\n🚏");
@@ -520,7 +520,7 @@ if ($data !== null) {
 
                     if (@strlen($random->$javob_d)) {
                         $botan::setMessage($text.$random->$savol."\n".$marks['A']." A - ".$random->$javob_a."\n".$marks['B']." B - ".$random->$javob_b."\n".$marks['C']." C - ".
-                            $random->$javob_c."\n".$marks['D']." D - ".$random->$javob_d."\n🏎");
+                            $random->$javob_c."\n".$marks['D']." D - ".$random->$javob_d."\n🚏");
                     } else {
                         $botan::setMessage($text.$random->$savol."\n".$marks['A']." A - ".$random->$javob_a."\n".$marks['B']." B - ".$random->$javob_b."\n".$marks['C']." C - ".
                             $random->$javob_c."\n🚏");
