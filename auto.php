@@ -611,8 +611,8 @@ elseif (isset($botan::$text)) {
                 $i++;
                 $botan::setMarkup(['text' => $jarima->modda, 'callback_data' => "jarima_".$jarima->modda], $row, $i);
             }
-
-            $botan::send_Out($chat_id, '');
+            $botan::setMessage($til->til('key40')." $i - ".$til->til('key42')." \n".$text);
+            $botan::sText();
 
             break;
 
