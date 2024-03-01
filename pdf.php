@@ -12,6 +12,7 @@
 
 use DataBase\DataBase;
 
+exit('PDF');
 require __DIR__. '/vendor/autoload.php';
 require_once __DIR__. "/lib/config.php";
 
