@@ -41,7 +41,7 @@ foreach ($arrays as $row) {
         'B -'.$row->javob_b_uzl . "\n" .
         'C -'.$row->javob_c_uzl . "\n" .
         'D -'.$row->javob_d_uzl. "\n" .
-        '+++ '.$row->javob.' - @uzautotest_bot';
+        '+ '.$row->javob.'  @uzautotest_bot';
 
     $encodedText = mb_convert_encoding($text, 'ISO-8859-1', 'UTF-8');
     // Добавляем текст в PDF
