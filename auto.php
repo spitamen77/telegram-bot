@@ -613,7 +613,7 @@ elseif (isset($botan::$text)) {
             }
 //            $botan::setMessage($til->til('key40')." $i - ".$til->til('key42')." \n");
             $botan::setMarkup(['text' => "⬅️ $i " . $til->til("key02")." $row", 'callback_data' => "forBack"], $row + 1, 1);
-            $botan::send_Out($chat_id, $til->til("key23"));
+            $botan::send_Out($chat_id, '');
 
             break;
 
