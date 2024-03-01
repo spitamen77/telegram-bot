@@ -129,9 +129,8 @@ class DataBase
             if ($res) {
                 return $res;
             }
-        } else {
-            Bot::setFileLog($this->mysqli->error);
         }
+        Bot::setFileLog($this->mysqli->error);
         return null;
     }
 
