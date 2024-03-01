@@ -60,10 +60,10 @@ if ($data !== null) {
                         return $d->getTimestamp();
                         break;
                     case 7:
-                        return $d->getTimestamp()-(30*24*60*60);
+                        return $d->getTimestamp()-(31*24*60*60);
                         break;
                     case 30:
-                        return $d->getTimestamp()-(12*30*24*60*60);
+                        return $d->getTimestamp()-(365*24*60*60);
                         break;
                 }
             }
