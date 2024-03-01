@@ -603,16 +603,16 @@ elseif (isset($botan::$text)) {
             $jarimalar = $db->selectCustom('*','id IN ( SELECT MIN(id) FROM `jarima` GROUP BY modda) ORDER BY modda ASC', 'jarima');
             $i = 0; $row = 1;
             foreach ($jarimalar as $jarima) {
+                $i++;
                 if ($i % 5 == 0) {
                     $i = 0;
                     $row++;
 
                 }
-                $i++;
-//                $botan::setMarkup(['text' => $jarima->modda, 'callback_data' => "jarima_".$jarima->modda], $row, $i);
+                $botan::setMarkup(['text' => $jarima->modda, 'callback_data' => "jarima_".$jarima->modda], $row, $i);
             }
 //            $botan::setMessage($til->til('key40')." $i - ".$til->til('key42')." \n");
-            $botan::setMarkup(['text' => "⬅️ $i " . $til->til("key02")." $row", 'callback_data' => "forBack"], 1, 1);
+            $botan::setMarkup(['text' => "⬅️ $i " . $til->til("key02")." $row", 'callback_data' => "forBack"], $row + 1, 1);
             $botan::send_Out($chat_id, $til->til("key23"));
 
             break;
