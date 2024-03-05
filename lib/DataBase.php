@@ -24,15 +24,22 @@ class DataBase
         $this->mysqli->set_charset('utf8mb4');
     }
 
-    public function add_user2($chat_id, string $lang)
+    public function add_user($chat_id, string $lang)
     {
-        if($this->mysqli->query("SELECT * FROM users WHERE user_id = $chat_id")->num_rows==1){
-            $this->mysqli->query("UPDATE `users` SET `lang` = '$lang' WHERE `users`.`user_id` = $chat_id");
+        $query = "INSERT INTO users (user_id, lang, step, created) VALUES (?, ?, '2', ?)
+          ON DUPLICATE KEY UPDATE user_id = user_id";
+        $time = time();
+
+        $stmt = $this->mysqli->prepare($query);
+        $stmt->bind_param("issi", $chat_id, $lang, $time, $chat_id);
+        if ($stmt->execute()) {
+            // Здесь можно добавить код обработки успешной вставки, если необходимо
+        } else {
+            Bot::setFileLog([$chat_id, $lang]);
         }
-        else $this->mysqli->query("INSERT INTO users (user_id, lang, step, created) VALUES ('".$chat_id."', '".$lang."', '2', '".time()."')");
     }
 
-    public function add_user($chat_id, string $lang)
+    public function add_user2($chat_id, string $lang)
     {
         $query = "INSERT INTO users (user_id, lang, step, created)
               SELECT ?, ?, '2', ?

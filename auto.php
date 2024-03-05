@@ -17,6 +17,8 @@ $db = new DataBase();
 
 $data = $botan::$call->callback_query->data ?? null;
 
+
+
 if ($data !== null) {
 //    Bot::setFileLog($botan::$call->callback_query);
     switch ($data) {
@@ -606,6 +608,7 @@ elseif (isset($botan::$text)) {
     switch ($botan::$text) {
         case "/":
         case "/start":
+            $db->add_user($chat_id, 'uzl');
             $user = $db->getUser($chat_id);
             if (isset($user) && ($user->user_id == $chat_id)) {
                 $step = $db->getStep($chat_id);
