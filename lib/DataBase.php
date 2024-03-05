@@ -31,7 +31,7 @@ class DataBase
         $time = time();
 
         $stmt = $this->mysqli->prepare($query);
-        $stmt->bind_param("issi", $chat_id, $lang, $time, $chat_id);
+        $stmt->bind_param("sss", $chat_id, $lang, $time);
         if ($stmt->execute()) {
             // Здесь можно добавить код обработки успешной вставки, если необходимо
         } else {
