@@ -52,6 +52,7 @@ if ($data !== null) {
             $botan::setChatId($botan::$back->chat->id);
             $botan::setMessageId($botan::$back->message_id);
             $til = Word::getLang($db, $botan::$back->chat->id);
+            date_default_timezone_set('Asia/Tashkent');
             function time_stats($type){
                 $timeShifts = [
                     1 => 0,
