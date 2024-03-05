@@ -273,7 +273,7 @@ class DataBase
         $endDateTime = date('Y-m-d H:i:s', $end);
 
         $result = $this->mysqli->query("SELECT COUNT(*) AS `c` FROM `users` WHERE `updated_at` BETWEEN '$startDateTime' AND '$endDateTime'");
-        Bot::setFileLog("SELECT COUNT(*) AS `c` FROM `users` WHERE `updated_at` BETWEEN '$startDateTime' AND '$endDateTime'");
+//        Bot::setFileLog("SELECT COUNT(*) AS `c` FROM `users` WHERE `updated_at` BETWEEN '$startDateTime' AND '$endDateTime'");
 
         return $result->fetch_object()->c;
     }
