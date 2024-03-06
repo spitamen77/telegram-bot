@@ -648,8 +648,9 @@ elseif (isset($botan::$text)) {
         case "/control":
             $active = $db->selectCustom('COUNT(id) as c','second <> 0 AND updated_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)', 'users', 1);
             $kicked = $db->selectCustom('COUNT(id) as c','kicked = 1', 'users', 1);
+            $month_kicked = $db->selectCustom('COUNT(id) as c','kicked = 1 AND created_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)', 'users', 1);
             $botan::setMarkup(['text' => "⬅️ " . $til->til("key02"), 'callback_data' => "forBack"], 1, 1);
-            $botan::send_Out($chat_id, "Aktivlar: ".$active->c."\n"."Kicked: ".$kicked->c);
+            $botan::send_Out($chat_id, "Month Aktivlar: ".$active->c."\n"."Month Kicked: ".$month_kicked->c."\n"."Kicked: ".$kicked->c);
             break;
         case '/jarima':
             $botan::setChatId($chat_id);
